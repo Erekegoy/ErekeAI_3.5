@@ -192,3 +192,4 @@ abstract class PluginModule {
     @Singleton
     abstract fun bindPluginRepository(impl: com.erekeai.data.plugin.PluginRepositoryImpl): com.erekeai.domain.plugin.PluginRepository
 }
+
