@@ -20,6 +20,7 @@ import org.json.JSONArray
 import org.json.JSONObject
 import javax.inject.Inject
 import javax.inject.Singleton
+import javax.inject.Provider
 
 private val Context.pluginsDataStore by preferencesDataStore(name = "erekeai_plugins")
 
@@ -28,7 +29,7 @@ class PluginRepositoryImpl @Inject constructor(
     @ApplicationContext private val context: Context,
     private val httpClient: OkHttpClient,
     private val secureKeyStore: SecureKeyStore,
-    private val toolRegistry: ToolRegistry
+    private val toolRegistry: Provider<ToolRegistry>
 ) : PluginRepository {
 
     private val key = stringPreferencesKey("installed_json")
@@ -46,7 +47,9 @@ class PluginRepositoryImpl @Inject constructor(
         val current = listInstalled().filterNot { it.manifest.id == manifest.id }
         val updated = current + InstalledPlugin(manifest, System.currentTimeMillis(), repoUrl)
         persist(updated)
-        toolRegistry.registerDynamic(DynamicHttpTool(manifest, httpClient, secureKeyStore))
+        toolRegistry.get().registerDynamic(
+    DynamicHttpTool(manifest, httpClient, secureKeyStore)
+)
     }
 
     override suspend fun listInstalled(): List<InstalledPlugin> = withContext(Dispatchers.IO) {
@@ -65,7 +68,7 @@ class PluginRepositoryImpl @Inject constructor(
     override suspend fun uninstall(pluginId: String) = withContext(Dispatchers.IO) {
         val remaining = listInstalled().filterNot { it.manifest.id == pluginId }
         persist(remaining)
-        toolRegistry.unregisterDynamic("plugin_$pluginId")
+        toolRegistry.get().unregisterDynamic("plugin_$pluginId")
     }
 
     override suspend fun checkUpdates(): List<Pair<InstalledPlugin, PluginManifest>> = withContext(Dispatchers.IO) {
@@ -80,8 +83,11 @@ class PluginRepositoryImpl @Inject constructor(
 
     /** Загружает все установленные плагины как инструменты — вызывается один раз при старте приложения. */
     suspend fun restoreInstalledIntoRegistry() {
-        listInstalled().forEach { installed -> toolRegistry.registerDynamic(DynamicHttpTool(installed.manifest, httpClient, secureKeyStore)) }
-    }
+        listInstalled().forEach { installed ->
+    toolRegistry.get().registerDynamic(
+        DynamicHttpTool(installed.manifest, httpClient, secureKeyStore)
+    )
+}
 
     private suspend fun persist(list: List<InstalledPlugin>) {
         val arr = JSONArray()

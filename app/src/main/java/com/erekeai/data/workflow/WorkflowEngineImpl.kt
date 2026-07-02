@@ -13,12 +13,13 @@ import kotlinx.coroutines.withContext
 import org.json.JSONArray
 import org.json.JSONObject
 import javax.inject.Inject
+import javax.inject.Provider
 import javax.inject.Singleton
 
 @Singleton
 class WorkflowEngineImpl @Inject constructor(
     private val dao: WorkflowDao,
-    private val toolRegistry: ToolRegistry
+    private val toolRegistry: Provider<ToolRegistry>
 ) : WorkflowEngine {
 
     override suspend fun createWorkflow(name: String, steps: List<WorkflowStep>): Long = withContext(Dispatchers.IO) {
@@ -34,7 +35,7 @@ class WorkflowEngineImpl @Inject constructor(
     override suspend fun run(workflow: Workflow): List<WorkflowStepResult> = withContext(Dispatchers.Default) {
         var previousOutput = ""
         workflow.steps.map { step ->
-            val tool = toolRegistry.find(step.toolName)
+            val tool = toolRegistry.get().find(step.toolName)
             if (tool == null) {
                 WorkflowStepResult(step.toolName, false, "Инструмент '${step.toolName}' не найден")
             } else {
