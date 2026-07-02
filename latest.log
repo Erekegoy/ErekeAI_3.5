@@ -1,0 +1,821 @@
+build	Set up job	﻿2026-07-02T19:53:15.1658826Z Current runner version: '2.335.1'
+build	Set up job	2026-07-02T19:53:15.1692484Z ##[group]Runner Image Provisioner
+build	Set up job	2026-07-02T19:53:15.1694063Z Hosted Compute Agent
+build	Set up job	2026-07-02T19:53:15.1695029Z Version: 20260624.560
+build	Set up job	2026-07-02T19:53:15.1696142Z Commit: 925d229a51159bc391ae97e54a2dd1fe20af789d
+build	Set up job	2026-07-02T19:53:15.1697421Z Build Date: 2026-06-24T18:26:47Z
+build	Set up job	2026-07-02T19:53:15.1698566Z Worker ID: {562b390e-075d-4ed1-9499-6b22e9a61da3}
+build	Set up job	2026-07-02T19:53:15.1699740Z Azure Region: eastus
+build	Set up job	2026-07-02T19:53:15.1700765Z ##[endgroup]
+build	Set up job	2026-07-02T19:53:15.1703067Z ##[group]Operating System
+build	Set up job	2026-07-02T19:53:15.1704454Z Ubuntu
+build	Set up job	2026-07-02T19:53:15.1705364Z 24.04.4
+build	Set up job	2026-07-02T19:53:15.1706215Z LTS
+build	Set up job	2026-07-02T19:53:15.1707141Z ##[endgroup]
+build	Set up job	2026-07-02T19:53:15.1707996Z ##[group]Runner Image
+build	Set up job	2026-07-02T19:53:15.1709051Z Image: ubuntu-24.04
+build	Set up job	2026-07-02T19:53:15.1710068Z Version: 20260628.225.1
+build	Set up job	2026-07-02T19:53:15.1711796Z Included Software: https://github.com/actions/runner-images/blob/ubuntu24/20260628.225/images/ubuntu/Ubuntu2404-Readme.md
+build	Set up job	2026-07-02T19:53:15.1715592Z Image Release: https://github.com/actions/runner-images/releases/tag/ubuntu24%2F20260628.225
+build	Set up job	2026-07-02T19:53:15.1717317Z ##[endgroup]
+build	Set up job	2026-07-02T19:53:15.1719248Z ##[group]GITHUB_TOKEN Permissions
+build	Set up job	2026-07-02T19:53:15.1722128Z Contents: read
+build	Set up job	2026-07-02T19:53:15.1723440Z Metadata: read
+build	Set up job	2026-07-02T19:53:15.1724371Z Packages: read
+build	Set up job	2026-07-02T19:53:15.1725326Z ##[endgroup]
+build	Set up job	2026-07-02T19:53:15.1728242Z Secret source: Actions
+build	Set up job	2026-07-02T19:53:15.1729561Z Prepare workflow directory
+build	Set up job	2026-07-02T19:53:15.2191009Z Prepare all required actions
+build	Set up job	2026-07-02T19:53:15.2246748Z Getting action download info
+build	Set up job	2026-07-02T19:53:15.4961146Z Download action repository 'actions/checkout@v4' (SHA:34e114876b0b11c390a56381ad16ebd13914f8d5)
+build	Set up job	2026-07-02T19:53:15.5674164Z Download action repository 'actions/setup-java@v4' (SHA:c1e323688fd81a25caa38c78aa6df2d33d3e20d9)
+build	Set up job	2026-07-02T19:53:15.9676642Z Download action repository 'actions/cache@v4' (SHA:0057852bfaa89a56745cba8c7296529d2fc39830)
+build	Set up job	2026-07-02T19:53:16.4271787Z Download action repository 'actions/upload-artifact@v4' (SHA:ea165f8d65b6e75b540449e92b4886f43607fa02)
+build	Set up job	2026-07-02T19:53:16.6645162Z Complete job name: build
+build	Checkout	﻿2026-07-02T19:53:16.7533013Z Node 20 is being deprecated. This workflow is running with Node 24 by default. If you need to temporarily use Node 20, you can set the ACTIONS_ALLOW_USE_UNSECURE_NODE_VERSION=true environment variable. For more information see: https://github.blog/changelog/2025-09-19-deprecation-of-node-20-on-github-actions-runners/
+build	Checkout	2026-07-02T19:53:16.7544647Z ##[group]Run actions/checkout@v4
+build	Checkout	2026-07-02T19:53:16.7545920Z with:
+build	Checkout	2026-07-02T19:53:16.7546733Z   repository: Erekegoy/ErekeAI_3.5
+build	Checkout	2026-07-02T19:53:16.7556573Z   token: ***
+build	Checkout	2026-07-02T19:53:16.7557377Z   ssh-strict: true
+build	Checkout	2026-07-02T19:53:16.7558180Z   ssh-user: git
+build	Checkout	2026-07-02T19:53:16.7558999Z   persist-credentials: true
+build	Checkout	2026-07-02T19:53:16.7559910Z   clean: true
+build	Checkout	2026-07-02T19:53:16.7560738Z   sparse-checkout-cone-mode: true
+build	Checkout	2026-07-02T19:53:16.7561731Z   fetch-depth: 1
+build	Checkout	2026-07-02T19:53:16.7562556Z   fetch-tags: false
+build	Checkout	2026-07-02T19:53:16.7563728Z   show-progress: true
+build	Checkout	2026-07-02T19:53:16.7564596Z   lfs: false
+build	Checkout	2026-07-02T19:53:16.7565358Z   submodules: false
+build	Checkout	2026-07-02T19:53:16.7566233Z   set-safe-directory: true
+build	Checkout	2026-07-02T19:53:16.7567456Z ##[endgroup]
+build	Checkout	2026-07-02T19:53:16.8580601Z Syncing repository: Erekegoy/ErekeAI_3.5
+build	Checkout	2026-07-02T19:53:16.8583728Z ##[group]Getting Git version info
+build	Checkout	2026-07-02T19:53:16.8585219Z Working directory is '/home/runner/work/ErekeAI_3.5/ErekeAI_3.5'
+build	Checkout	2026-07-02T19:53:16.8587387Z [command]/usr/bin/git version
+build	Checkout	2026-07-02T19:53:16.8631720Z git version 2.54.0
+build	Checkout	2026-07-02T19:53:16.8690279Z ##[endgroup]
+build	Checkout	2026-07-02T19:53:16.8707356Z Temporarily overriding HOME='/home/runner/work/_temp/4d8abd62-f40e-428c-8d59-a7709a024229' before making global git config changes
+build	Checkout	2026-07-02T19:53:16.8712169Z Adding repository directory to the temporary git global config as a safe directory
+build	Checkout	2026-07-02T19:53:16.8716366Z [command]/usr/bin/git config --global --add safe.directory /home/runner/work/ErekeAI_3.5/ErekeAI_3.5
+build	Checkout	2026-07-02T19:53:16.8770786Z Deleting the contents of '/home/runner/work/ErekeAI_3.5/ErekeAI_3.5'
+build	Checkout	2026-07-02T19:53:16.8779916Z ##[group]Initializing the repository
+build	Checkout	2026-07-02T19:53:16.8781745Z [command]/usr/bin/git init /home/runner/work/ErekeAI_3.5/ErekeAI_3.5
+build	Checkout	2026-07-02T19:53:16.8913903Z hint: Using 'master' as the name for the initial branch. This default branch name
+build	Checkout	2026-07-02T19:53:16.8916146Z hint: will change to "main" in Git 3.0. To configure the initial branch name
+build	Checkout	2026-07-02T19:53:16.8918526Z hint: to use in all of your new repositories, which will suppress this warning,
+build	Checkout	2026-07-02T19:53:16.8920894Z hint: call:
+build	Checkout	2026-07-02T19:53:16.8922262Z hint:
+build	Checkout	2026-07-02T19:53:16.8924160Z hint: 	git config --global init.defaultBranch <name>
+build	Checkout	2026-07-02T19:53:16.8926297Z hint:
+build	Checkout	2026-07-02T19:53:16.8928200Z hint: Names commonly chosen instead of 'master' are 'main', 'trunk' and
+build	Checkout	2026-07-02T19:53:16.8931334Z hint: 'development'. The just-created branch can be renamed via this command:
+build	Checkout	2026-07-02T19:53:16.8936675Z hint:
+build	Checkout	2026-07-02T19:53:16.8937961Z hint: 	git branch -m <name>
+build	Checkout	2026-07-02T19:53:16.8939412Z hint:
+build	Checkout	2026-07-02T19:53:16.8941560Z hint: Disable this message with "git config set advice.defaultBranchName false"
+build	Checkout	2026-07-02T19:53:16.8944034Z Initialized empty Git repository in /home/runner/work/ErekeAI_3.5/ErekeAI_3.5/.git/
+build	Checkout	2026-07-02T19:53:16.8947269Z [command]/usr/bin/git remote add origin https://github.com/Erekegoy/ErekeAI_3.5
+build	Checkout	2026-07-02T19:53:16.8984818Z ##[endgroup]
+build	Checkout	2026-07-02T19:53:16.8987161Z ##[group]Disabling automatic garbage collection
+build	Checkout	2026-07-02T19:53:16.8990548Z [command]/usr/bin/git config --local gc.auto 0
+build	Checkout	2026-07-02T19:53:16.9024423Z ##[endgroup]
+build	Checkout	2026-07-02T19:53:16.9026754Z ##[group]Setting up auth
+build	Checkout	2026-07-02T19:53:16.9030507Z [command]/usr/bin/git config --local --name-only --get-regexp core\.sshCommand
+build	Checkout	2026-07-02T19:53:16.9075353Z [command]/usr/bin/git submodule foreach --recursive sh -c "git config --local --name-only --get-regexp 'core\.sshCommand' && git config --local --unset-all 'core.sshCommand' || :"
+build	Checkout	2026-07-02T19:53:16.9425539Z [command]/usr/bin/git config --local --name-only --get-regexp http\.https\:\/\/github\.com\/\.extraheader
+build	Checkout	2026-07-02T19:53:16.9463559Z [command]/usr/bin/git submodule foreach --recursive sh -c "git config --local --name-only --get-regexp 'http\.https\:\/\/github\.com\/\.extraheader' && git config --local --unset-all 'http.https://github.com/.extraheader' || :"
+build	Checkout	2026-07-02T19:53:16.9698696Z [command]/usr/bin/git config --local --name-only --get-regexp ^includeIf\.gitdir:
+build	Checkout	2026-07-02T19:53:16.9734662Z [command]/usr/bin/git submodule foreach --recursive git config --local --show-origin --name-only --get-regexp remote.origin.url
+build	Checkout	2026-07-02T19:53:16.9954137Z [command]/usr/bin/git config --local http.https://github.com/.extraheader AUTHORIZATION: basic ***
+build	Checkout	2026-07-02T19:53:16.9992432Z ##[endgroup]
+build	Checkout	2026-07-02T19:53:16.9994278Z ##[group]Fetching the repository
+build	Checkout	2026-07-02T19:53:17.0002871Z [command]/usr/bin/git -c protocol.version=2 fetch --no-tags --prune --no-recurse-submodules --depth=1 origin +3538eab7405614c5ad71cbd6abcaec0027cae3b1:refs/remotes/origin/main
+build	Checkout	2026-07-02T19:53:17.1868104Z From https://github.com/Erekegoy/ErekeAI_3.5
+build	Checkout	2026-07-02T19:53:17.1871349Z  * [new ref]         3538eab7405614c5ad71cbd6abcaec0027cae3b1 -> origin/main
+build	Checkout	2026-07-02T19:53:17.1907117Z ##[endgroup]
+build	Checkout	2026-07-02T19:53:17.1909678Z ##[group]Determining the checkout info
+build	Checkout	2026-07-02T19:53:17.1912537Z ##[endgroup]
+build	Checkout	2026-07-02T19:53:17.1918023Z [command]/usr/bin/git sparse-checkout disable
+build	Checkout	2026-07-02T19:53:17.1969257Z [command]/usr/bin/git config --local --unset-all extensions.worktreeConfig
+build	Checkout	2026-07-02T19:53:17.2008852Z ##[group]Checking out the ref
+build	Checkout	2026-07-02T19:53:17.2012817Z [command]/usr/bin/git checkout --progress --force -B main refs/remotes/origin/main
+build	Checkout	2026-07-02T19:53:17.2163357Z Switched to a new branch 'main'
+build	Checkout	2026-07-02T19:53:17.2166115Z branch 'main' set up to track 'origin/main'.
+build	Checkout	2026-07-02T19:53:17.2172985Z ##[endgroup]
+build	Checkout	2026-07-02T19:53:17.2222432Z [command]/usr/bin/git log -1 --format=%H
+build	Checkout	2026-07-02T19:53:17.2249108Z 3538eab7405614c5ad71cbd6abcaec0027cae3b1
+build	Set up JDK 17	﻿2026-07-02T19:53:17.2727635Z Node 20 is being deprecated. This workflow is running with Node 24 by default. If you need to temporarily use Node 20, you can set the ACTIONS_ALLOW_USE_UNSECURE_NODE_VERSION=true environment variable. For more information see: https://github.blog/changelog/2025-09-19-deprecation-of-node-20-on-github-actions-runners/
+build	Set up JDK 17	2026-07-02T19:53:17.2732591Z ##[group]Run actions/setup-java@v4
+build	Set up JDK 17	2026-07-02T19:53:17.2733901Z with:
+build	Set up JDK 17	2026-07-02T19:53:17.2734656Z   distribution: temurin
+build	Set up JDK 17	2026-07-02T19:53:17.2735505Z   java-version: 17
+build	Set up JDK 17	2026-07-02T19:53:17.2736290Z   java-package: jdk
+build	Set up JDK 17	2026-07-02T19:53:17.2737084Z   check-latest: false
+build	Set up JDK 17	2026-07-02T19:53:17.2737888Z   server-id: github
+build	Set up JDK 17	2026-07-02T19:53:17.2738698Z   server-username: GITHUB_ACTOR
+build	Set up JDK 17	2026-07-02T19:53:17.2739645Z   server-password: GITHUB_TOKEN
+build	Set up JDK 17	2026-07-02T19:53:17.2740587Z   overwrite-settings: true
+build	Set up JDK 17	2026-07-02T19:53:17.2741446Z   job-status: success
+build	Set up JDK 17	2026-07-02T19:53:17.2750678Z   token: ***
+build	Set up JDK 17	2026-07-02T19:53:17.2751426Z ##[endgroup]
+build	Set up JDK 17	2026-07-02T19:53:17.4380756Z ##[group]Installed distributions
+build	Set up JDK 17	2026-07-02T19:53:17.4442198Z Resolved Java 17.0.19+10 from tool-cache
+build	Set up JDK 17	2026-07-02T19:53:17.4443670Z Setting Java 17.0.19+10 as the default
+build	Set up JDK 17	2026-07-02T19:53:17.4453377Z (node:2280) [DEP0040] DeprecationWarning: The `punycode` module is deprecated. Please use a userland alternative instead.
+build	Set up JDK 17	2026-07-02T19:53:17.4456390Z (Use `node --trace-deprecation ...` to show where the warning was created)
+build	Set up JDK 17	2026-07-02T19:53:17.4458302Z Creating toolchains.xml for JDK version 17 from temurin
+build	Set up JDK 17	2026-07-02T19:53:17.4531462Z Writing to /home/runner/.m2/toolchains.xml
+build	Set up JDK 17	2026-07-02T19:53:17.4532876Z 
+build	Set up JDK 17	2026-07-02T19:53:17.4533819Z Java configuration:
+build	Set up JDK 17	2026-07-02T19:53:17.4535339Z   Distribution: temurin
+build	Set up JDK 17	2026-07-02T19:53:17.4536893Z   Version: 17.0.19+10
+build	Set up JDK 17	2026-07-02T19:53:17.4538844Z   Path: /opt/hostedtoolcache/Java_Temurin-Hotspot_jdk/17.0.19-10/x64
+build	Set up JDK 17	2026-07-02T19:53:17.4540675Z 
+build	Set up JDK 17	2026-07-02T19:53:17.4542239Z ##[endgroup]
+build	Set up JDK 17	2026-07-02T19:53:17.4564018Z Creating settings.xml with server-id: github
+build	Set up JDK 17	2026-07-02T19:53:17.4566181Z Writing to /home/runner/.m2/settings.xml
+build	Cache Gradle	﻿2026-07-02T19:53:17.5798180Z Node 20 is being deprecated. This workflow is running with Node 24 by default. If you need to temporarily use Node 20, you can set the ACTIONS_ALLOW_USE_UNSECURE_NODE_VERSION=true environment variable. For more information see: https://github.blog/changelog/2025-09-19-deprecation-of-node-20-on-github-actions-runners/
+build	Cache Gradle	2026-07-02T19:53:17.5802522Z ##[group]Run actions/cache@v4
+build	Cache Gradle	2026-07-02T19:53:17.5803679Z with:
+build	Cache Gradle	2026-07-02T19:53:17.5804484Z   path: ~/.gradle/caches
+build	Cache Gradle	~/.gradle/wrapper
+build	Cache Gradle	
+build	Cache Gradle	2026-07-02T19:53:17.5806092Z   key: gradle-Linux-bdf0a727b46f18183a7321b63cd717c826a6e65a6a9595378a125a9050847fa2
+build	Cache Gradle	2026-07-02T19:53:17.5807717Z   restore-keys: gradle-Linux-
+build	Cache Gradle	
+build	Cache Gradle	2026-07-02T19:53:17.5808675Z   enableCrossOsArchive: false
+build	Cache Gradle	2026-07-02T19:53:17.5809618Z   fail-on-cache-miss: false
+build	Cache Gradle	2026-07-02T19:53:17.5810496Z   lookup-only: false
+build	Cache Gradle	2026-07-02T19:53:17.5811330Z   save-always: false
+build	Cache Gradle	2026-07-02T19:53:17.5812102Z env:
+build	Cache Gradle	2026-07-02T19:53:17.5813444Z   JAVA_HOME: /opt/hostedtoolcache/Java_Temurin-Hotspot_jdk/17.0.19-10/x64
+build	Cache Gradle	2026-07-02T19:53:17.5815326Z   JAVA_HOME_17_X64: /opt/hostedtoolcache/Java_Temurin-Hotspot_jdk/17.0.19-10/x64
+build	Cache Gradle	2026-07-02T19:53:17.5816745Z ##[endgroup]
+build	Cache Gradle	2026-07-02T19:53:17.6880585Z (node:2304) [DEP0040] DeprecationWarning: The `punycode` module is deprecated. Please use a userland alternative instead.
+build	Cache Gradle	2026-07-02T19:53:17.6885950Z (Use `node --trace-deprecation ...` to show where the warning was created)
+build	Cache Gradle	2026-07-02T19:53:17.7493555Z Cache not found for input keys: gradle-Linux-bdf0a727b46f18183a7321b63cd717c826a6e65a6a9595378a125a9050847fa2, gradle-Linux-
+build	Grant execute permission for gradlew	﻿2026-07-02T19:53:17.7624145Z ##[group]Run chmod +x gradlew
+build	Grant execute permission for gradlew	2026-07-02T19:53:17.7625402Z ^[[36;1mchmod +x gradlew^[[0m
+build	Grant execute permission for gradlew	2026-07-02T19:53:17.7789762Z shell: /usr/bin/bash -e {0}
+build	Grant execute permission for gradlew	2026-07-02T19:53:17.7790825Z env:
+build	Grant execute permission for gradlew	2026-07-02T19:53:17.7792040Z   JAVA_HOME: /opt/hostedtoolcache/Java_Temurin-Hotspot_jdk/17.0.19-10/x64
+build	Grant execute permission for gradlew	2026-07-02T19:53:17.7794422Z   JAVA_HOME_17_X64: /opt/hostedtoolcache/Java_Temurin-Hotspot_jdk/17.0.19-10/x64
+build	Grant execute permission for gradlew	2026-07-02T19:53:17.7795985Z ##[endgroup]
+build	Write local.properties	﻿2026-07-02T19:53:17.7955151Z ##[group]Run echo "sdk.dir=$ANDROID_HOME" > local.properties
+build	Write local.properties	2026-07-02T19:53:17.7956713Z ^[[36;1mecho "sdk.dir=$ANDROID_HOME" > local.properties^[[0m
+build	Write local.properties	2026-07-02T19:53:17.7988518Z shell: /usr/bin/bash -e {0}
+build	Write local.properties	2026-07-02T19:53:17.7989490Z env:
+build	Write local.properties	2026-07-02T19:53:17.7990662Z   JAVA_HOME: /opt/hostedtoolcache/Java_Temurin-Hotspot_jdk/17.0.19-10/x64
+build	Write local.properties	2026-07-02T19:53:17.7992523Z   JAVA_HOME_17_X64: /opt/hostedtoolcache/Java_Temurin-Hotspot_jdk/17.0.19-10/x64
+build	Write local.properties	2026-07-02T19:53:17.7994158Z ##[endgroup]
+build	Build debug APK	﻿2026-07-02T19:53:17.8114288Z ##[group]Run ./gradlew :app:assembleDebug --stacktrace --no-daemon
+build	Build debug APK	2026-07-02T19:53:17.8115906Z ^[[36;1m./gradlew :app:assembleDebug --stacktrace --no-daemon^[[0m
+build	Build debug APK	2026-07-02T19:53:17.8149238Z shell: /usr/bin/bash -e {0}
+build	Build debug APK	2026-07-02T19:53:17.8150179Z env:
+build	Build debug APK	2026-07-02T19:53:17.8151268Z   JAVA_HOME: /opt/hostedtoolcache/Java_Temurin-Hotspot_jdk/17.0.19-10/x64
+build	Build debug APK	2026-07-02T19:53:17.8153071Z   JAVA_HOME_17_X64: /opt/hostedtoolcache/Java_Temurin-Hotspot_jdk/17.0.19-10/x64
+build	Build debug APK	2026-07-02T19:53:17.8154756Z ##[endgroup]
+build	Build debug APK	2026-07-02T19:53:17.9882700Z Downloading https://services.gradle.org/distributions/gradle-8.7-bin.zip
+build	Build debug APK	2026-07-02T19:53:19.5234350Z ............10%.............20%.............30%.............40%............50%.............60%.............70%.............80%.............90%............100%
+build	Build debug APK	2026-07-02T19:53:20.6073966Z 
+build	Build debug APK	2026-07-02T19:53:20.6087344Z Welcome to Gradle 8.7!
+build	Build debug APK	2026-07-02T19:53:20.6093782Z 
+build	Build debug APK	2026-07-02T19:53:20.6094103Z Here are the highlights of this release:
+build	Build debug APK	2026-07-02T19:53:20.6095085Z  - Compiling and testing with Java 22
+build	Build debug APK	2026-07-02T19:53:20.6096533Z  - Cacheable Groovy script compilation
+build	Build debug APK	2026-07-02T19:53:20.6107133Z  - New methods in lazy collection properties
+build	Build debug APK	2026-07-02T19:53:20.6139890Z 
+build	Build debug APK	2026-07-02T19:53:20.6140464Z For more details see https://docs.gradle.org/8.7/release-notes.html
+build	Build debug APK	2026-07-02T19:53:20.6141064Z 
+build	Build debug APK	2026-07-02T19:53:20.7063952Z To honour the JVM settings for this build a single-use Daemon process will be forked. For more on this, please refer to https://docs.gradle.org/8.7/userguide/gradle_daemon.html#sec:disabling_the_daemon in the Gradle documentation.
+build	Build debug APK	2026-07-02T19:53:21.7054980Z Daemon will be stopped at the end of the build 
+build	Build debug APK	2026-07-02T19:54:15.0086645Z > Task :app:preBuild UP-TO-DATE
+build	Build debug APK	2026-07-02T19:54:15.0099795Z > Task :app:preDebugBuild UP-TO-DATE
+build	Build debug APK	2026-07-02T19:54:15.1060107Z > Task :app:mergeDebugNativeDebugMetadata NO-SOURCE
+build	Build debug APK	2026-07-02T19:54:15.1064839Z > Task :app:checkKotlinGradlePluginConfigurationErrors
+build	Build debug APK	2026-07-02T19:54:15.1065662Z > Task :app:generateDebugBuildConfig
+build	Build debug APK	2026-07-02T19:54:29.5076952Z > Task :app:generateDebugResValues
+build	Build debug APK	2026-07-02T19:54:29.6055701Z > Task :app:checkDebugAarMetadata
+build	Build debug APK	2026-07-02T19:54:29.6060758Z > Task :app:mapDebugSourceSetPaths
+build	Build debug APK	2026-07-02T19:54:29.6061647Z > Task :app:generateDebugResources
+build	Build debug APK	2026-07-02T19:54:30.7064455Z > Task :app:packageDebugResources
+build	Build debug APK	2026-07-02T19:54:31.6064468Z > Task :app:mergeDebugResources
+build	Build debug APK	2026-07-02T19:54:31.8056254Z > Task :app:createDebugCompatibleScreenManifests
+build	Build debug APK	2026-07-02T19:54:31.8077305Z > Task :app:extractDeepLinksDebug
+build	Build debug APK	2026-07-02T19:54:31.9053332Z > Task :app:parseDebugLocalResources
+build	Build debug APK	2026-07-02T19:54:32.2052753Z > Task :app:processDebugMainManifest
+build	Build debug APK	2026-07-02T19:54:32.3052085Z > Task :app:processDebugManifest
+build	Build debug APK	2026-07-02T19:54:34.3053847Z > Task :app:processDebugManifestForPackage
+build	Build debug APK	2026-07-02T19:54:34.3054796Z > Task :app:javaPreCompileDebug
+build	Build debug APK	2026-07-02T19:54:35.3074358Z > Task :app:mergeDebugShaders
+build	Build debug APK	2026-07-02T19:54:35.3131617Z > Task :app:compileDebugShaders NO-SOURCE
+build	Build debug APK	2026-07-02T19:54:35.3163965Z > Task :app:generateDebugAssets UP-TO-DATE
+build	Build debug APK	2026-07-02T19:54:35.6052382Z > Task :app:mergeDebugAssets
+build	Build debug APK	2026-07-02T19:54:35.6093790Z > Task :app:desugarDebugFileDependencies
+build	Build debug APK	2026-07-02T19:54:35.9061386Z > Task :app:compressDebugAssets
+build	Build debug APK	2026-07-02T19:54:37.5053087Z > Task :app:processDebugResources
+build	Build debug APK	2026-07-02T19:54:37.7051903Z > Task :app:checkDebugDuplicateClasses
+build	Build debug APK	2026-07-02T19:54:47.1061512Z > Task :app:mergeDebugStartupProfile
+build	Build debug APK	2026-07-02T19:55:07.6114336Z > Task :app:kspDebugKotlin
+build	Build debug APK	2026-07-02T19:55:13.7115352Z e: [ksp] InjectProcessingStep was unable to process 'AgentOrchestratorImpl(com.erekeai.domain.repository.AiProviderRegistry,error.NonExistentClass,com.erekeai.domain.project.ProjectManager)' because 'error.NonExistentClass' could not be resolved.
+build	Build debug APK	2026-07-02T19:55:13.7242518Z 
+build	Build debug APK	2026-07-02T19:55:13.7314003Z Dependency trace:
+build	Build debug APK	2026-07-02T19:55:13.7374246Z     => element (CLASS): com.erekeai.data.agent.AgentOrchestratorImpl
+build	Build debug APK	2026-07-02T19:55:13.7410905Z     => element (CONSTRUCTOR): AgentOrchestratorImpl(com.erekeai.domain.repository.AiProviderRegistry,error.NonExistentClass,com.erekeai.domain.project.ProjectManager)
+build	Build debug APK	2026-07-02T19:55:13.7475909Z     => type (EXECUTABLE constructor): (com.erekeai.domain.repository.AiProviderRegistry,error.NonExistentClass,com.erekeai.domain.project.ProjectManager)void
+build	Build debug APK	2026-07-02T19:55:13.7533772Z     => type (ERROR parameter type): error.NonExistentClass
+build	Build debug APK	2026-07-02T19:55:13.7543399Z 
+build	Build debug APK	2026-07-02T19:55:13.7544553Z If type 'error.NonExistentClass' is a generated type, check above for compilation errors that may have prevented the type from being generated. Otherwise, ensure that type 'error.NonExistentClass' is on your classpath.
+build	Build debug APK	2026-07-02T19:55:13.7547631Z e: [ksp] InjectProcessingStep was unable to process 'PluginRepositoryImpl(android.content.Context,okhttp3.OkHttpClient,com.erekeai.core.security.SecureKeyStore,javax.inject.Provider<error.NonExistentClass>)' because 'error.NonExistentClass' could not be resolved.
+build	Build debug APK	2026-07-02T19:55:13.7549510Z 
+build	Build debug APK	2026-07-02T19:55:13.7549666Z Dependency trace:
+build	Build debug APK	2026-07-02T19:55:13.7550222Z     => element (CLASS): com.erekeai.data.plugin.PluginRepositoryImpl
+build	Build debug APK	2026-07-02T19:55:13.7624790Z     => element (CONSTRUCTOR): PluginRepositoryImpl(android.content.Context,okhttp3.OkHttpClient,com.erekeai.core.security.SecureKeyStore,javax.inject.Provider<error.NonExistentClass>)
+build	Build debug APK	2026-07-02T19:55:13.7641564Z     => type (EXECUTABLE constructor): (android.content.Context,okhttp3.OkHttpClient,com.erekeai.core.security.SecureKeyStore,javax.inject.Provider<error.NonExistentClass>)void
+build	Build debug APK	2026-07-02T19:55:13.7705615Z     => type (DECLARED parameter type): javax.inject.Provider<error.NonExistentClass>
+build	Build debug APK	2026-07-02T19:55:13.7753932Z     => type (ERROR type argument): error.NonExistentClass
+build	Build debug APK	2026-07-02T19:55:13.7805422Z 
+build	Build debug APK	2026-07-02T19:55:13.7844737Z If type 'error.NonExistentClass' is a generated type, check above for compilation errors that may have prevented the type from being generated. Otherwise, ensure that type 'error.NonExistentClass' is on your classpath.
+build	Build debug APK	2026-07-02T19:55:13.7904410Z e: [ksp] InjectProcessingStep was unable to process 'BrowserAutomationTool(com.erekeai.browser.BrowserAutomationController)' because 'error.NonExistentClass' could not be resolved.
+build	Build debug APK	2026-07-02T19:55:13.7905765Z 
+build	Build debug APK	2026-07-02T19:55:13.7906131Z Dependency trace:
+build	Build debug APK	2026-07-02T19:55:13.7906685Z     => element (CLASS): com.erekeai.data.tools.BrowserAutomationTool
+build	Build debug APK	2026-07-02T19:55:13.7907422Z     => type (ERROR superclass): error.NonExistentClass
+build	Build debug APK	2026-07-02T19:55:13.7907825Z 
+build	Build debug APK	2026-07-02T19:55:13.7975096Z If type 'error.NonExistentClass' is a generated type, check above for compilation errors that may have prevented the type from being generated. Otherwise, ensure that type 'error.NonExistentClass' is on your classpath.
+build	Build debug APK	2026-07-02T19:55:13.8009629Z e: [ksp] InjectProcessingStep was unable to process 'CalculatorTool()' because 'error.NonExistentClass' could not be resolved.
+build	Build debug APK	2026-07-02T19:55:13.8053427Z 
+build	Build debug APK	2026-07-02T19:55:13.8113739Z Dependency trace:
+build	Build debug APK	2026-07-02T19:55:13.8134008Z     => element (CLASS): com.erekeai.data.tools.CalculatorTool
+build	Build debug APK	2026-07-02T19:55:13.8213835Z     => type (ERROR superclass): error.NonExistentClass
+build	Build debug APK	2026-07-02T19:55:13.8273379Z 
+build	Build debug APK	2026-07-02T19:55:13.8304776Z If type 'error.NonExistentClass' is a generated type, check above for compilation errors that may have prevented the type from being generated. Otherwise, ensure that type 'error.NonExistentClass' is on your classpath.
+build	Build debug APK	2026-07-02T19:55:13.8334444Z e: [ksp] InjectProcessingStep was unable to process 'CloudSyncTool(com.erekeai.core.security.SecureKeyStore,okhttp3.OkHttpClient)' because 'error.NonExistentClass' could not be resolved.
+build	Build debug APK	2026-07-02T19:55:13.8362857Z 
+build	Build debug APK	2026-07-02T19:55:13.8393549Z Dependency trace:
+build	Build debug APK	2026-07-02T19:55:13.8423625Z     => element (CLASS): com.erekeai.data.tools.CloudSyncTool
+build	Build debug APK	2026-07-02T19:55:13.8573913Z     => type (ERROR superclass): error.NonExistentClass
+build	Build debug APK	2026-07-02T19:55:13.8574387Z 
+build	Build debug APK	2026-07-02T19:55:13.8575590Z If type 'error.NonExistentClass' is a generated type, check above for compilation errors that may have prevented the type from being generated. Otherwise, ensure that type 'error.NonExistentClass' is on your classpath.
+build	Build debug APK	2026-07-02T19:55:13.8578076Z e: [ksp] InjectProcessingStep was unable to process 'DateTimeTool()' because 'error.NonExistentClass' could not be resolved.
+build	Build debug APK	2026-07-02T19:55:13.8578885Z 
+build	Build debug APK	2026-07-02T19:55:13.8579033Z Dependency trace:
+build	Build debug APK	2026-07-02T19:55:13.8579490Z     => element (CLASS): com.erekeai.data.tools.DateTimeTool
+build	Build debug APK	2026-07-02T19:55:13.8580106Z     => type (ERROR superclass): error.NonExistentClass
+build	Build debug APK	2026-07-02T19:55:13.8580466Z 
+build	Build debug APK	2026-07-02T19:55:13.8581651Z If type 'error.NonExistentClass' is a generated type, check above for compilation errors that may have prevented the type from being generated. Otherwise, ensure that type 'error.NonExistentClass' is on your classpath.
+build	Build debug APK	2026-07-02T19:55:13.8605995Z e: [ksp] InjectProcessingStep was unable to process 'ImportDocumentTool(android.content.Context,com.erekeai.data.documents.DocumentTextExtractor,com.erekeai.data.documents.TextChunker,com.erekeai.domain.vector.EmbeddingProviderRegistry,com.erekeai.domain.vector.VectorStore)' because 'error.NonExistentClass' could not be resolved.
+build	Build debug APK	2026-07-02T19:55:13.8633392Z 
+build	Build debug APK	2026-07-02T19:55:13.8657094Z Dependency trace:
+build	Build debug APK	2026-07-02T19:55:13.8684114Z     => element (CLASS): com.erekeai.data.tools.ImportDocumentTool
+build	Build debug APK	2026-07-02T19:55:13.8723711Z     => type (ERROR superclass): error.NonExistentClass
+build	Build debug APK	2026-07-02T19:55:13.8724145Z 
+build	Build debug APK	2026-07-02T19:55:13.8725255Z If type 'error.NonExistentClass' is a generated type, check above for compilation errors that may have prevented the type from being generated. Otherwise, ensure that type 'error.NonExistentClass' is on your classpath.
+build	Build debug APK	2026-07-02T19:55:13.8727783Z e: [ksp] InjectProcessingStep was unable to process 'KnowledgeBaseSearchTool(com.erekeai.domain.vector.EmbeddingProviderRegistry,com.erekeai.domain.vector.VectorStore)' because 'error.NonExistentClass' could not be resolved.
+build	Build debug APK	2026-07-02T19:55:13.8729212Z 
+build	Build debug APK	2026-07-02T19:55:13.8729352Z Dependency trace:
+build	Build debug APK	2026-07-02T19:55:13.8729828Z     => element (CLASS): com.erekeai.data.tools.KnowledgeBaseSearchTool
+build	Build debug APK	2026-07-02T19:55:13.8730477Z     => type (ERROR superclass): error.NonExistentClass
+build	Build debug APK	2026-07-02T19:55:13.8730818Z 
+build	Build debug APK	2026-07-02T19:55:13.8731895Z If type 'error.NonExistentClass' is a generated type, check above for compilation errors that may have prevented the type from being generated. Otherwise, ensure that type 'error.NonExistentClass' is on your classpath.
+build	Build debug APK	2026-07-02T19:55:13.8734323Z e: [ksp] InjectProcessingStep was unable to process 'ListKnowledgeBaseSourcesTool(com.erekeai.domain.vector.VectorStore)' because 'error.NonExistentClass' could not be resolved.
+build	Build debug APK	2026-07-02T19:55:13.8792070Z 
+build	Build debug APK	2026-07-02T19:55:13.8853774Z Dependency trace:
+build	Build debug APK	2026-07-02T19:55:13.8913900Z     => element (CLASS): com.erekeai.data.tools.ListKnowledgeBaseSourcesTool
+build	Build debug APK	2026-07-02T19:55:13.8973797Z     => type (ERROR superclass): error.NonExistentClass
+build	Build debug APK	2026-07-02T19:55:13.9033441Z 
+build	Build debug APK	2026-07-02T19:55:13.9086523Z If type 'error.NonExistentClass' is a generated type, check above for compilation errors that may have prevented the type from being generated. Otherwise, ensure that type 'error.NonExistentClass' is on your classpath.
+build	Build debug APK	2026-07-02T19:55:13.9144495Z e: [ksp] InjectProcessingStep was unable to process 'ListFilesTool(android.content.Context)' because 'error.NonExistentClass' could not be resolved.
+build	Build debug APK	2026-07-02T19:55:13.9146021Z 
+build	Build debug APK	2026-07-02T19:55:13.9146162Z Dependency trace:
+build	Build debug APK	2026-07-02T19:55:13.9146604Z     => element (CLASS): com.erekeai.data.tools.ListFilesTool
+build	Build debug APK	2026-07-02T19:55:13.9147221Z     => type (ERROR superclass): error.NonExistentClass
+build	Build debug APK	2026-07-02T19:55:13.9147585Z 
+build	Build debug APK	2026-07-02T19:55:13.9148721Z If type 'error.NonExistentClass' is a generated type, check above for compilation errors that may have prevented the type from being generated. Otherwise, ensure that type 'error.NonExistentClass' is on your classpath.
+build	Build debug APK	2026-07-02T19:55:13.9150781Z e: [ksp] InjectProcessingStep was unable to process 'ReadFileTool(android.content.Context)' because 'error.NonExistentClass' could not be resolved.
+build	Build debug APK	2026-07-02T19:55:13.9151955Z 
+build	Build debug APK	2026-07-02T19:55:13.9152098Z Dependency trace:
+build	Build debug APK	2026-07-02T19:55:13.9152526Z     => element (CLASS): com.erekeai.data.tools.ReadFileTool
+build	Build debug APK	2026-07-02T19:55:13.9153289Z     => type (ERROR superclass): error.NonExistentClass
+build	Build debug APK	2026-07-02T19:55:13.9153656Z 
+build	Build debug APK	2026-07-02T19:55:13.9154809Z If type 'error.NonExistentClass' is a generated type, check above for compilation errors that may have prevented the type from being generated. Otherwise, ensure that type 'error.NonExistentClass' is on your classpath.
+build	Build debug APK	2026-07-02T19:55:13.9156902Z e: [ksp] InjectProcessingStep was unable to process 'GgufManagerTool(com.erekeai.gguf.GgufManager)' because 'error.NonExistentClass' could not be resolved.
+build	Build debug APK	2026-07-02T19:55:13.9157861Z 
+build	Build debug APK	2026-07-02T19:55:13.9158002Z Dependency trace:
+build	Build debug APK	2026-07-02T19:55:13.9158448Z     => element (CLASS): com.erekeai.data.tools.GgufManagerTool
+build	Build debug APK	2026-07-02T19:55:13.9159056Z     => type (ERROR superclass): error.NonExistentClass
+build	Build debug APK	2026-07-02T19:55:13.9159402Z 
+build	Build debug APK	2026-07-02T19:55:13.9160533Z If type 'error.NonExistentClass' is a generated type, check above for compilation errors that may have prevented the type from being generated. Otherwise, ensure that type 'error.NonExistentClass' is on your classpath.
+build	Build debug APK	2026-07-02T19:55:13.9163385Z e: [ksp] InjectProcessingStep was unable to process 'OllamaManagerTool(com.erekeai.data.remote.provider.OllamaProvider,com.erekeai.data.local.datastore.SettingsDataStore)' because 'error.NonExistentClass' could not be resolved.
+build	Build debug APK	2026-07-02T19:55:13.9165226Z 
+build	Build debug APK	2026-07-02T19:55:13.9165390Z Dependency trace:
+build	Build debug APK	2026-07-02T19:55:13.9165905Z     => element (CLASS): com.erekeai.data.tools.OllamaManagerTool
+build	Build debug APK	2026-07-02T19:55:13.9166588Z     => type (ERROR superclass): error.NonExistentClass
+build	Build debug APK	2026-07-02T19:55:13.9166966Z 
+build	Build debug APK	2026-07-02T19:55:13.9168162Z If type 'error.NonExistentClass' is a generated type, check above for compilation errors that may have prevented the type from being generated. Otherwise, ensure that type 'error.NonExistentClass' is on your classpath.
+build	Build debug APK	2026-07-02T19:55:13.9194449Z e: [ksp] InjectProcessingStep was unable to process 'ListAvailablePluginsTool(com.erekeai.domain.plugin.PluginRepository)' because 'error.NonExistentClass' could not be resolved.
+build	Build debug APK	2026-07-02T19:55:13.9223381Z 
+build	Build debug APK	2026-07-02T19:55:13.9253959Z Dependency trace:
+build	Build debug APK	2026-07-02T19:55:13.9321067Z     => element (CLASS): com.erekeai.data.tools.ListAvailablePluginsTool
+build	Build debug APK	2026-07-02T19:55:13.9345686Z     => type (ERROR superclass): error.NonExistentClass
+build	Build debug APK	2026-07-02T19:55:13.9383426Z 
+build	Build debug APK	2026-07-02T19:55:13.9444947Z If type 'error.NonExistentClass' is a generated type, check above for compilation errors that may have prevented the type from being generated. Otherwise, ensure that type 'error.NonExistentClass' is on your classpath.
+build	Build debug APK	2026-07-02T19:55:13.9474350Z e: [ksp] InjectProcessingStep was unable to process 'InstallPluginTool(com.erekeai.domain.plugin.PluginRepository)' because 'error.NonExistentClass' could not be resolved.
+build	Build debug APK	2026-07-02T19:55:13.9503440Z 
+build	Build debug APK	2026-07-02T19:55:13.9523700Z Dependency trace:
+build	Build debug APK	2026-07-02T19:55:13.9524291Z     => element (CLASS): com.erekeai.data.tools.InstallPluginTool
+build	Build debug APK	2026-07-02T19:55:13.9563753Z     => type (ERROR superclass): error.NonExistentClass
+build	Build debug APK	2026-07-02T19:55:13.9593452Z 
+build	Build debug APK	2026-07-02T19:55:13.9624729Z If type 'error.NonExistentClass' is a generated type, check above for compilation errors that may have prevented the type from being generated. Otherwise, ensure that type 'error.NonExistentClass' is on your classpath.
+build	Build debug APK	2026-07-02T19:55:13.9644806Z e: [ksp] InjectProcessingStep was unable to process 'ListInstalledPluginsTool(com.erekeai.domain.plugin.PluginRepository)' because 'error.NonExistentClass' could not be resolved.
+build	Build debug APK	2026-07-02T19:55:13.9681133Z 
+build	Build debug APK	2026-07-02T19:55:13.9733686Z Dependency trace:
+build	Build debug APK	2026-07-02T19:55:13.9773774Z     => element (CLASS): com.erekeai.data.tools.ListInstalledPluginsTool
+build	Build debug APK	2026-07-02T19:55:13.9823708Z     => type (ERROR superclass): error.NonExistentClass
+build	Build debug APK	2026-07-02T19:55:13.9863502Z 
+build	Build debug APK	2026-07-02T19:55:13.9914756Z If type 'error.NonExistentClass' is a generated type, check above for compilation errors that may have prevented the type from being generated. Otherwise, ensure that type 'error.NonExistentClass' is on your classpath.
+build	Build debug APK	2026-07-02T19:55:13.9944400Z e: [ksp] InjectProcessingStep was unable to process 'UninstallPluginTool(com.erekeai.domain.plugin.PluginRepository)' because 'error.NonExistentClass' could not be resolved.
+build	Build debug APK	2026-07-02T19:55:14.0003365Z 
+build	Build debug APK	2026-07-02T19:55:14.0033763Z Dependency trace:
+build	Build debug APK	2026-07-02T19:55:14.0063853Z     => element (CLASS): com.erekeai.data.tools.UninstallPluginTool
+build	Build debug APK	2026-07-02T19:55:14.0123774Z     => type (ERROR superclass): error.NonExistentClass
+build	Build debug APK	2026-07-02T19:55:14.0144756Z 
+build	Build debug APK	2026-07-02T19:55:14.0214789Z If type 'error.NonExistentClass' is a generated type, check above for compilation errors that may have prevented the type from being generated. Otherwise, ensure that type 'error.NonExistentClass' is on your classpath.
+build	Build debug APK	2026-07-02T19:55:14.0244547Z e: [ksp] InjectProcessingStep was unable to process 'CheckPluginUpdatesTool(com.erekeai.domain.plugin.PluginRepository)' because 'error.NonExistentClass' could not be resolved.
+build	Build debug APK	2026-07-02T19:55:14.0293485Z 
+build	Build debug APK	2026-07-02T19:55:14.0323745Z Dependency trace:
+build	Build debug APK	2026-07-02T19:55:14.0353908Z     => element (CLASS): com.erekeai.data.tools.CheckPluginUpdatesTool
+build	Build debug APK	2026-07-02T19:55:14.0403825Z     => type (ERROR superclass): error.NonExistentClass
+build	Build debug APK	2026-07-02T19:55:14.0423491Z 
+build	Build debug APK	2026-07-02T19:55:14.0480539Z If type 'error.NonExistentClass' is a generated type, check above for compilation errors that may have prevented the type from being generated. Otherwise, ensure that type 'error.NonExistentClass' is on your classpath.
+build	Build debug APK	2026-07-02T19:55:14.0544502Z e: [ksp] InjectProcessingStep was unable to process 'CreateProjectTool(com.erekeai.domain.project.ProjectManager)' because 'error.NonExistentClass' could not be resolved.
+build	Build debug APK	2026-07-02T19:55:14.0583471Z 
+build	Build debug APK	2026-07-02T19:55:14.0663808Z Dependency trace:
+build	Build debug APK	2026-07-02T19:55:14.0693882Z     => element (CLASS): com.erekeai.data.tools.CreateProjectTool
+build	Build debug APK	2026-07-02T19:55:14.0723737Z     => type (ERROR superclass): error.NonExistentClass
+build	Build debug APK	2026-07-02T19:55:14.0783431Z 
+build	Build debug APK	2026-07-02T19:55:14.0814715Z If type 'error.NonExistentClass' is a generated type, check above for compilation errors that may have prevented the type from being generated. Otherwise, ensure that type 'error.NonExistentClass' is on your classpath.
+build	Build debug APK	2026-07-02T19:55:14.0874426Z e: [ksp] InjectProcessingStep was unable to process 'ListProjectsTool(com.erekeai.domain.project.ProjectManager)' because 'error.NonExistentClass' could not be resolved.
+build	Build debug APK	2026-07-02T19:55:14.0894717Z 
+build	Build debug APK	2026-07-02T19:55:14.0953788Z Dependency trace:
+build	Build debug APK	2026-07-02T19:55:14.0993832Z     => element (CLASS): com.erekeai.data.tools.ListProjectsTool
+build	Build debug APK	2026-07-02T19:55:14.1023731Z     => type (ERROR superclass): error.NonExistentClass
+build	Build debug APK	2026-07-02T19:55:14.1074116Z 
+build	Build debug APK	2026-07-02T19:55:14.1104769Z If type 'error.NonExistentClass' is a generated type, check above for compilation errors that may have prevented the type from being generated. Otherwise, ensure that type 'error.NonExistentClass' is on your classpath.
+build	Build debug APK	2026-07-02T19:55:14.1174581Z e: [ksp] InjectProcessingStep was unable to process 'SetActiveProjectTool(com.erekeai.domain.project.ProjectManager)' because 'error.NonExistentClass' could not be resolved.
+build	Build debug APK	2026-07-02T19:55:14.1203428Z 
+build	Build debug APK	2026-07-02T19:55:14.1233626Z Dependency trace:
+build	Build debug APK	2026-07-02T19:55:14.1293921Z     => element (CLASS): com.erekeai.data.tools.SetActiveProjectTool
+build	Build debug APK	2026-07-02T19:55:14.1323750Z     => type (ERROR superclass): error.NonExistentClass
+build	Build debug APK	2026-07-02T19:55:14.1353469Z 
+build	Build debug APK	2026-07-02T19:55:14.1394734Z If type 'error.NonExistentClass' is a generated type, check above for compilation errors that may have prevented the type from being generated. Otherwise, ensure that type 'error.NonExistentClass' is on your classpath.
+build	Build debug APK	2026-07-02T19:55:14.1424501Z e: [ksp] InjectProcessingStep was unable to process 'ArchiveProjectTool(com.erekeai.domain.project.ProjectManager)' because 'error.NonExistentClass' could not be resolved.
+build	Build debug APK	2026-07-02T19:55:14.1439238Z 
+build	Build debug APK	2026-07-02T19:55:14.1463673Z Dependency trace:
+build	Build debug APK	2026-07-02T19:55:14.1493839Z     => element (CLASS): com.erekeai.data.tools.ArchiveProjectTool
+build	Build debug APK	2026-07-02T19:55:14.1523777Z     => type (ERROR superclass): error.NonExistentClass
+build	Build debug APK	2026-07-02T19:55:14.1543636Z 
+build	Build debug APK	2026-07-02T19:55:14.1574773Z If type 'error.NonExistentClass' is a generated type, check above for compilation errors that may have prevented the type from being generated. Otherwise, ensure that type 'error.NonExistentClass' is on your classpath.
+build	Build debug APK	2026-07-02T19:55:14.1604503Z e: [ksp] InjectProcessingStep was unable to process 'ScheduleTaskTool(com.erekeai.domain.scheduler.TaskScheduler)' because 'error.NonExistentClass' could not be resolved.
+build	Build debug APK	2026-07-02T19:55:14.1605664Z 
+build	Build debug APK	2026-07-02T19:55:14.1605814Z Dependency trace:
+build	Build debug APK	2026-07-02T19:55:14.1606344Z     => element (CLASS): com.erekeai.data.tools.ScheduleTaskTool
+build	Build debug APK	2026-07-02T19:55:14.1623852Z     => type (ERROR superclass): error.NonExistentClass
+build	Build debug APK	2026-07-02T19:55:14.1663469Z 
+build	Build debug APK	2026-07-02T19:55:14.1694730Z If type 'error.NonExistentClass' is a generated type, check above for compilation errors that may have prevented the type from being generated. Otherwise, ensure that type 'error.NonExistentClass' is on your classpath.
+build	Build debug APK	2026-07-02T19:55:14.1724565Z e: [ksp] InjectProcessingStep was unable to process 'ListScheduledTasksTool(com.erekeai.domain.scheduler.TaskScheduler)' because 'error.NonExistentClass' could not be resolved.
+build	Build debug APK	2026-07-02T19:55:14.1748676Z 
+build	Build debug APK	2026-07-02T19:55:14.1783691Z Dependency trace:
+build	Build debug APK	2026-07-02T19:55:14.1813859Z     => element (CLASS): com.erekeai.data.tools.ListScheduledTasksTool
+build	Build debug APK	2026-07-02T19:55:14.1843078Z     => type (ERROR superclass): error.NonExistentClass
+build	Build debug APK	2026-07-02T19:55:14.1873481Z 
+build	Build debug APK	2026-07-02T19:55:14.1904729Z If type 'error.NonExistentClass' is a generated type, check above for compilation errors that may have prevented the type from being generated. Otherwise, ensure that type 'error.NonExistentClass' is on your classpath.
+build	Build debug APK	2026-07-02T19:55:14.1934548Z e: [ksp] InjectProcessingStep was unable to process 'CancelScheduledTaskTool(com.erekeai.domain.scheduler.TaskScheduler)' because 'error.NonExistentClass' could not be resolved.
+build	Build debug APK	2026-07-02T19:55:14.1963430Z 
+build	Build debug APK	2026-07-02T19:55:14.1993653Z Dependency trace:
+build	Build debug APK	2026-07-02T19:55:14.2023833Z     => element (CLASS): com.erekeai.data.tools.CancelScheduledTaskTool
+build	Build debug APK	2026-07-02T19:55:14.2050240Z     => type (ERROR superclass): error.NonExistentClass
+build	Build debug APK	2026-07-02T19:55:14.2073494Z 
+build	Build debug APK	2026-07-02T19:55:14.2074782Z If type 'error.NonExistentClass' is a generated type, check above for compilation errors that may have prevented the type from being generated. Otherwise, ensure that type 'error.NonExistentClass' is on your classpath.
+build	Build debug APK	2026-07-02T19:55:14.2077056Z e: [ksp] InjectProcessingStep was unable to process 'TakePhotoTool(com.erekeai.vision.CameraCaptureManager)' because 'error.NonExistentClass' could not be resolved.
+build	Build debug APK	2026-07-02T19:55:14.2078153Z 
+build	Build debug APK	2026-07-02T19:55:14.2078300Z Dependency trace:
+build	Build debug APK	2026-07-02T19:55:14.2078761Z     => element (CLASS): com.erekeai.data.tools.TakePhotoTool
+build	Build debug APK	2026-07-02T19:55:14.2079419Z     => type (ERROR superclass): error.NonExistentClass
+build	Build debug APK	2026-07-02T19:55:14.2079799Z 
+build	Build debug APK	2026-07-02T19:55:14.2080997Z If type 'error.NonExistentClass' is a generated type, check above for compilation errors that may have prevented the type from being generated. Otherwise, ensure that type 'error.NonExistentClass' is on your classpath.
+build	Build debug APK	2026-07-02T19:55:14.2083923Z e: [ksp] InjectProcessingStep was unable to process 'WebSearchTool(okhttp3.OkHttpClient)' because 'error.NonExistentClass' could not be resolved.
+build	Build debug APK	2026-07-02T19:55:14.2084887Z 
+build	Build debug APK	2026-07-02T19:55:14.2085029Z Dependency trace:
+build	Build debug APK	2026-07-02T19:55:14.2085481Z     => element (CLASS): com.erekeai.data.tools.WebSearchTool
+build	Build debug APK	2026-07-02T19:55:14.2086200Z     => type (ERROR superclass): error.NonExistentClass
+build	Build debug APK	2026-07-02T19:55:14.2086814Z 
+build	Build debug APK	2026-07-02T19:55:14.2088027Z If type 'error.NonExistentClass' is a generated type, check above for compilation errors that may have prevented the type from being generated. Otherwise, ensure that type 'error.NonExistentClass' is on your classpath.
+build	Build debug APK	2026-07-02T19:55:14.2090610Z e: [ksp] InjectProcessingStep was unable to process 'CreateWorkflowTool(com.erekeai.domain.workflow.WorkflowEngine)' because 'error.NonExistentClass' could not be resolved.
+build	Build debug APK	2026-07-02T19:55:14.2113137Z 
+build	Build debug APK	2026-07-02T19:55:14.2143658Z Dependency trace:
+build	Build debug APK	2026-07-02T19:55:14.2173748Z     => element (CLASS): com.erekeai.data.tools.CreateWorkflowTool
+build	Build debug APK	2026-07-02T19:55:14.2203712Z     => type (ERROR superclass): error.NonExistentClass
+build	Build debug APK	2026-07-02T19:55:14.2232860Z 
+build	Build debug APK	2026-07-02T19:55:14.2254766Z If type 'error.NonExistentClass' is a generated type, check above for compilation errors that may have prevented the type from being generated. Otherwise, ensure that type 'error.NonExistentClass' is on your classpath.
+build	Build debug APK	2026-07-02T19:55:14.2257234Z e: [ksp] InjectProcessingStep was unable to process 'RunWorkflowTool(com.erekeai.domain.workflow.WorkflowEngine)' because 'error.NonExistentClass' could not be resolved.
+build	Build debug APK	2026-07-02T19:55:14.2293469Z 
+build	Build debug APK	2026-07-02T19:55:14.2303639Z Dependency trace:
+build	Build debug APK	2026-07-02T19:55:14.2323877Z     => element (CLASS): com.erekeai.data.tools.RunWorkflowTool
+build	Build debug APK	2026-07-02T19:55:14.2347770Z     => type (ERROR superclass): error.NonExistentClass
+build	Build debug APK	2026-07-02T19:55:14.2373565Z 
+build	Build debug APK	2026-07-02T19:55:14.2384709Z If type 'error.NonExistentClass' is a generated type, check above for compilation errors that may have prevented the type from being generated. Otherwise, ensure that type 'error.NonExistentClass' is on your classpath.
+build	Build debug APK	2026-07-02T19:55:14.2414463Z e: [ksp] InjectProcessingStep was unable to process 'ListWorkflowsTool(com.erekeai.domain.workflow.WorkflowEngine)' because 'error.NonExistentClass' could not be resolved.
+build	Build debug APK	2026-07-02T19:55:14.2433590Z 
+build	Build debug APK	2026-07-02T19:55:14.2453633Z Dependency trace:
+build	Build debug APK	2026-07-02T19:55:14.2473773Z     => element (CLASS): com.erekeai.data.tools.ListWorkflowsTool
+build	Build debug APK	2026-07-02T19:55:14.2493924Z     => type (ERROR superclass): error.NonExistentClass
+build	Build debug APK	2026-07-02T19:55:14.2523558Z 
+build	Build debug APK	2026-07-02T19:55:14.2534717Z If type 'error.NonExistentClass' is a generated type, check above for compilation errors that may have prevented the type from being generated. Otherwise, ensure that type 'error.NonExistentClass' is on your classpath.
+build	Build debug APK	2026-07-02T19:55:14.2564171Z e: [ksp] InjectProcessingStep was unable to process 'AnalyzeLogTool()' because 'error.NonExistentClass' could not be resolved.
+build	Build debug APK	2026-07-02T19:55:14.2593479Z 
+build	Build debug APK	2026-07-02T19:55:14.2603769Z Dependency trace:
+build	Build debug APK	2026-07-02T19:55:14.2633913Z     => element (CLASS): com.erekeai.data.tools.dev.AnalyzeLogTool
+build	Build debug APK	2026-07-02T19:55:14.2643734Z     => type (ERROR superclass): error.NonExistentClass
+build	Build debug APK	2026-07-02T19:55:14.2673456Z 
+build	Build debug APK	2026-07-02T19:55:14.2694823Z If type 'error.NonExistentClass' is a generated type, check above for compilation errors that may have prevented the type from being generated. Otherwise, ensure that type 'error.NonExistentClass' is on your classpath.
+build	Build debug APK	2026-07-02T19:55:14.2704336Z e: [ksp] InjectProcessingStep was unable to process 'AnalyzeProjectTool(android.content.Context)' because 'error.NonExistentClass' could not be resolved.
+build	Build debug APK	2026-07-02T19:55:14.2733491Z 
+build	Build debug APK	2026-07-02T19:55:14.2753724Z Dependency trace:
+build	Build debug APK	2026-07-02T19:55:14.2773965Z     => element (CLASS): com.erekeai.data.tools.dev.AnalyzeProjectTool
+build	Build debug APK	2026-07-02T19:55:14.2803800Z     => type (ERROR superclass): error.NonExistentClass
+build	Build debug APK	2026-07-02T19:55:14.2813499Z 
+build	Build debug APK	2026-07-02T19:55:14.2844797Z If type 'error.NonExistentClass' is a generated type, check above for compilation errors that may have prevented the type from being generated. Otherwise, ensure that type 'error.NonExistentClass' is on your classpath.
+build	Build debug APK	2026-07-02T19:55:14.2864538Z e: [ksp] InjectProcessingStep was unable to process 'BuildApkAgentTool(com.erekeai.core.security.SecureKeyStore,okhttp3.OkHttpClient)' because 'error.NonExistentClass' could not be resolved.
+build	Build debug APK	2026-07-02T19:55:14.2880298Z 
+build	Build debug APK	2026-07-02T19:55:14.2883659Z Dependency trace:
+build	Build debug APK	2026-07-02T19:55:14.2913859Z     => element (CLASS): com.erekeai.data.tools.dev.BuildApkAgentTool
+build	Build debug APK	2026-07-02T19:55:14.2914604Z     => type (ERROR superclass): error.NonExistentClass
+build	Build debug APK	2026-07-02T19:55:14.2915323Z 
+build	Build debug APK	2026-07-02T19:55:14.2916513Z If type 'error.NonExistentClass' is a generated type, check above for compilation errors that may have prevented the type from being generated. Otherwise, ensure that type 'error.NonExistentClass' is on your classpath.
+build	Build debug APK	2026-07-02T19:55:14.2918680Z e: [ksp] InjectProcessingStep was unable to process 'CodeSearchTool(android.content.Context)' because 'error.NonExistentClass' could not be resolved.
+build	Build debug APK	2026-07-02T19:55:14.2919657Z 
+build	Build debug APK	2026-07-02T19:55:14.2919801Z Dependency trace:
+build	Build debug APK	2026-07-02T19:55:14.2920291Z     => element (CLASS): com.erekeai.data.tools.dev.CodeSearchTool
+build	Build debug APK	2026-07-02T19:55:14.2920955Z     => type (ERROR superclass): error.NonExistentClass
+build	Build debug APK	2026-07-02T19:55:14.2921336Z 
+build	Build debug APK	2026-07-02T19:55:14.2922570Z If type 'error.NonExistentClass' is a generated type, check above for compilation errors that may have prevented the type from being generated. Otherwise, ensure that type 'error.NonExistentClass' is on your classpath.
+build	Build debug APK	2026-07-02T19:55:14.2924872Z e: [ksp] InjectProcessingStep was unable to process 'DevPlanTool(android.content.Context)' because 'error.NonExistentClass' could not be resolved.
+build	Build debug APK	2026-07-02T19:55:14.2925792Z 
+build	Build debug APK	2026-07-02T19:55:14.2925931Z Dependency trace:
+build	Build debug APK	2026-07-02T19:55:14.2926393Z     => element (CLASS): com.erekeai.data.tools.dev.DevPlanTool
+build	Build debug APK	2026-07-02T19:55:14.2927031Z     => type (ERROR superclass): error.NonExistentClass
+build	Build debug APK	2026-07-02T19:55:14.2927392Z 
+build	Build debug APK	2026-07-02T19:55:14.2928551Z If type 'error.NonExistentClass' is a generated type, check above for compilation errors that may have prevented the type from being generated. Otherwise, ensure that type 'error.NonExistentClass' is on your classpath.
+build	Build debug APK	2026-07-02T19:55:14.2930928Z e: [ksp] InjectProcessingStep was unable to process 'GitHubTool(okhttp3.OkHttpClient,com.erekeai.core.security.SecureKeyStore)' because 'error.NonExistentClass' could not be resolved.
+build	Build debug APK	2026-07-02T19:55:14.2932176Z 
+build	Build debug APK	2026-07-02T19:55:14.2932356Z Dependency trace:
+build	Build debug APK	2026-07-02T19:55:14.2932862Z     => element (CLASS): com.erekeai.data.tools.dev.GitHubTool
+build	Build debug APK	2026-07-02T19:55:14.2933729Z     => type (ERROR superclass): error.NonExistentClass
+build	Build debug APK	2026-07-02T19:55:14.2934167Z 
+build	Build debug APK	2026-07-02T19:55:14.2935548Z If type 'error.NonExistentClass' is a generated type, check above for compilation errors that may have prevented the type from being generated. Otherwise, ensure that type 'error.NonExistentClass' is on your classpath.
+build	Build debug APK	2026-07-02T19:55:14.2938334Z e: [ksp] InjectProcessingStep was unable to process 'GitLabTool(okhttp3.OkHttpClient,com.erekeai.core.security.SecureKeyStore)' because 'error.NonExistentClass' could not be resolved.
+build	Build debug APK	2026-07-02T19:55:14.2952984Z 
+build	Build debug APK	2026-07-02T19:55:14.2983704Z Dependency trace:
+build	Build debug APK	2026-07-02T19:55:14.3013713Z     => element (CLASS): com.erekeai.data.tools.dev.GitLabTool
+build	Build debug APK	2026-07-02T19:55:14.3043711Z     => type (ERROR superclass): error.NonExistentClass
+build	Build debug APK	2026-07-02T19:55:14.3073447Z 
+build	Build debug APK	2026-07-02T19:55:14.3104695Z If type 'error.NonExistentClass' is a generated type, check above for compilation errors that may have prevented the type from being generated. Otherwise, ensure that type 'error.NonExistentClass' is on your classpath.
+build	Build debug APK	2026-07-02T19:55:14.3126317Z e: [ksp] InjectProcessingStep was unable to process 'GitOpsTool(android.content.Context)' because 'error.NonExistentClass' could not be resolved.
+build	Build debug APK	2026-07-02T19:55:14.3154754Z 
+build	Build debug APK	2026-07-02T19:55:14.3193608Z Dependency trace:
+build	Build debug APK	2026-07-02T19:55:14.3219936Z     => element (CLASS): com.erekeai.data.tools.dev.GitOpsTool
+build	Build debug APK	2026-07-02T19:55:14.3253723Z     => type (ERROR superclass): error.NonExistentClass
+build	Build debug APK	2026-07-02T19:55:14.3283392Z 
+build	Build debug APK	2026-07-02T19:55:14.3314606Z If type 'error.NonExistentClass' is a generated type, check above for compilation errors that may have prevented the type from being generated. Otherwise, ensure that type 'error.NonExistentClass' is on your classpath.
+build	Build debug APK	2026-07-02T19:55:14.3344250Z e: [ksp] InjectProcessingStep was unable to process 'StaticCheckTool(android.content.Context)' because 'error.NonExistentClass' could not be resolved.
+build	Build debug APK	2026-07-02T19:55:14.3373389Z 
+build	Build debug APK	2026-07-02T19:55:14.3403752Z Dependency trace:
+build	Build debug APK	2026-07-02T19:55:14.3543993Z     => element (CLASS): com.erekeai.data.tools.dev.StaticCheckTool
+build	Build debug APK	2026-07-02T19:55:14.3563860Z     => type (ERROR superclass): error.NonExistentClass
+build	Build debug APK	2026-07-02T19:55:14.3598700Z 
+build	Build debug APK	2026-07-02T19:55:14.3624828Z If type 'error.NonExistentClass' is a generated type, check above for compilation errors that may have prevented the type from being generated. Otherwise, ensure that type 'error.NonExistentClass' is on your classpath.
+build	Build debug APK	2026-07-02T19:55:14.3671038Z e: [ksp] InjectProcessingStep was unable to process 'TerminalAgentTool(android.content.Context,com.erekeai.data.local.datastore.SettingsDataStore)' because 'error.NonExistentClass' could not be resolved.
+build	Build debug APK	2026-07-02T19:55:14.3693419Z 
+build	Build debug APK	2026-07-02T19:55:14.3733617Z Dependency trace:
+build	Build debug APK	2026-07-02T19:55:14.3753739Z     => element (CLASS): com.erekeai.data.tools.dev.TerminalAgentTool
+build	Build debug APK	2026-07-02T19:55:14.3783725Z     => type (ERROR superclass): error.NonExistentClass
+build	Build debug APK	2026-07-02T19:55:14.3803368Z 
+build	Build debug APK	2026-07-02T19:55:14.3804543Z If type 'error.NonExistentClass' is a generated type, check above for compilation errors that may have prevented the type from being generated. Otherwise, ensure that type 'error.NonExistentClass' is on your classpath.
+build	Build debug APK	2026-07-02T19:55:14.3806741Z e: [ksp] InjectProcessingStep was unable to process 'WriteFileTool(android.content.Context)' because 'error.NonExistentClass' could not be resolved.
+build	Build debug APK	2026-07-02T19:55:14.3807692Z 
+build	Build debug APK	2026-07-02T19:55:14.3807851Z Dependency trace:
+build	Build debug APK	2026-07-02T19:55:14.3808338Z     => element (CLASS): com.erekeai.data.tools.dev.WriteFileTool
+build	Build debug APK	2026-07-02T19:55:14.3809024Z     => type (ERROR superclass): error.NonExistentClass
+build	Build debug APK	2026-07-02T19:55:14.3809404Z 
+build	Build debug APK	2026-07-02T19:55:14.3810583Z If type 'error.NonExistentClass' is a generated type, check above for compilation errors that may have prevented the type from being generated. Otherwise, ensure that type 'error.NonExistentClass' is on your classpath.
+build	Build debug APK	2026-07-02T19:55:14.3812868Z e: [ksp] InjectProcessingStep was unable to process 'McpListServersTool(com.erekeai.domain.mcp.McpServerStore)' because 'error.NonExistentClass' could not be resolved.
+build	Build debug APK	2026-07-02T19:55:14.3824288Z 
+build	Build debug APK	2026-07-02T19:55:14.3824450Z Dependency trace:
+build	Build debug APK	2026-07-02T19:55:14.3824983Z     => element (CLASS): com.erekeai.data.tools.mcp.McpListServersTool
+build	Build debug APK	2026-07-02T19:55:14.3825719Z     => type (ERROR superclass): error.NonExistentClass
+build	Build debug APK	2026-07-02T19:55:14.3826114Z 
+build	Build debug APK	2026-07-02T19:55:14.3839721Z If type 'error.NonExistentClass' is a generated type, check above for compilation errors that may have prevented the type from being generated. Otherwise, ensure that type 'error.NonExistentClass' is on your classpath.
+build	Build debug APK	2026-07-02T19:55:14.3874386Z e: [ksp] InjectProcessingStep was unable to process 'McpListToolsTool(com.erekeai.domain.mcp.McpServerStore,okhttp3.OkHttpClient)' because 'error.NonExistentClass' could not be resolved.
+build	Build debug APK	2026-07-02T19:55:14.3903383Z 
+build	Build debug APK	2026-07-02T19:55:14.3933607Z Dependency trace:
+build	Build debug APK	2026-07-02T19:55:14.3961991Z     => element (CLASS): com.erekeai.data.tools.mcp.McpListToolsTool
+build	Build debug APK	2026-07-02T19:55:14.3983668Z     => type (ERROR superclass): error.NonExistentClass
+build	Build debug APK	2026-07-02T19:55:14.3984053Z 
+build	Build debug APK	2026-07-02T19:55:14.3985181Z If type 'error.NonExistentClass' is a generated type, check above for compilation errors that may have prevented the type from being generated. Otherwise, ensure that type 'error.NonExistentClass' is on your classpath.
+build	Build debug APK	2026-07-02T19:55:14.3987952Z e: [ksp] InjectProcessingStep was unable to process 'McpCallToolTool(com.erekeai.domain.mcp.McpServerStore,okhttp3.OkHttpClient)' because 'error.NonExistentClass' could not be resolved.
+build	Build debug APK	2026-07-02T19:55:14.3989090Z 
+build	Build debug APK	2026-07-02T19:55:14.3989222Z Dependency trace:
+build	Build debug APK	2026-07-02T19:55:14.3989674Z     => element (CLASS): com.erekeai.data.tools.mcp.McpCallToolTool
+build	Build debug APK	2026-07-02T19:55:14.3990266Z     => type (ERROR superclass): error.NonExistentClass
+build	Build debug APK	2026-07-02T19:55:14.3990605Z 
+build	Build debug APK	2026-07-02T19:55:14.3991717Z If type 'error.NonExistentClass' is a generated type, check above for compilation errors that may have prevented the type from being generated. Otherwise, ensure that type 'error.NonExistentClass' is on your classpath.
+build	Build debug APK	2026-07-02T19:55:14.4024695Z e: [ksp] InjectProcessingStep was unable to process 'WorkflowEngineImpl(com.erekeai.data.local.db.WorkflowDao,javax.inject.Provider<error.NonExistentClass>)' because 'error.NonExistentClass' could not be resolved.
+build	Build debug APK	2026-07-02T19:55:14.4043446Z 
+build	Build debug APK	2026-07-02T19:55:14.4043632Z Dependency trace:
+build	Build debug APK	2026-07-02T19:55:14.4044174Z     => element (CLASS): com.erekeai.data.workflow.WorkflowEngineImpl
+build	Build debug APK	2026-07-02T19:55:14.4045369Z     => element (CONSTRUCTOR): WorkflowEngineImpl(com.erekeai.data.local.db.WorkflowDao,javax.inject.Provider<error.NonExistentClass>)
+build	Build debug APK	2026-07-02T19:55:14.4046935Z     => type (EXECUTABLE constructor): (com.erekeai.data.local.db.WorkflowDao,javax.inject.Provider<error.NonExistentClass>)void
+build	Build debug APK	2026-07-02T19:55:14.4048144Z     => type (DECLARED parameter type): javax.inject.Provider<error.NonExistentClass>
+build	Build debug APK	2026-07-02T19:55:14.4048919Z     => type (ERROR type argument): error.NonExistentClass
+build	Build debug APK	2026-07-02T19:55:14.4049288Z 
+build	Build debug APK	2026-07-02T19:55:14.4050425Z If type 'error.NonExistentClass' is a generated type, check above for compilation errors that may have prevented the type from being generated. Otherwise, ensure that type 'error.NonExistentClass' is on your classpath.
+build	Build debug APK	2026-07-02T19:55:14.4063037Z e: [ksp] InjectProcessingStep was unable to process 'ErekeApiServer(com.erekeai.domain.repository.ChatRepository,com.erekeai.domain.agent.AgentOrchestrator,error.NonExistentClass,com.erekeai.domain.project.ProjectManager)' because 'error.NonExistentClass' could not be resolved.
+build	Build debug APK	2026-07-02T19:55:14.4065331Z 
+build	Build debug APK	2026-07-02T19:55:14.4065474Z Dependency trace:
+build	Build debug APK	2026-07-02T19:55:14.4065918Z     => element (CLASS): com.erekeai.server.ErekeApiServer
+build	Build debug APK	2026-07-02T19:55:14.4067651Z     => element (CONSTRUCTOR): ErekeApiServer(com.erekeai.domain.repository.ChatRepository,com.erekeai.domain.agent.AgentOrchestrator,error.NonExistentClass,com.erekeai.domain.project.ProjectManager)
+build	Build debug APK	2026-07-02T19:55:14.4084708Z     => type (EXECUTABLE constructor): (com.erekeai.domain.repository.ChatRepository,com.erekeai.domain.agent.AgentOrchestrator,error.NonExistentClass,com.erekeai.domain.project.ProjectManager)void
+build	Build debug APK	2026-07-02T19:55:14.4103694Z     => type (ERROR parameter type): error.NonExistentClass
+build	Build debug APK	2026-07-02T19:55:14.4104146Z 
+build	Build debug APK	2026-07-02T19:55:14.4105268Z If type 'error.NonExistentClass' is a generated type, check above for compilation errors that may have prevented the type from being generated. Otherwise, ensure that type 'error.NonExistentClass' is on your classpath.
+build	Build debug APK	2026-07-02T19:55:14.4107329Z e: [ksp] InjectProcessingStep was unable to process 'ErekeMcpServer(error.NonExistentClass)' because 'error.NonExistentClass' could not be resolved.
+build	Build debug APK	2026-07-02T19:55:14.4108281Z 
+build	Build debug APK	2026-07-02T19:55:14.4108420Z Dependency trace:
+build	Build debug APK	2026-07-02T19:55:14.4108852Z     => element (CLASS): com.erekeai.server.ErekeMcpServer
+build	Build debug APK	2026-07-02T19:55:14.4109520Z     => element (CONSTRUCTOR): ErekeMcpServer(error.NonExistentClass)
+build	Build debug APK	2026-07-02T19:55:14.4110245Z     => type (EXECUTABLE constructor): (error.NonExistentClass)void
+build	Build debug APK	2026-07-02T19:55:14.4110897Z     => type (ERROR parameter type): error.NonExistentClass
+build	Build debug APK	2026-07-02T19:55:14.4111274Z 
+build	Build debug APK	2026-07-02T19:55:14.4112420Z If type 'error.NonExistentClass' is a generated type, check above for compilation errors that may have prevented the type from being generated. Otherwise, ensure that type 'error.NonExistentClass' is on your classpath.
+build	Build debug APK	2026-07-02T19:55:14.4125236Z e: [ksp] ModuleProcessingStep was unable to process 'com.erekeai.core.di.ToolModule' because 'error.NonExistentClass' could not be resolved.
+build	Build debug APK	2026-07-02T19:55:14.4126116Z 
+build	Build debug APK	2026-07-02T19:55:14.4126252Z Dependency trace:
+build	Build debug APK	2026-07-02T19:55:14.4126667Z     => element (OBJECT): com.erekeai.core.di.ToolModule
+build	Build debug APK	2026-07-02T19:55:14.4127442Z     => element (METHOD): provideToolRegistry(java.util.stream.SliceOps$1@5bb5e6ed, ...)
+build	Build debug APK	2026-07-02T19:55:14.4128183Z     => type (ERROR return type): error.NonExistentClass
+build	Build debug APK	2026-07-02T19:55:14.4128791Z 
+build	Build debug APK	2026-07-02T19:55:14.4129890Z If type 'error.NonExistentClass' is a generated type, check above for compilation errors that may have prevented the type from being generated. Otherwise, ensure that type 'error.NonExistentClass' is on your classpath.
+build	Build debug APK	2026-07-02T19:55:14.4132142Z e: [ksp] BindingMethodProcessingStep was unable to process 'provideToolRegistry(java.util.stream.SliceOps$1@13155d55, ...)' because 'error.NonExistentClass' could not be resolved.
+build	Build debug APK	2026-07-02T19:55:14.4143561Z 
+build	Build debug APK	2026-07-02T19:55:14.4143717Z Dependency trace:
+build	Build debug APK	2026-07-02T19:55:14.4144156Z     => element (OBJECT): com.erekeai.core.di.ToolModule
+build	Build debug APK	2026-07-02T19:55:14.4144906Z     => element (METHOD): provideToolRegistry(java.util.stream.SliceOps$1@5bb5e6ed, ...)
+build	Build debug APK	2026-07-02T19:55:14.4145680Z     => type (ERROR return type): error.NonExistentClass
+build	Build debug APK	2026-07-02T19:55:14.4146057Z 
+build	Build debug APK	2026-07-02T19:55:14.4147190Z If type 'error.NonExistentClass' is a generated type, check above for compilation errors that may have prevented the type from being generated. Otherwise, ensure that type 'error.NonExistentClass' is on your classpath.
+build	Build debug APK	2026-07-02T19:55:14.4148655Z e: Error occurred in KSP, check log for detail
+build	Build debug APK	2026-07-02T19:55:14.4149675Z e: file:///home/runner/work/ErekeAI_3.5/ErekeAI_3.5/app/src/main/java/com/erekeai/data/plugin/PluginRepositoryImpl.kt:130:2 Missing '}
+build	Build debug APK	2026-07-02T19:55:14.4151061Z e: file:///home/runner/work/ErekeAI_3.5/ErekeAI_3.5/app/src/main/java/com/erekeai/domain/tool/Tool.kt:48:1 Unclosed comment
+build	Build debug APK	2026-07-02T19:55:17.1079163Z 
+build	Build debug APK	2026-07-02T19:55:17.1133921Z > Task :app:mergeExtDexDebug
+build	Build debug APK	2026-07-02T19:56:02.1052799Z > Task :app:kspDebugKotlin FAILED
+build	Build debug APK	2026-07-02T19:56:36.3051328Z 
+build	Build debug APK	2026-07-02T19:56:36.3094121Z FAILURE: Build failed with an exception.
+build	Build debug APK	2026-07-02T19:56:36.3095025Z 
+build	Build debug APK	2026-07-02T19:56:36.3123735Z * What went wrong:
+build	Build debug APK	2026-07-02T19:56:36.3153747Z Execution failed for task ':app:kspDebugKotlin'.
+build	Build debug APK	2026-07-02T19:56:36.3154345Z 24 actionable tasks: 24 executed
+build	Build debug APK	2026-07-02T19:56:36.3157745Z > A failure occurred while executing org.jetbrains.kotlin.compilerRunner.GradleCompilerRunnerWithWorkers$GradleKotlinCompilerWorkAction
+build	Build debug APK	2026-07-02T19:56:36.3183877Z    > Compilation error. See log for more details
+build	Build debug APK	2026-07-02T19:56:36.3195043Z 
+build	Build debug APK	2026-07-02T19:56:36.3195428Z * Try:
+build	Build debug APK	2026-07-02T19:56:36.3244103Z > Run with --info or --debug option to get more log output.
+build	Build debug APK	2026-07-02T19:56:36.3244964Z > Run with --scan to get full insights.
+build	Build debug APK	2026-07-02T19:56:36.3245645Z > Get more help at https://help.gradle.org.
+build	Build debug APK	2026-07-02T19:56:36.3257570Z 
+build	Build debug APK	2026-07-02T19:56:36.3258161Z * Exception is:
+build	Build debug APK	2026-07-02T19:56:36.3259061Z org.gradle.api.tasks.TaskExecutionException: Execution failed for task ':app:kspDebugKotlin'.
+build	Build debug APK	2026-07-02T19:56:36.3260726Z 	at org.gradle.api.internal.tasks.execution.ExecuteActionsTaskExecuter.lambda$executeIfValid$1(ExecuteActionsTaskExecuter.java:130)
+build	Build debug APK	2026-07-02T19:56:36.3262220Z 	at org.gradle.internal.Try$Failure.ifSuccessfulOrElse(Try.java:282)
+build	Build debug APK	2026-07-02T19:56:36.3263931Z 	at org.gradle.api.internal.tasks.execution.ExecuteActionsTaskExecuter.executeIfValid(ExecuteActionsTaskExecuter.java:128)
+build	Build debug APK	2026-07-02T19:56:36.3265808Z 	at org.gradle.api.internal.tasks.execution.ExecuteActionsTaskExecuter.execute(ExecuteActionsTaskExecuter.java:116)
+build	Build debug APK	2026-07-02T19:56:36.3267689Z 	at org.gradle.api.internal.tasks.execution.FinalizePropertiesTaskExecuter.execute(FinalizePropertiesTaskExecuter.java:46)
+build	Build debug APK	2026-07-02T19:56:36.3270091Z 	at org.gradle.api.internal.tasks.execution.ResolveTaskExecutionModeExecuter.execute(ResolveTaskExecutionModeExecuter.java:51)
+build	Build debug APK	2026-07-02T19:56:36.3272066Z 	at org.gradle.api.internal.tasks.execution.SkipTaskWithNoActionsExecuter.execute(SkipTaskWithNoActionsExecuter.java:57)
+build	Build debug APK	2026-07-02T19:56:36.3274159Z 	at org.gradle.api.internal.tasks.execution.SkipOnlyIfTaskExecuter.execute(SkipOnlyIfTaskExecuter.java:74)
+build	Build debug APK	2026-07-02T19:56:36.3275763Z 	at org.gradle.api.internal.tasks.execution.CatchExceptionTaskExecuter.execute(CatchExceptionTaskExecuter.java:36)
+build	Build debug APK	2026-07-02T19:56:36.3277292Z 	at org.gradle.api.internal.tasks.execution.EventFiringTaskExecuter$1.executeTask(EventFiringTaskExecuter.java:77)
+build	Build debug APK	2026-07-02T19:56:36.3279124Z 	at org.gradle.api.internal.tasks.execution.EventFiringTaskExecuter$1.call(EventFiringTaskExecuter.java:55)
+build	Build debug APK	2026-07-02T19:56:36.3280517Z 	at org.gradle.api.internal.tasks.execution.EventFiringTaskExecuter$1.call(EventFiringTaskExecuter.java:52)
+build	Build debug APK	2026-07-02T19:56:36.3282164Z 	at org.gradle.internal.operations.DefaultBuildOperationRunner$CallableBuildOperationWorker.execute(DefaultBuildOperationRunner.java:200)
+build	Build debug APK	2026-07-02T19:56:36.3284502Z 	at org.gradle.internal.operations.DefaultBuildOperationRunner$CallableBuildOperationWorker.execute(DefaultBuildOperationRunner.java:195)
+build	Build debug APK	2026-07-02T19:56:36.3286179Z 	at org.gradle.internal.operations.DefaultBuildOperationRunner$2.execute(DefaultBuildOperationRunner.java:66)
+build	Build debug APK	2026-07-02T19:56:36.3287652Z 	at org.gradle.internal.operations.DefaultBuildOperationRunner$2.execute(DefaultBuildOperationRunner.java:59)
+build	Build debug APK	2026-07-02T19:56:36.3289111Z 	at org.gradle.internal.operations.DefaultBuildOperationRunner.execute(DefaultBuildOperationRunner.java:157)
+build	Build debug APK	2026-07-02T19:56:36.3290593Z 	at org.gradle.internal.operations.DefaultBuildOperationRunner.execute(DefaultBuildOperationRunner.java:59)
+build	Build debug APK	2026-07-02T19:56:36.3292013Z 	at org.gradle.internal.operations.DefaultBuildOperationRunner.call(DefaultBuildOperationRunner.java:53)
+build	Build debug APK	2026-07-02T19:56:36.3293716Z 	at org.gradle.internal.operations.DefaultBuildOperationExecutor.call(DefaultBuildOperationExecutor.java:73)
+build	Build debug APK	2026-07-02T19:56:36.3295187Z 	at org.gradle.api.internal.tasks.execution.EventFiringTaskExecuter.execute(EventFiringTaskExecuter.java:52)
+build	Build debug APK	2026-07-02T19:56:36.3296483Z 	at org.gradle.execution.plan.LocalTaskNodeExecutor.execute(LocalTaskNodeExecutor.java:42)
+build	Build debug APK	2026-07-02T19:56:36.3297938Z 	at org.gradle.execution.taskgraph.DefaultTaskExecutionGraph$InvokeNodeExecutorsAction.execute(DefaultTaskExecutionGraph.java:331)
+build	Build debug APK	2026-07-02T19:56:36.3299679Z 	at org.gradle.execution.taskgraph.DefaultTaskExecutionGraph$InvokeNodeExecutorsAction.execute(DefaultTaskExecutionGraph.java:318)
+build	Build debug APK	2026-07-02T19:56:36.3301581Z 	at org.gradle.execution.taskgraph.DefaultTaskExecutionGraph$BuildOperationAwareExecutionAction.lambda$execute$0(DefaultTaskExecutionGraph.java:314)
+build	Build debug APK	2026-07-02T19:56:36.3321129Z 	at org.gradle.internal.operations.CurrentBuildOperationRef.with(CurrentBuildOperationRef.java:80)
+build	Build debug APK	2026-07-02T19:56:36.3322848Z 	at org.gradle.execution.taskgraph.DefaultTaskExecutionGraph$BuildOperationAwareExecutionAction.execute(DefaultTaskExecutionGraph.java:314)
+build	Build debug APK	2026-07-02T19:56:36.3325003Z 	at org.gradle.execution.taskgraph.DefaultTaskExecutionGraph$BuildOperationAwareExecutionAction.execute(DefaultTaskExecutionGraph.java:303)
+build	Build debug APK	2026-07-02T19:56:36.3326590Z 	at org.gradle.execution.plan.DefaultPlanExecutor$ExecutorWorker.execute(DefaultPlanExecutor.java:463)
+build	Build debug APK	2026-07-02T19:56:36.3327844Z 	at org.gradle.execution.plan.DefaultPlanExecutor$ExecutorWorker.run(DefaultPlanExecutor.java:380)
+build	Build debug APK	2026-07-02T19:56:36.3329117Z 	at org.gradle.internal.concurrent.ExecutorPolicy$CatchAndRecordFailures.onExecute(ExecutorPolicy.java:64)
+build	Build debug APK	2026-07-02T19:56:36.3330371Z 	at org.gradle.internal.concurrent.AbstractManagedExecutor$1.run(AbstractManagedExecutor.java:47)
+build	Build debug APK	2026-07-02T19:56:36.3332465Z Caused by: org.gradle.workers.internal.DefaultWorkerExecutor$WorkExecutionException: A failure occurred while executing org.jetbrains.kotlin.compilerRunner.GradleCompilerRunnerWithWorkers$GradleKotlinCompilerWorkAction
+build	Build debug APK	2026-07-02T19:56:36.3335133Z 	at org.gradle.workers.internal.DefaultWorkerExecutor$WorkItemExecution.waitForCompletion(DefaultWorkerExecutor.java:287)
+build	Build debug APK	2026-07-02T19:56:36.3336756Z 	at org.gradle.internal.work.DefaultAsyncWorkTracker.lambda$waitForItemsAndGatherFailures$2(DefaultAsyncWorkTracker.java:130)
+build	Build debug APK	2026-07-02T19:56:36.3337947Z 	at org.gradle.internal.Factories$1.create(Factories.java:31)
+build	Build debug APK	2026-07-02T19:56:36.3338975Z 	at org.gradle.internal.work.DefaultWorkerLeaseService.withoutLocks(DefaultWorkerLeaseService.java:336)
+build	Build debug APK	2026-07-02T19:56:36.3340324Z 	at org.gradle.internal.work.DefaultWorkerLeaseService.withoutLocks(DefaultWorkerLeaseService.java:319)
+build	Build debug APK	2026-07-02T19:56:36.3341870Z 	at org.gradle.internal.work.DefaultWorkerLeaseService.withoutLock(DefaultWorkerLeaseService.java:324)
+build	Build debug APK	2026-07-02T19:56:36.3344905Z 	at org.gradle.internal.work.DefaultAsyncWorkTracker.waitForItemsAndGatherFailures(DefaultAsyncWorkTracker.java:126)
+build	Build debug APK	2026-07-02T19:56:36.3346591Z 	at org.gradle.internal.work.DefaultAsyncWorkTracker.waitForItemsAndGatherFailures(DefaultAsyncWorkTracker.java:92)
+build	Build debug APK	2026-07-02T19:56:36.3348026Z 	at org.gradle.internal.work.DefaultAsyncWorkTracker.waitForAll(DefaultAsyncWorkTracker.java:78)
+build	Build debug APK	2026-07-02T19:56:36.3349354Z 	at org.gradle.internal.work.DefaultAsyncWorkTracker.waitForCompletion(DefaultAsyncWorkTracker.java:66)
+build	Build debug APK	2026-07-02T19:56:36.3350613Z 	at org.gradle.api.internal.tasks.execution.TaskExecution$3.run(TaskExecution.java:252)
+build	Build debug APK	2026-07-02T19:56:36.3351902Z 	at org.gradle.internal.operations.DefaultBuildOperationRunner$1.execute(DefaultBuildOperationRunner.java:29)
+build	Build debug APK	2026-07-02T19:56:36.3353607Z 	at org.gradle.internal.operations.DefaultBuildOperationRunner$1.execute(DefaultBuildOperationRunner.java:26)
+build	Build debug APK	2026-07-02T19:56:36.3355063Z 	at org.gradle.internal.operations.DefaultBuildOperationRunner$2.execute(DefaultBuildOperationRunner.java:66)
+build	Build debug APK	2026-07-02T19:56:36.3356431Z 	at org.gradle.internal.operations.DefaultBuildOperationRunner$2.execute(DefaultBuildOperationRunner.java:59)
+build	Build debug APK	2026-07-02T19:56:36.3357803Z 	at org.gradle.internal.operations.DefaultBuildOperationRunner.execute(DefaultBuildOperationRunner.java:157)
+build	Build debug APK	2026-07-02T19:56:36.3359228Z 	at org.gradle.internal.operations.DefaultBuildOperationRunner.execute(DefaultBuildOperationRunner.java:59)
+build	Build debug APK	2026-07-02T19:56:36.3360626Z 	at org.gradle.internal.operations.DefaultBuildOperationRunner.run(DefaultBuildOperationRunner.java:47)
+build	Build debug APK	2026-07-02T19:56:36.3362015Z 	at org.gradle.internal.operations.DefaultBuildOperationExecutor.run(DefaultBuildOperationExecutor.java:68)
+build	Build debug APK	2026-07-02T19:56:36.3363609Z 	at org.gradle.api.internal.tasks.execution.TaskExecution.executeAction(TaskExecution.java:229)
+build	Build debug APK	2026-07-02T19:56:36.3364888Z 	at org.gradle.api.internal.tasks.execution.TaskExecution.executeActions(TaskExecution.java:212)
+build	Build debug APK	2026-07-02T19:56:36.3366253Z 	at org.gradle.api.internal.tasks.execution.TaskExecution.executeWithPreviousOutputFiles(TaskExecution.java:195)
+build	Build debug APK	2026-07-02T19:56:36.3367632Z 	at org.gradle.api.internal.tasks.execution.TaskExecution.execute(TaskExecution.java:162)
+build	Build debug APK	2026-07-02T19:56:36.3368737Z 	at org.gradle.internal.execution.steps.ExecuteStep.executeInternal(ExecuteStep.java:105)
+build	Build debug APK	2026-07-02T19:56:36.3369819Z 	at org.gradle.internal.execution.steps.ExecuteStep.access$000(ExecuteStep.java:44)
+build	Build debug APK	2026-07-02T19:56:36.3391951Z 	at org.gradle.internal.execution.steps.ExecuteStep$1.call(ExecuteStep.java:59)
+build	Build debug APK	2026-07-02T19:56:36.3393453Z 	at org.gradle.internal.execution.steps.ExecuteStep$1.call(ExecuteStep.java:56)
+build	Build debug APK	2026-07-02T19:56:36.3394991Z 	at org.gradle.internal.operations.DefaultBuildOperationRunner$CallableBuildOperationWorker.execute(DefaultBuildOperationRunner.java:200)
+build	Build debug APK	2026-07-02T19:56:36.3396895Z 	at org.gradle.internal.operations.DefaultBuildOperationRunner$CallableBuildOperationWorker.execute(DefaultBuildOperationRunner.java:195)
+build	Build debug APK	2026-07-02T19:56:36.3398604Z 	at org.gradle.internal.operations.DefaultBuildOperationRunner$2.execute(DefaultBuildOperationRunner.java:66)
+build	Build debug APK	2026-07-02T19:56:36.3400388Z 	at org.gradle.internal.operations.DefaultBuildOperationRunner$2.execute(DefaultBuildOperationRunner.java:59)
+build	Build debug APK	2026-07-02T19:56:36.3401802Z 	at org.gradle.internal.operations.DefaultBuildOperationRunner.execute(DefaultBuildOperationRunner.java:157)
+build	Build debug APK	2026-07-02T19:56:36.3403419Z 	at org.gradle.internal.operations.DefaultBuildOperationRunner.execute(DefaultBuildOperationRunner.java:59)
+build	Build debug APK	2026-07-02T19:56:36.3404828Z 	at org.gradle.internal.operations.DefaultBuildOperationRunner.call(DefaultBuildOperationRunner.java:53)
+build	Build debug APK	2026-07-02T19:56:36.3406189Z 	at org.gradle.internal.operations.DefaultBuildOperationExecutor.call(DefaultBuildOperationExecutor.java:73)
+build	Build debug APK	2026-07-02T19:56:36.3407793Z 	at org.gradle.internal.execution.steps.ExecuteStep.execute(ExecuteStep.java:56)
+build	Build debug APK	2026-07-02T19:56:36.3408752Z 	at org.gradle.internal.execution.steps.ExecuteStep.execute(ExecuteStep.java:44)
+build	Build debug APK	2026-07-02T19:56:36.3409832Z 	at org.gradle.internal.execution.steps.CancelExecutionStep.execute(CancelExecutionStep.java:41)
+build	Build debug APK	2026-07-02T19:56:36.3410944Z 	at org.gradle.internal.execution.steps.TimeoutStep.executeWithoutTimeout(TimeoutStep.java:74)
+build	Build debug APK	2026-07-02T19:56:36.3411916Z 	at org.gradle.internal.execution.steps.TimeoutStep.execute(TimeoutStep.java:55)
+build	Build debug APK	2026-07-02T19:56:36.3412955Z 	at org.gradle.internal.execution.steps.PreCreateOutputParentsStep.execute(PreCreateOutputParentsStep.java:50)
+build	Build debug APK	2026-07-02T19:56:36.3416369Z 	at org.gradle.internal.execution.steps.PreCreateOutputParentsStep.execute(PreCreateOutputParentsStep.java:28)
+build	Build debug APK	2026-07-02T19:56:36.3417725Z 	at org.gradle.internal.execution.steps.RemovePreviousOutputsStep.execute(RemovePreviousOutputsStep.java:67)
+build	Build debug APK	2026-07-02T19:56:36.3419073Z 	at org.gradle.internal.execution.steps.RemovePreviousOutputsStep.execute(RemovePreviousOutputsStep.java:37)
+build	Build debug APK	2026-07-02T19:56:36.3420434Z 	at org.gradle.internal.execution.steps.BroadcastChangingOutputsStep.execute(BroadcastChangingOutputsStep.java:61)
+build	Build debug APK	2026-07-02T19:56:36.3421944Z 	at org.gradle.internal.execution.steps.BroadcastChangingOutputsStep.execute(BroadcastChangingOutputsStep.java:26)
+build	Build debug APK	2026-07-02T19:56:36.3423751Z 	at org.gradle.internal.execution.steps.CaptureOutputsAfterExecutionStep.execute(CaptureOutputsAfterExecutionStep.java:67)
+build	Build debug APK	2026-07-02T19:56:36.3425403Z 	at org.gradle.internal.execution.steps.CaptureOutputsAfterExecutionStep.execute(CaptureOutputsAfterExecutionStep.java:45)
+build	Build debug APK	2026-07-02T19:56:36.3426797Z 	at org.gradle.internal.execution.steps.ResolveInputChangesStep.execute(ResolveInputChangesStep.java:40)
+build	Build debug APK	2026-07-02T19:56:36.3428061Z 	at org.gradle.internal.execution.steps.ResolveInputChangesStep.execute(ResolveInputChangesStep.java:29)
+build	Build debug APK	2026-07-02T19:56:36.3429361Z 	at org.gradle.internal.execution.steps.BuildCacheStep.executeWithoutCache(BuildCacheStep.java:189)
+build	Build debug APK	2026-07-02T19:56:36.3430583Z 	at org.gradle.internal.execution.steps.BuildCacheStep.executeAndStoreInCache(BuildCacheStep.java:145)
+build	Build debug APK	2026-07-02T19:56:36.3431847Z 	at org.gradle.internal.execution.steps.BuildCacheStep.lambda$executeWithCache$4(BuildCacheStep.java:101)
+build	Build debug APK	2026-07-02T19:56:36.3433435Z 	at org.gradle.internal.execution.steps.BuildCacheStep.lambda$executeWithCache$5(BuildCacheStep.java:101)
+build	Build debug APK	2026-07-02T19:56:36.3434433Z 	at org.gradle.internal.Try$Success.map(Try.java:164)
+build	Build debug APK	2026-07-02T19:56:36.3435316Z 	at org.gradle.internal.execution.steps.BuildCacheStep.executeWithCache(BuildCacheStep.java:85)
+build	Build debug APK	2026-07-02T19:56:36.3436484Z 	at org.gradle.internal.execution.steps.BuildCacheStep.lambda$execute$0(BuildCacheStep.java:74)
+build	Build debug APK	2026-07-02T19:56:36.3437378Z 	at org.gradle.internal.Either$Left.fold(Either.java:115)
+build	Build debug APK	2026-07-02T19:56:36.3438163Z 	at org.gradle.internal.execution.caching.CachingState.fold(CachingState.java:62)
+build	Build debug APK	2026-07-02T19:56:36.3439206Z 	at org.gradle.internal.execution.steps.BuildCacheStep.execute(BuildCacheStep.java:73)
+build	Build debug APK	2026-07-02T19:56:36.3440309Z 	at org.gradle.internal.execution.steps.BuildCacheStep.execute(BuildCacheStep.java:48)
+build	Build debug APK	2026-07-02T19:56:36.3441540Z 	at org.gradle.internal.execution.steps.StoreExecutionStateStep.execute(StoreExecutionStateStep.java:46)
+build	Build debug APK	2026-07-02T19:56:36.3448572Z 	at org.gradle.internal.execution.steps.StoreExecutionStateStep.execute(StoreExecutionStateStep.java:35)
+build	Build debug APK	2026-07-02T19:56:36.3450010Z 	at org.gradle.internal.execution.steps.SkipUpToDateStep.executeBecause(SkipUpToDateStep.java:76)
+build	Build debug APK	2026-07-02T19:56:36.3451285Z 	at org.gradle.internal.execution.steps.SkipUpToDateStep.lambda$execute$2(SkipUpToDateStep.java:54)
+build	Build debug APK	2026-07-02T19:56:36.3452496Z 	at org.gradle.internal.execution.steps.SkipUpToDateStep.execute(SkipUpToDateStep.java:54)
+build	Build debug APK	2026-07-02T19:56:36.3453904Z 	at org.gradle.internal.execution.steps.SkipUpToDateStep.execute(SkipUpToDateStep.java:36)
+build	Build debug APK	2026-07-02T19:56:36.3455432Z 	at org.gradle.internal.execution.steps.legacy.MarkSnapshottingInputsFinishedStep.execute(MarkSnapshottingInputsFinishedStep.java:37)
+build	Build debug APK	2026-07-02T19:56:36.3457538Z 	at org.gradle.internal.execution.steps.legacy.MarkSnapshottingInputsFinishedStep.execute(MarkSnapshottingInputsFinishedStep.java:27)
+build	Build debug APK	2026-07-02T19:56:36.3459403Z 	at org.gradle.internal.execution.steps.ResolveIncrementalCachingStateStep.executeDelegate(ResolveIncrementalCachingStateStep.java:49)
+build	Build debug APK	2026-07-02T19:56:36.3461259Z 	at org.gradle.internal.execution.steps.ResolveIncrementalCachingStateStep.executeDelegate(ResolveIncrementalCachingStateStep.java:27)
+build	Build debug APK	2026-07-02T19:56:36.3463013Z 	at org.gradle.internal.execution.steps.AbstractResolveCachingStateStep.execute(AbstractResolveCachingStateStep.java:71)
+build	Build debug APK	2026-07-02T19:56:36.3464811Z 	at org.gradle.internal.execution.steps.AbstractResolveCachingStateStep.execute(AbstractResolveCachingStateStep.java:39)
+build	Build debug APK	2026-07-02T19:56:36.3466137Z 	at org.gradle.internal.execution.steps.ResolveChangesStep.execute(ResolveChangesStep.java:65)
+build	Build debug APK	2026-07-02T19:56:36.3467281Z 	at org.gradle.internal.execution.steps.ResolveChangesStep.execute(ResolveChangesStep.java:36)
+build	Build debug APK	2026-07-02T19:56:36.3468275Z 	at org.gradle.internal.execution.steps.ValidateStep.execute(ValidateStep.java:106)
+build	Build debug APK	2026-07-02T19:56:36.3469240Z 	at org.gradle.internal.execution.steps.ValidateStep.execute(ValidateStep.java:55)
+build	Build debug APK	2026-07-02T19:56:36.3470534Z 	at org.gradle.internal.execution.steps.AbstractCaptureStateBeforeExecutionStep.execute(AbstractCaptureStateBeforeExecutionStep.java:64)
+build	Build debug APK	2026-07-02T19:56:36.3472391Z 	at org.gradle.internal.execution.steps.AbstractCaptureStateBeforeExecutionStep.execute(AbstractCaptureStateBeforeExecutionStep.java:43)
+build	Build debug APK	2026-07-02T19:56:36.3474603Z 	at org.gradle.internal.execution.steps.AbstractSkipEmptyWorkStep.executeWithNonEmptySources(AbstractSkipEmptyWorkStep.java:125)
+build	Build debug APK	2026-07-02T19:56:36.3476157Z 	at org.gradle.internal.execution.steps.AbstractSkipEmptyWorkStep.execute(AbstractSkipEmptyWorkStep.java:61)
+build	Build debug APK	2026-07-02T19:56:36.3477551Z 	at org.gradle.internal.execution.steps.AbstractSkipEmptyWorkStep.execute(AbstractSkipEmptyWorkStep.java:36)
+build	Build debug APK	2026-07-02T19:56:36.3479154Z 	at org.gradle.internal.execution.steps.legacy.MarkSnapshottingInputsStartedStep.execute(MarkSnapshottingInputsStartedStep.java:38)
+build	Build debug APK	2026-07-02T19:56:36.3480583Z 	at org.gradle.internal.execution.steps.LoadPreviousExecutionStateStep.execute(LoadPreviousExecutionStateStep.java:36)
+build	Build debug APK	2026-07-02T19:56:36.3481911Z 	at org.gradle.internal.execution.steps.LoadPreviousExecutionStateStep.execute(LoadPreviousExecutionStateStep.java:23)
+build	Build debug APK	2026-07-02T19:56:36.3483087Z 	at org.gradle.internal.execution.steps.HandleStaleOutputsStep.execute(HandleStaleOutputsStep.java:75)
+build	Build debug APK	2026-07-02T19:56:36.3484422Z 	at org.gradle.internal.execution.steps.HandleStaleOutputsStep.execute(HandleStaleOutputsStep.java:41)
+build	Build debug APK	2026-07-02T19:56:36.3485568Z 	at org.gradle.internal.execution.steps.AssignMutableWorkspaceStep.lambda$execute$0(AssignMutableWorkspaceStep.java:35)
+build	Build debug APK	2026-07-02T19:56:36.3486680Z 	at org.gradle.api.internal.tasks.execution.TaskExecution$4.withWorkspace(TaskExecution.java:289)
+build	Build debug APK	2026-07-02T19:56:36.3487743Z 	at org.gradle.internal.execution.steps.AssignMutableWorkspaceStep.execute(AssignMutableWorkspaceStep.java:31)
+build	Build debug APK	2026-07-02T19:56:36.3488908Z 	at org.gradle.internal.execution.steps.AssignMutableWorkspaceStep.execute(AssignMutableWorkspaceStep.java:22)
+build	Build debug APK	2026-07-02T19:56:36.3490258Z 	at org.gradle.internal.execution.steps.ChoosePipelineStep.execute(ChoosePipelineStep.java:40)
+build	Build debug APK	2026-07-02T19:56:36.3491197Z 	at org.gradle.internal.execution.steps.ChoosePipelineStep.execute(ChoosePipelineStep.java:23)
+build	Build debug APK	2026-07-02T19:56:36.3492419Z 	at org.gradle.internal.execution.steps.ExecuteWorkBuildOperationFiringStep.lambda$execute$2(ExecuteWorkBuildOperationFiringStep.java:67)
+build	Build debug APK	2026-07-02T19:56:36.3494271Z 	at org.gradle.internal.execution.steps.ExecuteWorkBuildOperationFiringStep.execute(ExecuteWorkBuildOperationFiringStep.java:67)
+build	Build debug APK	2026-07-02T19:56:36.3496031Z 	at org.gradle.internal.execution.steps.ExecuteWorkBuildOperationFiringStep.execute(ExecuteWorkBuildOperationFiringStep.java:39)
+build	Build debug APK	2026-07-02T19:56:36.3497683Z 	at org.gradle.internal.execution.steps.IdentityCacheStep.execute(IdentityCacheStep.java:46)
+build	Build debug APK	2026-07-02T19:56:36.3498836Z 	at org.gradle.internal.execution.steps.IdentityCacheStep.execute(IdentityCacheStep.java:34)
+build	Build debug APK	2026-07-02T19:56:36.3499942Z 	at org.gradle.internal.execution.steps.IdentifyStep.execute(IdentifyStep.java:48)
+build	Build debug APK	2026-07-02T19:56:36.3500960Z 	at org.gradle.internal.execution.steps.IdentifyStep.execute(IdentifyStep.java:35)
+build	Build debug APK	2026-07-02T19:56:36.3502157Z 	at org.gradle.internal.execution.impl.DefaultExecutionEngine$1.execute(DefaultExecutionEngine.java:61)
+build	Build debug APK	2026-07-02T19:56:36.3503947Z 	at org.gradle.api.internal.tasks.execution.ExecuteActionsTaskExecuter.executeIfValid(ExecuteActionsTaskExecuter.java:127)
+build	Build debug APK	2026-07-02T19:56:36.3505566Z 	at org.gradle.api.internal.tasks.execution.ExecuteActionsTaskExecuter.execute(ExecuteActionsTaskExecuter.java:116)
+build	Build debug APK	2026-07-02T19:56:36.3507177Z 	at org.gradle.api.internal.tasks.execution.FinalizePropertiesTaskExecuter.execute(FinalizePropertiesTaskExecuter.java:46)
+build	Build debug APK	2026-07-02T19:56:36.3508899Z 	at org.gradle.api.internal.tasks.execution.ResolveTaskExecutionModeExecuter.execute(ResolveTaskExecutionModeExecuter.java:51)
+build	Build debug APK	2026-07-02T19:56:36.3510592Z 	at org.gradle.api.internal.tasks.execution.SkipTaskWithNoActionsExecuter.execute(SkipTaskWithNoActionsExecuter.java:57)
+build	Build debug APK	2026-07-02T19:56:36.3512120Z 	at org.gradle.api.internal.tasks.execution.SkipOnlyIfTaskExecuter.execute(SkipOnlyIfTaskExecuter.java:74)
+build	Build debug APK	2026-07-02T19:56:36.3513752Z 	at org.gradle.api.internal.tasks.execution.CatchExceptionTaskExecuter.execute(CatchExceptionTaskExecuter.java:36)
+build	Build debug APK	2026-07-02T19:56:36.3515247Z 	at org.gradle.api.internal.tasks.execution.EventFiringTaskExecuter$1.executeTask(EventFiringTaskExecuter.java:77)
+build	Build debug APK	2026-07-02T19:56:36.3517011Z 	at org.gradle.api.internal.tasks.execution.EventFiringTaskExecuter$1.call(EventFiringTaskExecuter.java:55)
+build	Build debug APK	2026-07-02T19:56:36.3518396Z 	at org.gradle.api.internal.tasks.execution.EventFiringTaskExecuter$1.call(EventFiringTaskExecuter.java:52)
+build	Build debug APK	2026-07-02T19:56:36.3520009Z 	at org.gradle.internal.operations.DefaultBuildOperationRunner$CallableBuildOperationWorker.execute(DefaultBuildOperationRunner.java:200)
+build	Build debug APK	2026-07-02T19:56:36.3521870Z 	at org.gradle.internal.operations.DefaultBuildOperationRunner$CallableBuildOperationWorker.execute(DefaultBuildOperationRunner.java:195)
+build	Build debug APK	2026-07-02T19:56:36.3523643Z 	at org.gradle.internal.operations.DefaultBuildOperationRunner$2.execute(DefaultBuildOperationRunner.java:66)
+build	Build debug APK	2026-07-02T19:56:36.3525046Z 	at org.gradle.internal.operations.DefaultBuildOperationRunner$2.execute(DefaultBuildOperationRunner.java:59)
+build	Build debug APK	2026-07-02T19:56:36.3526465Z 	at org.gradle.internal.operations.DefaultBuildOperationRunner.execute(DefaultBuildOperationRunner.java:157)
+build	Build debug APK	2026-07-02T19:56:36.3527885Z 	at org.gradle.internal.operations.DefaultBuildOperationRunner.execute(DefaultBuildOperationRunner.java:59)
+build	Build debug APK	2026-07-02T19:56:36.3529261Z 	at org.gradle.internal.operations.DefaultBuildOperationRunner.call(DefaultBuildOperationRunner.java:53)
+build	Build debug APK	2026-07-02T19:56:36.3530638Z 	at org.gradle.internal.operations.DefaultBuildOperationExecutor.call(DefaultBuildOperationExecutor.java:73)
+build	Build debug APK	2026-07-02T19:56:36.3532028Z 	at org.gradle.api.internal.tasks.execution.EventFiringTaskExecuter.execute(EventFiringTaskExecuter.java:52)
+build	Build debug APK	2026-07-02T19:56:36.3533905Z 	at org.gradle.execution.plan.LocalTaskNodeExecutor.execute(LocalTaskNodeExecutor.java:42)
+build	Build debug APK	2026-07-02T19:56:36.3535326Z 	at org.gradle.execution.taskgraph.DefaultTaskExecutionGraph$InvokeNodeExecutorsAction.execute(DefaultTaskExecutionGraph.java:331)
+build	Build debug APK	2026-07-02T19:56:36.3537033Z 	at org.gradle.execution.taskgraph.DefaultTaskExecutionGraph$InvokeNodeExecutorsAction.execute(DefaultTaskExecutionGraph.java:318)
+build	Build debug APK	2026-07-02T19:56:36.3538868Z 	at org.gradle.execution.taskgraph.DefaultTaskExecutionGraph$BuildOperationAwareExecutionAction.lambda$execute$0(DefaultTaskExecutionGraph.java:314)
+build	Build debug APK	2026-07-02T19:56:36.3540560Z 	at org.gradle.internal.operations.CurrentBuildOperationRef.with(CurrentBuildOperationRef.java:80)
+build	Build debug APK	2026-07-02T19:56:36.3542349Z 	at org.gradle.execution.taskgraph.DefaultTaskExecutionGraph$BuildOperationAwareExecutionAction.execute(DefaultTaskExecutionGraph.java:314)
+build	Build debug APK	2026-07-02T19:56:36.3544441Z 	at org.gradle.execution.taskgraph.DefaultTaskExecutionGraph$BuildOperationAwareExecutionAction.execute(DefaultTaskExecutionGraph.java:303)
+build	Build debug APK	2026-07-02T19:56:36.3545964Z 	at org.gradle.execution.plan.DefaultPlanExecutor$ExecutorWorker.execute(DefaultPlanExecutor.java:463)
+build	Build debug APK	2026-07-02T19:56:36.3547232Z 	at org.gradle.execution.plan.DefaultPlanExecutor$ExecutorWorker.run(DefaultPlanExecutor.java:380)
+build	Build debug APK	2026-07-02T19:56:36.3548530Z 	at org.gradle.internal.concurrent.ExecutorPolicy$CatchAndRecordFailures.onExecute(ExecutorPolicy.java:64)
+build	Build debug APK	2026-07-02T19:56:36.3549923Z 	at org.gradle.internal.concurrent.AbstractManagedExecutor$1.run(AbstractManagedExecutor.java:47)
+build	Build debug APK	2026-07-02T19:56:36.3551371Z Caused by: org.jetbrains.kotlin.gradle.tasks.CompilationErrorException: Compilation error. See log for more details
+build	Build debug APK	2026-07-02T19:56:36.3552866Z 	at org.jetbrains.kotlin.gradle.tasks.TasksUtilsKt.throwExceptionIfCompilationFailed(tasksUtils.kt:20)
+build	Build debug APK	2026-07-02T19:56:36.3554558Z 	at org.jetbrains.kotlin.compilerRunner.GradleKotlinCompilerWork.run(GradleKotlinCompilerWork.kt:141)
+build	Build debug APK	2026-07-02T19:56:36.3556307Z 	at org.jetbrains.kotlin.compilerRunner.GradleCompilerRunnerWithWorkers$GradleKotlinCompilerWorkAction.execute(GradleCompilerRunnerWithWorkers.kt:73)
+build	Build debug APK	2026-07-02T19:56:36.3557935Z 	at org.gradle.workers.internal.DefaultWorkerServer.execute(DefaultWorkerServer.java:63)
+build	Build debug APK	2026-07-02T19:56:36.3559168Z 	at org.gradle.workers.internal.NoIsolationWorkerFactory$1$1.create(NoIsolationWorkerFactory.java:66)
+build	Build debug APK	2026-07-02T19:56:36.3560497Z 	at org.gradle.workers.internal.NoIsolationWorkerFactory$1$1.create(NoIsolationWorkerFactory.java:62)
+build	Build debug APK	2026-07-02T19:56:36.3561832Z 	at org.gradle.internal.classloader.ClassLoaderUtils.executeInClassloader(ClassLoaderUtils.java:100)
+build	Build debug APK	2026-07-02T19:56:36.3569570Z 	at org.gradle.workers.internal.NoIsolationWorkerFactory$1.lambda$execute$0(NoIsolationWorkerFactory.java:62)
+build	Build debug APK	2026-07-02T19:56:36.3570839Z 	at org.gradle.workers.internal.AbstractWorker$1.call(AbstractWorker.java:44)
+build	Build debug APK	2026-07-02T19:56:36.3571801Z 	at org.gradle.workers.internal.AbstractWorker$1.call(AbstractWorker.java:41)
+build	Build debug APK	2026-07-02T19:56:36.3573473Z 	at org.gradle.internal.operations.DefaultBuildOperationRunner$CallableBuildOperationWorker.execute(DefaultBuildOperationRunner.java:200)
+build	Build debug APK	2026-07-02T19:56:36.3575346Z 	at org.gradle.internal.operations.DefaultBuildOperationRunner$CallableBuildOperationWorker.execute(DefaultBuildOperationRunner.java:195)
+build	Build debug APK	2026-07-02T19:56:36.3577030Z 	at org.gradle.internal.operations.DefaultBuildOperationRunner$2.execute(DefaultBuildOperationRunner.java:66)
+build	Build debug APK	2026-07-02T19:56:36.3578461Z 	at org.gradle.internal.operations.DefaultBuildOperationRunner$2.execute(DefaultBuildOperationRunner.java:59)
+build	Build debug APK	2026-07-02T19:56:36.3579882Z 	at org.gradle.internal.operations.DefaultBuildOperationRunner.execute(DefaultBuildOperationRunner.java:157)
+build	Build debug APK	2026-07-02T19:56:36.3581311Z 	at org.gradle.internal.operations.DefaultBuildOperationRunner.execute(DefaultBuildOperationRunner.java:59)
+build	Build debug APK	2026-07-02T19:56:36.3582708Z 	at org.gradle.internal.operations.DefaultBuildOperationRunner.call(DefaultBuildOperationRunner.java:53)
+build	Build debug APK	2026-07-02T19:56:36.3584578Z 	at org.gradle.internal.operations.DefaultBuildOperationExecutor.call(DefaultBuildOperationExecutor.java:73)
+build	Build debug APK	2026-07-02T19:56:36.3585972Z 	at org.gradle.workers.internal.AbstractWorker.executeWrappedInBuildOperation(AbstractWorker.java:41)
+build	Build debug APK	2026-07-02T19:56:36.3587284Z 	at org.gradle.workers.internal.NoIsolationWorkerFactory$1.execute(NoIsolationWorkerFactory.java:59)
+build	Build debug APK	2026-07-02T19:56:36.3588585Z 	at org.gradle.workers.internal.DefaultWorkerExecutor.lambda$submitWork$0(DefaultWorkerExecutor.java:174)
+build	Build debug APK	2026-07-02T19:56:36.3590129Z 	at org.gradle.internal.work.DefaultConditionalExecutionQueue$ExecutionRunner.runExecution(DefaultConditionalExecutionQueue.java:187)
+build	Build debug APK	2026-07-02T19:56:36.3592048Z 	at org.gradle.internal.work.DefaultConditionalExecutionQueue$ExecutionRunner.access$700(DefaultConditionalExecutionQueue.java:120)
+build	Build debug APK	2026-07-02T19:56:36.3593996Z 	at org.gradle.internal.work.DefaultConditionalExecutionQueue$ExecutionRunner$1.run(DefaultConditionalExecutionQueue.java:162)
+build	Build debug APK	2026-07-02T19:56:36.3595219Z 	at org.gradle.internal.Factories$1.create(Factories.java:31)
+build	Build debug APK	2026-07-02T19:56:36.3596244Z 	at org.gradle.internal.work.DefaultWorkerLeaseService.withLocks(DefaultWorkerLeaseService.java:264)
+build	Build debug APK	2026-07-02T19:56:36.3597657Z 	at org.gradle.internal.work.DefaultWorkerLeaseService.runAsWorkerThread(DefaultWorkerLeaseService.java:128)
+build	Build debug APK	2026-07-02T19:56:36.3599122Z 	at org.gradle.internal.work.DefaultWorkerLeaseService.runAsWorkerThread(DefaultWorkerLeaseService.java:133)
+build	Build debug APK	2026-07-02T19:56:36.3600722Z 	at org.gradle.internal.work.DefaultConditionalExecutionQueue$ExecutionRunner.runBatch(DefaultConditionalExecutionQueue.java:157)
+build	Build debug APK	2026-07-02T19:56:36.3602418Z 	at org.gradle.internal.work.DefaultConditionalExecutionQueue$ExecutionRunner.run(DefaultConditionalExecutionQueue.java:126)
+build	Build debug APK	2026-07-02T19:56:36.3603727Z 	... 2 more
+build	Build debug APK	2026-07-02T19:56:36.3603914Z 
+build	Build debug APK	2026-07-02T19:56:36.3603923Z 
+build	Build debug APK	2026-07-02T19:56:36.3604067Z BUILD FAILED in 3m 18s
+build	Build debug APK	2026-07-02T19:56:36.8590944Z ##[error]Process completed with exit code 1.
+build	Post Set up JDK 17	﻿2026-07-02T19:56:36.8788027Z Node 20 is being deprecated. This workflow is running with Node 24 by default. If you need to temporarily use Node 20, you can set the ACTIONS_ALLOW_USE_UNSECURE_NODE_VERSION=true environment variable. For more information see: https://github.blog/changelog/2025-09-19-deprecation-of-node-20-on-github-actions-runners/
+build	Post Set up JDK 17	2026-07-02T19:56:36.8790084Z Post job cleanup.
+build	Post Set up JDK 17	2026-07-02T19:56:37.0082080Z (node:2630) [DEP0040] DeprecationWarning: The `punycode` module is deprecated. Please use a userland alternative instead.
+build	Post Set up JDK 17	2026-07-02T19:56:37.0083382Z (Use `node --trace-deprecation ...` to show where the warning was created)
+build	Post Checkout	﻿2026-07-02T19:56:37.0323875Z Node 20 is being deprecated. This workflow is running with Node 24 by default. If you need to temporarily use Node 20, you can set the ACTIONS_ALLOW_USE_UNSECURE_NODE_VERSION=true environment variable. For more information see: https://github.blog/changelog/2025-09-19-deprecation-of-node-20-on-github-actions-runners/
+build	Post Checkout	2026-07-02T19:56:37.0325957Z Post job cleanup.
+build	Post Checkout	2026-07-02T19:56:37.1247038Z [command]/usr/bin/git version
+build	Post Checkout	2026-07-02T19:56:37.1290701Z git version 2.54.0
+build	Post Checkout	2026-07-02T19:56:37.1362355Z Temporarily overriding HOME='/home/runner/work/_temp/7878528a-550d-4088-b9a0-16ce9c221691' before making global git config changes
+build	Post Checkout	2026-07-02T19:56:37.1363871Z Adding repository directory to the temporary git global config as a safe directory
+build	Post Checkout	2026-07-02T19:56:37.1368051Z [command]/usr/bin/git config --global --add safe.directory /home/runner/work/ErekeAI_3.5/ErekeAI_3.5
+build	Post Checkout	2026-07-02T19:56:37.1405424Z [command]/usr/bin/git config --local --name-only --get-regexp core\.sshCommand
+build	Post Checkout	2026-07-02T19:56:37.1439849Z [command]/usr/bin/git submodule foreach --recursive sh -c "git config --local --name-only --get-regexp 'core\.sshCommand' && git config --local --unset-all 'core.sshCommand' || :"
+build	Post Checkout	2026-07-02T19:56:37.1695084Z [command]/usr/bin/git config --local --name-only --get-regexp http\.https\:\/\/github\.com\/\.extraheader
+build	Post Checkout	2026-07-02T19:56:37.1719355Z http.https://github.com/.extraheader
+build	Post Checkout	2026-07-02T19:56:37.1731323Z [command]/usr/bin/git config --local --unset-all http.https://github.com/.extraheader
+build	Post Checkout	2026-07-02T19:56:37.1765824Z [command]/usr/bin/git submodule foreach --recursive sh -c "git config --local --name-only --get-regexp 'http\.https\:\/\/github\.com\/\.extraheader' && git config --local --unset-all 'http.https://github.com/.extraheader' || :"
+build	Post Checkout	2026-07-02T19:56:37.2020237Z [command]/usr/bin/git config --local --name-only --get-regexp ^includeIf\.gitdir:
+build	Post Checkout	2026-07-02T19:56:37.2057331Z [command]/usr/bin/git submodule foreach --recursive git config --local --show-origin --name-only --get-regexp remote.origin.url
+build	Complete job	﻿2026-07-02T19:56:37.2442724Z Cleaning up orphan processes
+build	Complete job	2026-07-02T19:56:37.2841422Z Terminate orphan process: pid (2539) (java)
+build	Complete job	2026-07-02T19:56:37.2853715Z ##[warning]Node.js 20 is deprecated. The following actions target Node.js 20 but are being forced to run on Node.js 24: actions/cache@v4, actions/checkout@v4, actions/setup-java@v4. For more information see: https://github.blog/changelog/2025-09-19-deprecation-of-node-20-on-github-actions-runners/
