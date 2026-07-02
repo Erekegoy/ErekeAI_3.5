@@ -18,3 +18,4 @@ local.properties
 # Keystores (никогда не коммитить)
 *.jks
 *.keystore
+full.log
