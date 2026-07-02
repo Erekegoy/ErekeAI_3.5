@@ -1,0 +1,10 @@
+# Скопируйте этот файл в local.properties (он в .gitignore) и заполните своими значениями.
+
+# Путь к Android SDK (Android Studio подставит автоматически при первом открытии проекта)
+sdk.dir=/path/to/Android/sdk
+
+# API-ключи можно оставить пустыми — их также можно ввести прямо в приложении
+# на экране "Настройки" (хранятся зашифрованно через EncryptedSharedPreferences).
+GEMINI_API_KEY=
+GROQ_API_KEY=
+OPENAI_API_KEY=

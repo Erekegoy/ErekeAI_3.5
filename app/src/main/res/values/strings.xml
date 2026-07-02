@@ -1,0 +1,12 @@
+<resources>
+    <string name="app_name">ErekeAI</string>
+    <string name="chat_title">ErekeAI Chat</string>
+    <string name="settings_title">Настройки</string>
+    <string name="input_hint">Спросите что-нибудь…</string>
+    <string name="send">Отправить</string>
+    <string name="provider_gemini">Gemini</string>
+    <string name="provider_groq">Groq</string>
+    <string name="provider_openai">OpenAI</string>
+    <string name="provider_offline">Offline AI</string>
+    <string name="dev_agent_title">🤖 AI Developer Agent</string>
+</resources>

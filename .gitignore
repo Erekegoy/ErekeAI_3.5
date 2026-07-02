@@ -1,0 +1,20 @@
+*.iml
+.gradle/
+/local.properties
+.DS_Store
+/build
+/captures
+.externalNativeBuild
+.cxx
+local.properties
+
+# Android Studio
+.idea/
+*.hprof
+
+# Per-module build output
+**/build/
+
+# Keystores (никогда не коммитить)
+*.jks
+*.keystore
