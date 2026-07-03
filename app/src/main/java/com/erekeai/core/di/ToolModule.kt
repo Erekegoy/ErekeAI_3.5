@@ -103,16 +103,12 @@ object ToolModule {
         scheduleTaskTool: ScheduleTaskTool,
         listScheduledTasksTool: ListScheduledTasksTool,
         cancelScheduledTaskTool: CancelScheduledTaskTool,
-        listScheduledTasksTool: ListScheduledTasksTool,
-cancelScheduledTaskTool: CancelScheduledTaskTool,
-
-// listAvailablePluginsTool: ListAvailablePluginsTool,
-// installPluginTool: InstallPluginTool,
-// listInstalledPluginsTool: ListInstalledPluginsTool,
-// uninstallPluginTool: UninstallPluginTool,
-// checkPluginUpdatesTool: CheckPluginUpdatesTool,
-
-gitLabTool: GitLabTool
+        // listAvailablePluginsTool: ListAvailablePluginsTool,
+        // installPluginTool: InstallPluginTool,
+        // listInstalledPluginsTool: ListInstalledPluginsTool,
+        // uninstallPluginTool: UninstallPluginTool,
+        // checkPluginUpdatesTool: CheckPluginUpdatesTool,
+        gitLabTool: GitLabTool
     ): ToolRegistry = ToolRegistry(
         listOf(
             webSearchTool, listFilesTool, readFileTool, calculatorTool, dateTimeTool,
@@ -126,16 +122,14 @@ gitLabTool: GitLabTool
             browserAutomationTool, cloudSyncTool, takePhotoTool,
             createProjectTool, listProjectsTool, setActiveProjectTool, archiveProjectTool,
             scheduleTaskTool,
-listScheduledTasksTool,
-cancelScheduledTaskTool,
-
-// listAvailablePluginsTool,
-// installPluginTool,
-// listInstalledPluginsTool,
-// uninstallPluginTool,
-// checkPluginUpdatesTool,
-
-gitLabTool
+            listScheduledTasksTool,
+            cancelScheduledTaskTool,
+            // listAvailablePluginsTool,
+            // installPluginTool,
+            // listInstalledPluginsTool,
+            // uninstallPluginTool,
+            // checkPluginUpdatesTool,
+            gitLabTool
         )
     )
 }
@@ -143,7 +137,6 @@ gitLabTool
 @Module
 @InstallIn(SingletonComponent::class)
 abstract class AgentModule {
-
     @Binds
     @Singleton
     abstract fun bindAgentOrchestrator(impl: AgentOrchestratorImpl): AgentOrchestrator
