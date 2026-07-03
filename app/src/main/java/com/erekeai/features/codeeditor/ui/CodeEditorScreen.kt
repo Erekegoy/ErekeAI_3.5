@@ -17,6 +17,7 @@ fun CodeEditorScreen(
     onBack: () -> Unit,
     onSave: (String) -> Unit
 ) {
+    val viewModel: CodeEditorViewModel = hiltViewModel()
     var text by remember(content) {
         mutableStateOf(content)
     }
@@ -78,5 +79,7 @@ fun CodeEditorScreen(
         singleLine = false,
         maxLines = Int.MAX_VALUE
     )
+
+}
 
 }
