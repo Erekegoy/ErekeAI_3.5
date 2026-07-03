@@ -6,7 +6,7 @@ import android.content.Intent
 import android.os.Build
 import android.os.IBinder
 import androidx.core.app.NotificationCompat
-import com.erekeai.R
+import com.erekeai.app.R
 import dagger.hilt.android.AndroidEntryPoint
 import javax.inject.Inject
 

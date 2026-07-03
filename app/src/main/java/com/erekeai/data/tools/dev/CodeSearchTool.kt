@@ -59,13 +59,14 @@ class CodeSearchTool @Inject constructor(
             } catch (_: Exception) {
                 continue@outer // бинарный/нечитаемый файл
             }
-            lines.forEachIndexed { index, line ->
-                if (matches.size >= maxMatches) return@outer
-                if (line.contains(query, ignoreCase = true)) {
-                    val relPath = file.relativeTo(root).path
-                    matches.add("${relPath}:${index + 1}: ${line.trim().take(160)}")
-                }
-            }
+            for ((index, line) in lines.withIndex()) {
+    if (matches.size >= maxMatches) break@outer
+
+    if (line.contains(query, ignoreCase = true)) {
+        val relPath = file.relativeTo(root).path
+        matches.add("${relPath}:${index + 1}: ${line.trim().take(160)}")
+    }
+}
         }
 
         if (matches.isEmpty()) {

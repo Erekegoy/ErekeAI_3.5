@@ -1,5 +1,6 @@
 package com.erekeai.data.scheduler
 
+import kotlinx.coroutines.flow.first
 import android.app.NotificationChannel
 import android.app.NotificationManager
 import android.content.Context
@@ -8,7 +9,7 @@ import androidx.core.app.NotificationCompat
 import androidx.hilt.work.HiltWorker
 import androidx.work.CoroutineWorker
 import androidx.work.WorkerParameters
-import com.erekeai.R
+import com.erekeai.app.R
 import com.erekeai.data.local.db.ScheduledTaskDao
 import com.erekeai.domain.agent.AgentEvent
 import com.erekeai.domain.agent.AgentOrchestrator
@@ -65,10 +66,15 @@ class BackgroundAgentWorker @AssistedInject constructor(
     }
 
     private suspend fun findOrCreateBackgroundConversation(): Long {
-        val conversations = kotlinx.coroutines.flow.first(chatRepository.observeConversations())
-        val existing = conversations.firstOrNull { it.title == BACKGROUND_CONVERSATION_TITLE }
-        return existing?.id ?: chatRepository.createConversation(BACKGROUND_CONVERSATION_TITLE)
+    val conversations = chatRepository.observeConversations().first()
+
+    val existing = conversations.firstOrNull {
+        it.title == BACKGROUND_CONVERSATION_TITLE
     }
+
+    return existing?.id
+        ?: chatRepository.createConversation(BACKGROUND_CONVERSATION_TITLE)
+}
 
     private fun notifyResult(taskName: String, result: String) {
         val context = applicationContext
