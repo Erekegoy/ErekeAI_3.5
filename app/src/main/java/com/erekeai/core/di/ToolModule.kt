@@ -103,12 +103,16 @@ object ToolModule {
         scheduleTaskTool: ScheduleTaskTool,
         listScheduledTasksTool: ListScheduledTasksTool,
         cancelScheduledTaskTool: CancelScheduledTaskTool,
-        listAvailablePluginsTool: ListAvailablePluginsTool,
-        installPluginTool: InstallPluginTool,
-        listInstalledPluginsTool: ListInstalledPluginsTool,
-        uninstallPluginTool: UninstallPluginTool,
-        checkPluginUpdatesTool: CheckPluginUpdatesTool,
-        gitLabTool: GitLabTool
+        listScheduledTasksTool: ListScheduledTasksTool,
+cancelScheduledTaskTool: CancelScheduledTaskTool,
+
+// listAvailablePluginsTool: ListAvailablePluginsTool,
+// installPluginTool: InstallPluginTool,
+// listInstalledPluginsTool: ListInstalledPluginsTool,
+// uninstallPluginTool: UninstallPluginTool,
+// checkPluginUpdatesTool: CheckPluginUpdatesTool,
+
+gitLabTool: GitLabTool
     ): ToolRegistry = ToolRegistry(
         listOf(
             webSearchTool, listFilesTool, readFileTool, calculatorTool, dateTimeTool,
@@ -121,9 +125,17 @@ object ToolModule {
             ollamaManagerTool, ggufManagerTool,
             browserAutomationTool, cloudSyncTool, takePhotoTool,
             createProjectTool, listProjectsTool, setActiveProjectTool, archiveProjectTool,
-            scheduleTaskTool, listScheduledTasksTool, cancelScheduledTaskTool,
-            listAvailablePluginsTool, installPluginTool, listInstalledPluginsTool, uninstallPluginTool, checkPluginUpdatesTool,
-            gitLabTool
+            scheduleTaskTool,
+listScheduledTasksTool,
+cancelScheduledTaskTool,
+
+// listAvailablePluginsTool,
+// installPluginTool,
+// listInstalledPluginsTool,
+// uninstallPluginTool,
+// checkPluginUpdatesTool,
+
+gitLabTool
         )
     )
 }
