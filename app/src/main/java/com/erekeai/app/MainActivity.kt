@@ -46,8 +46,15 @@ class MainActivity : ComponentActivity() {
                         }
                       composable("file_explorer") {
     FileExplorerScreen(
-        onBack = { navController.popBackStack() }
-    )
+    onBack = {
+        navController.popBackStack()
+    },
+    onOpenFile = { file ->
+        // Пока просто заглушка.
+        // На следующем этапе здесь откроем CodeEditor.
+        println("Open file: ${file.absolutePath}")
+    }
+)
 }
                     }
                 }

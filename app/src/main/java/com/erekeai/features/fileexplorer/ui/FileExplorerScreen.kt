@@ -16,7 +16,8 @@ import java.io.File
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
 fun FileExplorerScreen(
-    onBack: () -> Unit
+    onBack: () -> Unit,
+    onOpenFile: (File) -> Unit
 ) {
     var currentDir by remember {
         mutableStateOf(File("/storage/emulated/0"))
@@ -80,10 +81,12 @@ fun FileExplorerScreen(
                         )
                     },
                     modifier = Modifier.clickable {
-                        if (file.isDirectory) {
-                            currentDir = file
-                        }
-                    }
+    if (file.isDirectory) {
+        currentDir = file
+    } else {
+        onOpenFile(file)
+    }
+}
                 )
 
                 HorizontalDivider()
