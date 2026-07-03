@@ -22,39 +22,61 @@ fun CodeEditorScreen(
     }
 
     Scaffold(
-        topBar = {
-            TopAppBar(
-                title = {
-                    Text(fileName)
-                },
-                navigationIcon = {
-                    IconButton(onClick = onBack) {
-                        Icon(Icons.Default.ArrowBack, null)
-                    }
-                },
-                actions = {
-                    IconButton(
-                        onClick = {
-                            onSave(text)
-                        }
-                    ) {
-                        Icon(Icons.Default.Save, null)
-                    }
-                }
-            )
-        }
-    ) { padding ->
-
-        OutlinedTextField(
-            value = text,
-            onValueChange = {
-                text = it
+    topBar = {
+        TopAppBar(
+            title = {
+                Text(fileName)
             },
-            modifier = Modifier
-                .fillMaxSize()
-                .padding(padding),
-            singleLine = false
+            navigationIcon = {
+                IconButton(onClick = onBack) {
+                    Icon(Icons.Default.ArrowBack, null)
+                }
+            },
+            actions = {
+                IconButton(
+                    onClick = {
+                        onSave(text)
+                    }
+                ) {
+                    Icon(Icons.Default.Save, null)
+                }
+            }
         )
+    },
 
+    bottomBar = {
+        BottomAppBar {
+
+            TextButton(onClick = { }) {
+                Text("🤖 Explain")
+            }
+
+            TextButton(onClick = { }) {
+                Text("🔧 Fix")
+            }
+
+            TextButton(onClick = { }) {
+                Text("✨ Refactor")
+            }
+
+            TextButton(onClick = { }) {
+                Text("▶ Run")
+            }
+        }
     }
+
+) { padding ->
+
+    OutlinedTextField(
+        value = text,
+        onValueChange = {
+            text = it
+        },
+        modifier = Modifier
+            .fillMaxSize()
+            .padding(padding),
+        singleLine = false,
+        maxLines = Int.MAX_VALUE
+    )
+
 }
