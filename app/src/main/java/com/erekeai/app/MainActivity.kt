@@ -10,6 +10,7 @@ import androidx.compose.ui.Modifier
 import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
 import androidx.navigation.compose.rememberNavController
+import com.erekeai.features.codeeditor.ui.CodeEditorScreen
 import com.erekeai.features.chat.ui.ChatScreen
 import com.erekeai.features.devagent.ui.DevAgentScreen
 import com.erekeai.features.fileexplorer.ui.FileExplorerScreen
@@ -27,6 +28,7 @@ class MainActivity : ComponentActivity() {
             ErekeAiTheme {
                 Surface(modifier = Modifier.fillMaxSize()) {
                     val navController = rememberNavController()
+var openedFile by remember { mutableStateOf<java.io.File?>(null) }
                     NavHost(navController = navController, startDestination = "chat") {
                         composable("chat") {
                             ChatScreen(
@@ -50,13 +52,26 @@ class MainActivity : ComponentActivity() {
         navController.popBackStack()
     },
     onOpenFile = { file ->
-        // Пока просто заглушка.
-        // На следующем этапе здесь откроем CodeEditor.
-        println("Open file: ${file.absolutePath}")
-    }
+    openedFile = file
+    navController.navigate("code_editor")
+}
 )
 }
-                    }
+composable("code_editor") {
+    val file = openedFile
+
+    CodeEditorScreen(
+        fileName = file?.name ?: "Новый файл",
+        content = file?.takeIf { it.exists() }?.readText() ?: "",
+        onBack = {
+            navController.popBackStack()
+        },
+        onSave = { newText ->
+            file?.writeText(newText)
+        }
+    )
+} 
+                   }
                 }
             }
         }
