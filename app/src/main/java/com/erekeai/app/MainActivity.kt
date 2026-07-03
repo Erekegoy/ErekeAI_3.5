@@ -12,6 +12,7 @@ import androidx.navigation.compose.composable
 import androidx.navigation.compose.rememberNavController
 import com.erekeai.features.chat.ui.ChatScreen
 import com.erekeai.features.devagent.ui.DevAgentScreen
+import com.erekeai.features.fileexplorer.ui.FileExplorerScreen
 import com.erekeai.features.knowledge.ui.KnowledgeBaseScreen
 import com.erekeai.features.settings.ui.SettingsScreen
 import com.erekeai.ui.theme.ErekeAiTheme
@@ -43,6 +44,11 @@ class MainActivity : ComponentActivity() {
                         composable("dev_agent") {
                             DevAgentScreen(onBack = { navController.popBackStack() })
                         }
+                      composable("file_explorer") {
+    FileExplorerScreen(
+        onBack = { navController.popBackStack() }
+    )
+}
                     }
                 }
             }
