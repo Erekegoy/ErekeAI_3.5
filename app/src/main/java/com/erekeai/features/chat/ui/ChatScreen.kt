@@ -10,6 +10,7 @@ import androidx.compose.material.icons.filled.Send
 import androidx.compose.material.icons.filled.Settings
 import androidx.compose.material.icons.filled.SmartToy
 import androidx.compose.material3.*
+import androidx.compose.material.icons.filled.Folder
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.collectAsState
 import androidx.compose.runtime.getValue
@@ -30,6 +31,7 @@ fun ChatScreen(
     onOpenSettings: () -> Unit,
     onOpenKnowledgeBase: () -> Unit,
     onOpenDevAgent: () -> Unit,
+    onOpenProjectExplorer: () -> Unit,
     viewModel: ChatViewModel = hiltViewModel()
 ) {
     val state by viewModel.uiState.collectAsState()
@@ -43,6 +45,9 @@ fun ChatScreen(
                         IconButton(onClick = onOpenDevAgent) {
                             Icon(Icons.Default.SmartToy, contentDescription = "AI Developer Agent")
                         }
+IconButton(onClick = onOpenProjectExplorer) {
+    Icon(Icons.Default.Folder, contentDescription = "Project Explorer")
+}
                         IconButton(onClick = onOpenKnowledgeBase) {
                             Icon(Icons.Default.MenuBook, contentDescription = "База знаний")
                         }

@@ -14,10 +14,11 @@ import androidx.compose.ui.Modifier
 import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
 import androidx.navigation.compose.rememberNavController
+import com.erekeai.features.projectexplorer.ui.ProjectExplorerScreen
 import com.erekeai.features.codeeditor.ui.CodeEditorScreen
 import com.erekeai.features.chat.ui.ChatScreen
 import com.erekeai.features.devagent.ui.DevAgentScreen
-import com.erekeai.features.fileexplorer.ui.FileExplorerScreen
+
 import com.erekeai.features.knowledge.ui.KnowledgeBaseScreen
 import com.erekeai.features.settings.ui.SettingsScreen
 import com.erekeai.ui.theme.ErekeAiTheme
@@ -35,11 +36,20 @@ class MainActivity : ComponentActivity() {
 var openedFile by remember { mutableStateOf<java.io.File?>(null) }
                     NavHost(navController = navController, startDestination = "chat") {
                         composable("chat") {
-                            ChatScreen(
-                                onOpenSettings = { navController.navigate("settings") },
-                                onOpenKnowledgeBase = { navController.navigate("knowledge_base") },
-                                onOpenDevAgent = { navController.navigate("dev_agent") }
-                            )
+                             ChatScreen(
+    onOpenSettings = {
+        navController.navigate("settings")
+    },
+    onOpenKnowledgeBase = {
+        navController.navigate("knowledge_base")
+    },
+    onOpenDevAgent = {
+        navController.navigate("dev_agent")
+    },
+    onOpenProjectExplorer = {
+        navController.navigate("project_explorer")
+    }
+)
                         }
                         composable("settings") {
                             SettingsScreen(onBack = { navController.popBackStack() })
@@ -50,16 +60,17 @@ var openedFile by remember { mutableStateOf<java.io.File?>(null) }
                         composable("dev_agent") {
                             DevAgentScreen(onBack = { navController.popBackStack() })
                         }
-                      composable("file_explorer") {
-    FileExplorerScreen(
-    onBack = {
-        navController.popBackStack()
-    },
-    onOpenFile = { file ->
-    openedFile = file
-    navController.navigate("code_editor")
-}
-)
+                      composable("project_explorer") {
+    ProjectExplorerScreen(
+        root = java.io.File("/storage/emulated/0"),
+        onBack = {
+            navController.popBackStack()
+        },
+        onOpenFile = { file ->
+            openedFile = file
+            navController.navigate("code_editor")
+        }
+    )
 }
 composable("code_editor") {
     val file = openedFile
