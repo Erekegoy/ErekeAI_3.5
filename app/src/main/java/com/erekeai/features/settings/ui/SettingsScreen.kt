@@ -126,6 +126,50 @@ fun SettingsScreen(
             item {
                 AddMcpServerCard(onAdd = viewModel::addMcpServer)
             }
+            item {
+    Text(
+        "ℹ️ О приложении",
+        style = MaterialTheme.typography.titleMedium
+    )
+}
+
+item {
+    Card(
+        modifier = Modifier.fillMaxWidth()
+    ) {
+        Column(
+            modifier = Modifier.padding(16.dp),
+            verticalArrangement = Arrangement.spacedBy(8.dp)
+        ) {
+
+            Text(
+                text = "🤖 ErekeAI",
+                style = MaterialTheme.typography.titleLarge
+            )
+
+            Text("Версия: 0.1.0")
+
+            HorizontalDivider()
+
+            Text("Создатель")
+            Text(
+                text = "Ерлан Б",
+                style = MaterialTheme.typography.titleMedium
+            )
+
+            HorizontalDivider()
+
+            Text("Описание")
+            Text(
+                "ErekeAI — персональная AI-платформа с поддержкой нескольких моделей ИИ, AI Developer Agent, локальных LLM, MCP, GitHub, автоматизации и расширяемой архитектуры."
+            )
+
+            HorizontalDivider()
+
+            Text("© 2026 Ерлан Б. Все права защищены.")
+        }
+    }
+}
         }
     }
 }
