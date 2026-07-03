@@ -9,6 +9,9 @@ import androidx.compose.material3.*
 import androidx.compose.runtime.*
 import androidx.compose.ui.Modifier
 
+import androidx.hilt.navigation.compose.hiltViewModel
+import com.erekeai.features.codeeditor.viewmodel.CodeEditorViewModel
+
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
 fun CodeEditorScreen(
@@ -17,7 +20,7 @@ fun CodeEditorScreen(
     onBack: () -> Unit,
     onSave: (String) -> Unit
 ) {
-    val viewModel: CodeEditorViewModel = hiltViewModel()
+    
     var text by remember(content) {
         mutableStateOf(content)
     }
