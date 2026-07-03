@@ -86,9 +86,9 @@ class PluginRepositoryImpl @Inject constructor(
         listInstalled().forEach { installed ->
     toolRegistry.get().registerDynamic(
         DynamicHttpTool(installed.manifest, httpClient, secureKeyStore)
-    )
+         )
+    }
 }
-
     private suspend fun persist(list: List<InstalledPlugin>) {
         val arr = JSONArray()
         list.forEach { inst ->
