@@ -12,6 +12,10 @@ import androidx.compose.ui.Modifier
 import androidx.hilt.navigation.compose.hiltViewModel
 import com.erekeai.features.codeeditor.viewmodel.CodeEditorViewModel
 
+import androidx.hilt.navigation.compose.hiltViewModel
+import androidx.lifecycle.compose.collectAsStateWithLifecycle
+import com.erekeai.features.codeeditor.viewmodel.CodeEditorViewModel
+
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
 fun CodeEditorScreen(
@@ -20,7 +24,12 @@ fun CodeEditorScreen(
     onBack: () -> Unit,
     onSave: (String) -> Unit
 ) {
-    
+
+val viewModel: CodeEditorViewModel = hiltViewModel()
+val uiState by viewModel.uiState.collectAsStateWithLifecycle()
+LaunchedEffect(fileName) {
+    viewModel.open(fileName, content)
+}    
     var text by remember(content) {
         mutableStateOf(content)
     }
@@ -38,10 +47,11 @@ fun CodeEditorScreen(
             },
             actions = {
                 IconButton(
-                    onClick = {
-                        onSave(text)
-                    }
-                ) {
+    onClick = {
+        onSave(uiState.text)
+        viewModel.status("✅ Файл сохранён")
+    }
+) {
                     Icon(Icons.Default.Save, null)
                 }
             }
@@ -72,10 +82,10 @@ fun CodeEditorScreen(
 ) { padding ->
 
     OutlinedTextField(
-        value = text,
-        onValueChange = {
-            text = it
-        },
+    value = uiState.text,
+    onValueChange = {
+        viewModel.update(it)
+    },
         modifier = Modifier
             .fillMaxSize()
             .padding(padding),
