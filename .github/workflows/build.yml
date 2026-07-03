@@ -1,9 +1,9 @@
-name: Android Build
+name: Android Debug Build
 
 on:
   push:
     branches:
-      - "**"
+      - main
   workflow_dispatch:
 
 jobs:
@@ -14,18 +14,75 @@ jobs:
       - name: Checkout
         uses: actions/checkout@v4
 
-      - name: Set up JDK 17
+      - name: Setup Java 17
         uses: actions/setup-java@v4
         with:
           distribution: temurin
-          java-version: "17"
+          java-version: 17
 
       - name: Setup Gradle
-        uses: gradle/actions/setup-gradle@v4
+        uses: gradle/actions/setup-gradle@v3
 
-      - name: Make gradlew executable
+      - name: Grant Gradle Permission
         run: chmod +x gradlew
 
-      - name: Compile Kotlin (Debug)
+      ###############################################################
+      # DIAGNOSTICS
+      ###############################################################
+
+      - name: Diagnostic - ToolRegistry
+        continue-on-error: true
         run: |
-          ./gradlew :app:compileDebugKotlin --stacktrace --info --no-daemon
+          echo "================ ToolRegistry ================"
+          grep -R -n "class ToolRegistry\|interface Tool\b\|typealias ToolRegistry" app/src/main/java || true
+
+      - name: Diagnostic - Tool.kt
+        continue-on-error: true
+        run: |
+          echo "================ Tool.kt ================"
+          sed -n '1,260p' app/src/main/java/com/erekeai/domain/tool/Tool.kt || true
+
+      - name: Diagnostic - ToolModels.kt
+        continue-on-error: true
+        run: |
+          echo "================ ToolModels.kt ================"
+          sed -n '1,260p' app/src/main/java/com/erekeai/domain/tool/ToolModels.kt || true
+
+      - name: Diagnostic - Room
+        continue-on-error: true
+        run: |
+          echo "================ Room ================"
+          grep -R -n "@Database\|@Dao\|@Entity" app/src/main/java || true
+
+      - name: Diagnostic - Generated Sources
+        continue-on-error: true
+        run: |
+          echo "================ Generated ================"
+          find app/build/generated -type f | head -100 || true
+
+      - name: Diagnostic - Compile Kotlin
+        continue-on-error: true
+        run: |
+          ./gradlew :app:compileDebugKotlin --stacktrace --info --no-daemon 2>&1 | tee compile.log
+
+      - name: Upload compile log
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: compile-log
+          path: compile.log
+
+      ###############################################################
+      # BUILD APK
+      ###############################################################
+
+      - name: Build Debug APK
+        run: |
+          ./gradlew :app:assembleDebug --stacktrace --no-daemon
+
+      - name: Upload APK
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: ErekeAI-debug
+          path: app/build/outputs/apk/debug/*.apk
