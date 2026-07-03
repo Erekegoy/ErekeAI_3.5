@@ -26,7 +26,7 @@ fun ProjectExplorerScreen(
     viewModel: ProjectExplorerViewModel = hiltViewModel()
 ) {
 
-    val nodes by viewModel.nodes.collectAsState()
+    val rootNode by viewModel.root.collectAsState()
 
     LaunchedEffect(root) {
         viewModel.open(root)
@@ -51,33 +51,69 @@ fun ProjectExplorerScreen(
                 .padding(padding)
         ) {
 
-            items(nodes) { node ->
+            rootNode?.children?.let { children ->
 
-                Row(
-                    modifier = Modifier
-                        .fillMaxWidth()
-                        .clickable {
-                            if (node.isDirectory)
-                                viewModel.toggle(node)
-                            else
-                                onOpenFile(node.file)
-                        }
-                        .padding(start = (node.level * 16).dp)
-                ) {
-
-                    Icon(
-                        if (node.isDirectory)
-                            Icons.Default.Folder
-                        else
-                            Icons.Default.InsertDriveFile,
-                        null
+                items(children) { node ->
+                    ProjectNodeItem(
+                        node = node,
+                        onOpenFile = onOpenFile,
+                        onToggle = viewModel::toggle
                     )
-
-                    Spacer(Modifier.width(8.dp))
-
-                    Text(node.name)
                 }
+
             }
         }
+    }
+}
+
+@Composable
+private fun ProjectNodeItem(
+    node: ProjectNode,
+    onOpenFile: (File) -> Unit,
+    onToggle: (ProjectNode) -> Unit
+) {
+
+    Column {
+
+        Row(
+            modifier = Modifier
+                .fillMaxWidth()
+                .clickable {
+                    if (node.isDirectory)
+                        onToggle(node)
+                    else
+                        onOpenFile(node.file)
+                }
+                .padding(start = (node.level * 16).dp, top = 6.dp, bottom = 6.dp)
+        ) {
+
+            Icon(
+                imageVector =
+                    if (node.isDirectory)
+                        Icons.Default.Folder
+                    else
+                        Icons.Default.InsertDriveFile,
+                contentDescription = null
+            )
+
+            Spacer(Modifier.width(8.dp))
+
+            Text(node.name)
+        }
+
+        if (node.expanded) {
+
+            node.children.forEach { child ->
+
+                ProjectNodeItem(
+                    node = child,
+                    onOpenFile = onOpenFile,
+                    onToggle = onToggle
+                )
+
+            }
+
+        }
+
     }
 }
