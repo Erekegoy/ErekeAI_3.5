@@ -9,8 +9,6 @@ import androidx.compose.material3.*
 import androidx.compose.runtime.*
 import androidx.compose.ui.Modifier
 
-import androidx.hilt.navigation.compose.hiltViewModel
-import com.erekeai.features.codeeditor.viewmodel.CodeEditorViewModel
 
 import androidx.hilt.navigation.compose.hiltViewModel
 import androidx.lifecycle.compose.collectAsStateWithLifecycle
@@ -26,7 +24,7 @@ fun CodeEditorScreen(
 ) {
 
 val viewModel: CodeEditorViewModel = hiltViewModel()
-val uiState by viewModel.uiState.collectAsStateWithLifecycle()
+val uiState by viewModel.uiState.collectAsState()
 LaunchedEffect(fileName) {
     viewModel.open(fileName, content)
 }    
