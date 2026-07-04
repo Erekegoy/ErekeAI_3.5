@@ -262,7 +262,8 @@ object Milestone2Module {
         )
 
     @Provides
-    @Singleton
-    fun provideChangeNotifier() =
-        com.erekeai.notifier.ChangeNotifier()
+@Singleton
+fun provideChangeNotifier(): com.erekeai.notifier.ChangeNotifier {
+    return com.erekeai.notifier.ChangeNotifier()
+}
 }
