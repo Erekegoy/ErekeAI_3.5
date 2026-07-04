@@ -26,10 +26,15 @@ abstract class BaseHttpProvider(
     protected fun streamRequest(prompt: String, apiKey: String): Flow<String> = flow {
         val request = buildRequest(prompt, apiKey)
         client.newCall(request).execute().use { response ->
-            if (!response.isSuccessful) {
-                throw IllegalStateException("Ошибка API: ${response.code} ${response.message}")
-            }
-            val body = response.body ?: return@use
+    if (!response.isSuccessful) {
+        val errorBody = response.body?.string().orEmpty()
+
+        throw IllegalStateException(
+            "Ошибка API ${response.code}\n$errorBody"
+        )
+    }
+
+    val body = response.body ?: return@use
             BufferedReader(InputStreamReader(body.byteStream())).use { reader ->
                 var line: String?
                 while (reader.readLine().also { line = it } != null) {
