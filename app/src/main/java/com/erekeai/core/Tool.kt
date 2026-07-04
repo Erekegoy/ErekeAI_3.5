@@ -5,33 +5,15 @@ package com.erekeai.core
  * READ        — безопасно, выполняется без подтверждения.
  * WRITE       — изменяет файлы/репозиторий, требует Approval.
  * DESTRUCTIVE — потенциально необратимо (удаление, force push), требует отдельного явного Approval.
+ *
+ * Используется исполнителем автофиксов (SimpleFixExecutor/RetryingFixExecutor) и ApprovalService.
+ * ВАЖНО: основной контракт инструментов агента — это com.erekeai.domain.tool.Tool
+ * (см. ToolModule) — раньше здесь же лежали дублирующие interface Tool / ToolResult /
+ * class ToolRegistry, которые нигде не импортировались и были удалены как мёртвый код,
+ * чтобы не путать с реальной системой инструментов в domain.tool.*.
  */
 enum class Permission {
     READ,
     WRITE,
     DESTRUCTIVE
-}
-
-/**
- * Результат выполнения инструмента.
- * Используем sealed class вместо Result<String>, чтобы явно различать
- * "успех с данными" и "успех без данных" и упростить логирование в Memory.
- */
-sealed class ToolResult {
-    data class Success(val output: String = "") : ToolResult()
-    data class Failure(val error: String, val cause: Throwable? = null) : ToolResult()
-}
-
-/**
- * Базовый контракт инструмента.
- *
- * ВАЖНО: любая новая интеграция (Git, Terminal, Search, LSP) должна
- * реализовывать именно этот интерфейс и регистрироваться в ToolRegistry,
- * а не вызываться напрямую из Planner/Executor/Agent.
- */
-interface Tool {
-    val id: String
-    val permission: Permission
-
-    suspend fun execute(args: Map<String, String>): ToolResult
 }
