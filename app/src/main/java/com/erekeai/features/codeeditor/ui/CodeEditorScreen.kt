@@ -9,6 +9,8 @@ import androidx.compose.material3.*
 import androidx.compose.runtime.*
 import androidx.compose.ui.Modifier
 
+import androidx.compose.ui.viewinterop.AndroidView
+import io.github.rosemoe.sora.widget.CodeEditor
 
 import androidx.hilt.navigation.compose.hiltViewModel
 import com.erekeai.features.codeeditor.viewmodel.CodeEditorViewModel
