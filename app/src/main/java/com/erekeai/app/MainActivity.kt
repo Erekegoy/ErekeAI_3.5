@@ -4,6 +4,8 @@ import android.os.Bundle
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
 import androidx.activity.enableEdgeToEdge
+import androidx.compose.foundation.layout.Box
+import com.erekeai.approval.ApprovalHost
 import androidx.compose.runtime.remember
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.getValue
@@ -32,24 +34,44 @@ class MainActivity : ComponentActivity() {
         setContent {
             ErekeAiTheme {
                 Surface(modifier = Modifier.fillMaxSize()) {
-                    val navController = rememberNavController()
-var openedFile by remember { mutableStateOf<java.io.File?>(null) }
-                    NavHost(navController = navController, startDestination = "chat") {
-                        composable("chat") {
-                             ChatScreen(
-    onOpenSettings = {
-        navController.navigate("settings")
-    },
-    onOpenKnowledgeBase = {
-        navController.navigate("knowledge_base")
-    },
-    onOpenDevAgent = {
-        navController.navigate("dev_agent")
-    },
-    onOpenProjectExplorer = {
-        navController.navigate("project_explorer")
+    val navController = rememberNavController()
+    var openedFile by remember { mutableStateOf<java.io.File?>(null) }
+
+    Box(modifier = Modifier.fillMaxSize()) {
+
+        NavHost(
+            navController = navController,
+            startDestination = "chat"
+        ) {
+
+            composable("chat") {
+                ChatScreen(
+                    onOpenSettings = {
+                        navController.navigate("settings")
+                    },
+                    onOpenKnowledgeBase = {
+                        navController.navigate("knowledge_base")
+                    },
+                    onOpenDevAgent = {
+                        navController.navigate("dev_agent")
+                    },
+                    onOpenProjectExplorer = {
+                        navController.navigate("project_explorer")
+                    }
+                )
+            }
+
+            // ↓↓↓ ОСТАЛЬНЫЕ composable("settings"), ("knowledge_base"),
+            // ("project_explorer"), ("code_editor") и т.д.
+            // ОСТАЮТСЯ БЕЗ ИЗМЕНЕНИЙ.
+
+        }
+
+        ApprovalHost()
+
     }
-)
+}
+
                         }
                         composable("settings") {
                             SettingsScreen(onBack = { navController.popBackStack() })
