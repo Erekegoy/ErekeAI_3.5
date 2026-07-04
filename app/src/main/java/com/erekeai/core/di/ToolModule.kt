@@ -228,18 +228,20 @@ object ExecutorModule {
         com.erekeai.diff.JavaDiffUtilsService()
 
     @Provides
-    @Singleton
-    fun provideSimpleFixExecutor(
-        fileRepository: com.erekeai.core.FileRepository,
-        planner: com.erekeai.planner.Planner,
-        diffService: com.erekeai.diff.DiffService,
-        approvalService: com.erekeai.approval.ApprovalService
-    ): com.erekeai.executor.SimpleFixExecutor =
-        com.erekeai.executor.SimpleFixExecutor(
-            fileRepository,
-            planner,
-            diffService,
-            approvalService
-        )
+@Singleton
+fun provideSimpleFixExecutor(
+    fileRepository: com.erekeai.core.FileRepository,
+    backupManager: com.erekeai.backup.BackupManager,
+    planner: com.erekeai.planner.Planner,
+    diffService: com.erekeai.diff.DiffService,
+    approvalService: com.erekeai.approval.ApprovalService
+): com.erekeai.executor.SimpleFixExecutor =
+    com.erekeai.executor.SimpleFixExecutor(
+        fileRepository,
+        backupManager,
+        planner,
+        diffService,
+        approvalService
+    )
 }
 
