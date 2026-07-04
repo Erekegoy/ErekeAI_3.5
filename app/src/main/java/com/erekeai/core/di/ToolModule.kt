@@ -43,6 +43,8 @@ import com.erekeai.data.tools.ListScheduledTasksTool
 import com.erekeai.data.tools.ScheduleTaskTool
 import com.erekeai.data.tools.SetActiveProjectTool
 import com.erekeai.data.tools.UninstallPluginTool
+import com.erekeai.data.tools.dev.DeveloperWorkflowTool
+
 import com.erekeai.domain.agent.AgentOrchestrator
 import com.erekeai.domain.tool.Tool
 import com.erekeai.domain.tool.ToolRegistry
@@ -51,7 +53,8 @@ import dagger.Module
 import dagger.Provides
 import dagger.hilt.InstallIn
 import dagger.hilt.components.SingletonComponent
-import javax.inject.Singleton
+import javax.inject.Singletono
+
 
 import java.io.File
 
@@ -86,6 +89,7 @@ object ToolModule {
         gitOpsTool: GitOpsTool,
         terminalAgentTool: TerminalAgentTool,
         buildApkAgentTool: BuildApkAgentTool,
+        developerWorkflowTool: DeveloperWorkflowTool,
         createWorkflowTool: CreateWorkflowTool,
         runWorkflowTool: RunWorkflowTool,
         listWorkflowsTool: ListWorkflowsTool,
@@ -117,7 +121,7 @@ object ToolModule {
             importDocumentTool, knowledgeBaseSearchTool, listKnowledgeBaseSourcesTool,
             writeFileTool, analyzeProjectTool, codeSearchTool, staticCheckTool,
             analyzeLogTool, gitHubTool, devPlanTool,
-            gitOpsTool, terminalAgentTool, buildApkAgentTool,
+            gitOpsTool, terminalAgentTool, buildApkAgentTool, developerWorkflowTool,
             createWorkflowTool, runWorkflowTool, listWorkflowsTool,
             mcpListServersTool, mcpListToolsTool, mcpCallToolTool,
             ollamaManagerTool, ggufManagerTool,
