@@ -59,7 +59,7 @@ class MainActivity : ComponentActivity() {
                         navController.navigate("project_explorer")
                     }
                 )
-            
+            }
                         composable("settings") {
                             SettingsScreen(onBack = { navController.popBackStack() })
                         }
@@ -98,11 +98,14 @@ composable("code_editor") {
             file?.writeText(newText)
         }
     )
-} 
-        ApprovalHost()
-                   }
-                }
-            }
-        }
-    }
+  } 
 }
+
+ApprovalHost()        
+ 
+ }
+ }
+ }
+ }
+ }
+ 
