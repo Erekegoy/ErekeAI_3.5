@@ -53,7 +53,6 @@ import dagger.hilt.InstallIn
 import dagger.hilt.components.SingletonComponent
 import javax.inject.Singleton
 
-import dagger.Provides
 import java.io.File
 
 @Module
