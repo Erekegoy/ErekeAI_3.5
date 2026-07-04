@@ -255,11 +255,9 @@ object Milestone2Module {
         )
 
     @Provides
-    @Singleton
-    fun provideBuildRunner(): com.erekeai.build.BuildRunner =
-        com.erekeai.build.LocalGradleBuildRunner(
-            File(".")
-        )
+@Singleton
+fun provideBuildRunner(): com.erekeai.build.BuildRunner =
+    com.erekeai.build.NoOpBuildRunner()
 
     @Provides
 @Singleton
