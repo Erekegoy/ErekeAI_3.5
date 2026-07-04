@@ -80,17 +80,21 @@ LaunchedEffect(fileName) {
 
 ) { padding ->
 
-    OutlinedTextField(
-    value = uiState.text,
-    onValueChange = {
-        viewModel.update(it)
+    AndroidView(
+    modifier = Modifier
+        .fillMaxSize()
+        .padding(padding),
+    factory = { context ->
+        CodeEditor(context).apply {
+            setText(uiState.text)
+        }
     },
-        modifier = Modifier
-            .fillMaxSize()
-            .padding(padding),
-        singleLine = false,
-        maxLines = Int.MAX_VALUE
-    )
+    update = { editor ->
+        if (editor.text.toString() != uiState.text) {
+            editor.setText(uiState.text)
+        }
+    }
+)
 
 }
 
