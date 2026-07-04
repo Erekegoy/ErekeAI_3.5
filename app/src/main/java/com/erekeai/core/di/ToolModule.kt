@@ -53,6 +53,9 @@ import dagger.hilt.InstallIn
 import dagger.hilt.components.SingletonComponent
 import javax.inject.Singleton
 
+import dagger.Provides
+import java.io.File
+
 @Module
 @InstallIn(SingletonComponent::class)
 object ToolModule {
@@ -168,6 +171,17 @@ abstract class PlannerModule {
 
 @Module
 @InstallIn(SingletonComponent::class)
+abstract class ExecutorPlannerModule {
+
+    @Binds
+    @Singleton
+    abstract fun bindPlanner(
+        impl: com.erekeai.planner.PlannerAdapter
+    ): com.erekeai.planner.Planner
+}
+
+@Module
+@InstallIn(SingletonComponent::class)
 abstract class ProjectModule {
     @Binds
     @Singleton
@@ -198,3 +212,34 @@ abstract class PluginModule {
     abstract fun bindPluginRepository(impl: com.erekeai.data.plugin.PluginRepositoryImpl): com.erekeai.domain.plugin.PluginRepository
 }
 
+@Module
+@InstallIn(SingletonComponent::class)
+object ExecutorModule {
+
+    @Provides
+    @Singleton
+    fun provideFileRepository(): com.erekeai.core.FileRepository =
+        com.erekeai.core.LocalFileRepository(
+            java.io.File("/storage/emulated/0")
+        )
+
+    @Provides
+    @Singleton
+    fun provideDiffService(): com.erekeai.diff.DiffService =
+        com.erekeai.diff.JavaDiffUtilsService()
+
+    @Provides
+    @Singleton
+    fun provideSimpleFixExecutor(
+        fileRepository: com.erekeai.core.FileRepository,
+        planner: com.erekeai.planner.Planner,
+        diffService: com.erekeai.diff.DiffService,
+        approvalService: com.erekeai.approval.ApprovalService
+    ): com.erekeai.executor.SimpleFixExecutor =
+        com.erekeai.executor.SimpleFixExecutor(
+            fileRepository,
+            planner,
+            diffService,
+            approvalService
+        )
+}
