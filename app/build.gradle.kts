@@ -130,6 +130,7 @@ dependencies {
 
     // ✅ Git Clone/Push/Pull — чистая Java-реализация git (нет системного git-бинаря на Android)
     implementation("org.eclipse.jgit:org.eclipse.jgit:6.7.0.202309050840-r")
+    implementation("io.github.java-diff-utils:java-diff-utils:4.12")
 
     // ✅ Vision Agent — захват фото с камеры
     implementation("androidx.camera:camera-core:1.3.4")
