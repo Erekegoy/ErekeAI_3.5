@@ -242,3 +242,27 @@ object ExecutorModule {
             approvalService
         )
 }
+
+@Module
+@InstallIn(SingletonComponent::class)
+object Milestone2Module {
+
+    @Provides
+    @Singleton
+    fun provideBackupManager(): com.erekeai.backup.BackupManager =
+        com.erekeai.backup.FileBackupManager(
+            File(".erekeai-backups")
+        )
+
+    @Provides
+    @Singleton
+    fun provideBuildRunner(): com.erekeai.build.BuildRunner =
+        com.erekeai.build.LocalGradleBuildRunner(
+            File(".")
+        )
+
+    @Provides
+    @Singleton
+    fun provideChangeNotifier() =
+        com.erekeai.notifier.ChangeNotifier()
+}

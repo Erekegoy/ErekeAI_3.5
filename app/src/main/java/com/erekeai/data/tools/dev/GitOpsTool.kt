@@ -68,7 +68,10 @@ class GitOpsTool @Inject constructor(
                 }
                 "commit" -> Git.open(repoDir).use { git ->
                     val message = args["message"] ?: return@withContext ToolResult(false, "Не указан 'message'")
-                    git.add().addFilepattern(".").call()
+                    val filePath = args["path"] ?: "."
+git.add()
+    .addFilepattern(filePath)
+    .call()
                     val commit = git.commit().setMessage(message).call()
                     ToolResult(true, "Коммит создан: ${commit.name.take(8)} — $message")
                 }
