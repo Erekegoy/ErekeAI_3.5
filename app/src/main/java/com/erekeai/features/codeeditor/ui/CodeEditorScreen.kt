@@ -14,6 +14,7 @@ import io.github.rosemoe.sora.widget.CodeEditor
 
 import androidx.hilt.navigation.compose.hiltViewModel
 import com.erekeai.features.codeeditor.viewmodel.CodeEditorViewModel
+import io.github.rosemoe.sora.event.ContentChangeEvent
 
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
@@ -87,6 +88,10 @@ LaunchedEffect(fileName) {
     factory = { context ->
         CodeEditor(context).apply {
             setText(uiState.text)
+
+         subscribeEvent(ContentChangeEvent::class.java) { _, _ ->
+    viewModel.update(text.toString())
+}
         }
     },
     update = { editor ->
