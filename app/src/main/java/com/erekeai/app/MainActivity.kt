@@ -59,20 +59,7 @@ class MainActivity : ComponentActivity() {
                         navController.navigate("project_explorer")
                     }
                 )
-            }
-
-            // ↓↓↓ ОСТАЛЬНЫЕ composable("settings"), ("knowledge_base"),
-            // ("project_explorer"), ("code_editor") и т.д.
-            // ОСТАЮТСЯ БЕЗ ИЗМЕНЕНИЙ.
-
-        }
-
-        ApprovalHost()
-
-    }
-}
-
-                        }
+            
                         composable("settings") {
                             SettingsScreen(onBack = { navController.popBackStack() })
                         }
@@ -112,6 +99,7 @@ composable("code_editor") {
         }
     )
 } 
+        ApprovalHost()
                    }
                 }
             }
