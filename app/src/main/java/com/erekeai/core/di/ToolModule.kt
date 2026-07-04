@@ -53,7 +53,7 @@ import dagger.Module
 import dagger.Provides
 import dagger.hilt.InstallIn
 import dagger.hilt.components.SingletonComponent
-import javax.inject.Singletono
+import javax.inject.Singleton
 
 
 import java.io.File
@@ -246,6 +246,43 @@ fun provideSimpleFixExecutor(
         planner,
         diffService,
         approvalService
+    )
+
+@Provides
+@Singleton
+fun provideBackupManager(): com.erekeai.backup.BackupManager =
+    com.erekeai.backup.FileBackupManager(
+        java.io.File("/storage/emulated/0/ErekeAI_Backups")
+    )
+
+@Provides
+@Singleton
+fun provideBuildRunner(): com.erekeai.build.BuildRunner =
+    com.erekeai.build.LocalGradleBuildRunner(
+        java.io.File("/storage/emulated/0")
+    )
+
+@Provides
+@Singleton
+fun provideRetryingFixExecutor(
+    simpleFixExecutor: com.erekeai.executor.SimpleFixExecutor,
+    fileRepository: com.erekeai.core.FileRepository,
+    backupManager: com.erekeai.backup.BackupManager,
+    diffService: com.erekeai.diff.DiffService,
+    buildRunner: com.erekeai.build.BuildRunner,
+    approvalService: com.erekeai.approval.ApprovalService,
+    changeNotifier: com.erekeai.notifier.ChangeNotifier,
+    gitHubTool: com.erekeai.data.tools.dev.GitHubTool
+): com.erekeai.executor.RetryingFixExecutor =
+    com.erekeai.executor.RetryingFixExecutor(
+        simpleExecutor = simpleFixExecutor,
+        fileRepository = fileRepository,
+        backupManager = backupManager,
+        diffService = diffService,
+        buildRunner = buildRunner,
+        approvalService = approvalService,
+        changeNotifier = changeNotifier,
+        gitTool = gitHubTool
     )
 }
 
