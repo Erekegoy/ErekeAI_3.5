@@ -89,8 +89,8 @@ LaunchedEffect(fileName) {
         CodeEditor(context).apply {
             setText(uiState.text)
 
-         subscribeEvent(ContentChangeEvent::class.java) { _, _ ->
-    viewModel.update(text.toString())
+         subscribeAlways(ContentChangeEvent::class.java) {
+    viewModel.update(getText().toString())
 }
         }
     },
