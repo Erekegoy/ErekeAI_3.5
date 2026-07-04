@@ -3,6 +3,8 @@
 /local.properties
 .DS_Store
 /build
+!app/src/main/java/com/erekeai/build/
+!app/src/main/java/com/erekeai/build/**
 /captures
 .externalNativeBuild
 .cxx
