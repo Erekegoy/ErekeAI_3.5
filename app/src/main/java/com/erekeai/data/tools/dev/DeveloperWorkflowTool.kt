@@ -23,7 +23,7 @@ class DeveloperWorkflowTool @Inject constructor(
     private val gitOpsTool: GitOpsTool,
     private val retryingFixExecutor: RetryingFixExecutor,
     private val developerEngine: DeveloperEngine
-{
+) : Tool {
 
     override val definition = ToolDefinition(
         name = "developer_workflow",
