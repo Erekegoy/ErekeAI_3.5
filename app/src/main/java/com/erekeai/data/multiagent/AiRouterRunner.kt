@@ -37,10 +37,11 @@ class AiRouterRunner @Inject constructor(
     }
 
     private fun AiProviderType.toAgentProvider(): AgentProvider =
-        when (this) {
-            AiProviderType.OPENAI -> AgentProvider.GPT
-            AiProviderType.GEMINI -> AgentProvider.GEMINI
-            AiProviderType.GROQ -> AgentProvider.GROK
-            AiProviderType.OLLAMA -> AgentProvider.LOCAL
-        }
+    when (this) {
+        AiProviderType.OPENAI -> AgentProvider.GPT
+        AiProviderType.GEMINI -> AgentProvider.GEMINI
+        AiProviderType.GROQ -> AgentProvider.GROK
+        AiProviderType.OLLAMA -> AgentProvider.LOCAL
+        AiProviderType.OFFLINE -> AgentProvider.LOCAL
+    }
 }
