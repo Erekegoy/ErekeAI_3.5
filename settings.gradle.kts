@@ -16,5 +16,10 @@ dependencyResolutionManagement {
 }
 
 rootProject.name = "ErekeAI"
+
 include(":app")
 include(":sdk")
+include(":modules:llama")
+
+project(":modules:llama").projectDir = file("modules/llama")
+

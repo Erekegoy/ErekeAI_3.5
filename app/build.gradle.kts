@@ -169,6 +169,7 @@ dependencies {
 
     // 🟡 Планировщик фоновых агентов
     implementation("androidx.work:work-runtime-ktx:2.9.1")
+    implementation(project(":modules:llama"))
     implementation("androidx.hilt:hilt-work:1.2.0")
     ksp("androidx.hilt:hilt-compiler:1.2.0")
 
