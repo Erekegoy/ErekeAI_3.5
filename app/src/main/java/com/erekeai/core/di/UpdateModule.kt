@@ -1,15 +1,13 @@
 package com.erekeai.core.di
 
-import com.jakewharton.retrofit2.converter.kotlinx.serialization.asConverterFactory
 import com.erekeai.update.GitHubApi
 import dagger.Module
 import dagger.Provides
 import dagger.hilt.InstallIn
 import dagger.hilt.components.SingletonComponent
-import kotlinx.serialization.json.Json
-import okhttp3.MediaType.Companion.toMediaType
 import okhttp3.OkHttpClient
 import retrofit2.Retrofit
+import retrofit2.converter.gson.GsonConverterFactory
 import javax.inject.Singleton
 
 @Module
@@ -18,37 +16,20 @@ object UpdateModule {
 
     @Provides
     @Singleton
-    fun provideJson(): Json =
-        Json {
-            ignoreUnknownKeys = true
-            isLenient = true
-        }
-
-    @Provides
-    @Singleton
     fun provideClient(): OkHttpClient =
         OkHttpClient.Builder().build()
 
     @Provides
     @Singleton
-    fun provideRetrofit(
-        client: OkHttpClient,
-        json: Json
-    ): Retrofit =
+    fun provideRetrofit(client: OkHttpClient): Retrofit =
         Retrofit.Builder()
             .baseUrl("https://api.github.com/")
             .client(client)
-            .addConverterFactory(
-                json.asConverterFactory(
-                    "application/json".toMediaType()
-                )
-            )
+            .addConverterFactory(GsonConverterFactory.create())
             .build()
 
     @Provides
     @Singleton
-    fun provideGitHubApi(
-        retrofit: Retrofit
-    ): GitHubApi =
+    fun provideGitHubApi(retrofit: Retrofit): GitHubApi =
         retrofit.create(GitHubApi::class.java)
 }
