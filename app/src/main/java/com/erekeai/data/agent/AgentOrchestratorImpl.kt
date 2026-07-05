@@ -56,6 +56,8 @@ android.util.Log.d("ErekeAI", "RAW = ${rawResponse}")
 
 val parsed = ReActParser.parse(rawResponse.toString())
 
+android.util.Log.d("ErekeAI", "PARSED = $parsed")
+
 parsed.thought?.takeIf { it.isNotBlank() }?.let {
     emit(AgentEvent.Thinking(it))
 }
