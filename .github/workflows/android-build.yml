@@ -1,4 +1,4 @@
-name: Android CI (assembleDebug)
+name: Android CI
 
 on:
   push:
@@ -28,13 +28,17 @@ jobs:
           path: |
             ~/.gradle/caches
             ~/.gradle/wrapper
-          key: gradle-${{ runner.os }}-${{ hashFiles('**/*.gradle*','**/gradle-wrapper.properties') }}
+          key: gradle-${{ runner.os }}-${{ hashFiles('**/*.gradle*', '**/gradle-wrapper.properties') }}
+          restore-keys: |
+            gradle-${{ runner.os }}-
 
-      - run: chmod +x gradlew
+      - name: Make Gradle executable
+        run: chmod +x gradlew
 
-      - run: echo "sdk.dir=$ANDROID_HOME" > local.properties
+      - name: Create local.properties
+        run: echo "sdk.dir=$ANDROID_HOME" > local.properties
 
-             - name: Decode keystore
+      - name: Decode keystore
         run: |
           echo "${{ secrets.KEYSTORE_BASE64 }}" | base64 -d > release.jks
 
@@ -45,56 +49,11 @@ jobs:
           echo "KEY_ALIAS=${{ secrets.KEY_ALIAS }}" >> $GITHUB_ENV
           echo "KEY_PASSWORD=${{ secrets.KEY_PASSWORD }}" >> $GITHUB_ENV
 
-      ####################################################
-      # DIAGNOSTICS
-      ####################################################
+      - name: Build Release APK
+        run: ./gradlew :app:assembleRelease --stacktrace --no-daemon
 
-      - name: ToolRegistry
-        continue-on-error: true
-        run: |
-          grep -R -n "class ToolRegistry\|interface Tool\b\|typealias ToolRegistry" app/src/main/java || true
-
-      - name: Tool.kt
-        continue-on-error: true
-        run: |
-          sed -n '1,260p' app/src/main/java/com/erekeai/domain/tool/Tool.kt || true
-
-      - name: ToolModels.kt
-        continue-on-error: true
-        run: |
-          sed -n '1,260p' app/src/main/java/com/erekeai/domain/tool/ToolModels.kt || true
-
-      - name: Room
-        continue-on-error: true
-        run: |
-          grep -R -n "@Database\|@Dao\|@Entity" app/src/main/java || true
-
-      - name: Generated Sources
-        continue-on-error: true
-        run: |
-          find app/build/generated -type f | head -100 || true
-
-      - name: Compile Kotlin
-        continue-on-error: true
-        run: |
-          ./gradlew :app:compileDebugKotlin --stacktrace --info --no-daemon 2>&1 | tee compile.log
-
-      - uses: actions/upload-artifact@v4
-        if: always()
+      - name: Upload APK
+        uses: actions/upload-artifact@v4
         with:
-          name: compile-log
-          path: compile.log
-
-      ####################################################
-      # BUILD
-      ####################################################
-
-      - name: Build APK
-        run: |
-          ./gradlew :app:assembleRelease --stacktrace --no-daemon
-
-      - uses: actions/upload-artifact@v4
-        if: always()
-        with:
-          name: ErekeAI-debug
+          name: ErekeAI-release
           path: app/build/outputs/apk/release/*.apk
