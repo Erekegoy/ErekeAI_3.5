@@ -42,7 +42,7 @@ class DeveloperEngine @Inject constructor(
                 currentStep = index + 1,
                 mode = when (step) {
                     DeveloperWorkflow.ANALYZE_PROJECT -> DeveloperMode.ANALYZE
-                    DeveloperWorkflow.CREATE_PLAN -> DeveloperMode.PLANNING
+                    DeveloperWorkflow.CREATE_PLAN -> DeveloperMode.PLAN
                     else -> DeveloperMode.EDIT
                 }
             )
