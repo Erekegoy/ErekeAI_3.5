@@ -44,8 +44,8 @@ val keyPassword = System.getenv("KEY_PASSWORD")
         if (keystoreFile != null) {
             storeFile = file(keystoreFile)
             storePassword = keystorePassword
-            keyAlias = System.getenv("KEY_ALIAS")
-            keyPassword = System.getenv("KEY_PASSWORD")
+            keyAlias = signingKeyAlias
+            keyPassword = signingKeyPassword
         }
     }
 }
