@@ -16,20 +16,16 @@ object UpdateModule {
 
     @Provides
     @Singleton
-    fun provideClient(): OkHttpClient =
-        OkHttpClient.Builder().build()
+    fun provideGitHubApi(
+        client: OkHttpClient
+    ): GitHubApi {
 
-    @Provides
-    @Singleton
-    fun provideRetrofit(client: OkHttpClient): Retrofit =
-        Retrofit.Builder()
+        val retrofit = Retrofit.Builder()
             .baseUrl("https://api.github.com/")
             .client(client)
             .addConverterFactory(GsonConverterFactory.create())
             .build()
 
-    @Provides
-    @Singleton
-    fun provideGitHubApi(retrofit: Retrofit): GitHubApi =
-        retrofit.create(GitHubApi::class.java)
+        return retrofit.create(GitHubApi::class.java)
+    }
 }
