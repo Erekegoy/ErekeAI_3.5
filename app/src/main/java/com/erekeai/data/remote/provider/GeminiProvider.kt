@@ -40,7 +40,7 @@ class GeminiProvider @Inject constructor(
         )
         val body = JSONObject().put("contents", contents).toString()
         val url = "https://generativelanguage.googleapis.com/v1beta/models/" +
-            "gemini-1.5-flash:streamGenerateContent?alt=sse&key=$apiKey"
+            "gemini-2.5-flash:streamGenerateContent?alt=sse&key=$apiKey"
         return Request.Builder()
             .url(url)
             .post(jsonBody(body))
