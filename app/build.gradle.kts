@@ -8,6 +8,12 @@ plugins {
 }
 
 android {
+
+val keystoreFile = System.getenv("KEYSTORE_FILE")
+val keystorePassword = System.getenv("KEYSTORE_PASSWORD")
+val keyAlias = System.getenv("KEY_ALIAS")
+val keyPassword = System.getenv("KEY_PASSWORD")
+
     namespace = "com.erekeai.app"
     compileSdk = 34
 
@@ -31,11 +37,28 @@ android {
         buildConfigField("String", "OPENAI_API_KEY", "\"${localProps.getProperty("OPENAI_API_KEY", "")}\"")
     }
 
+   signingConfigs {
+
+    create("release") {
+
+        if (keystoreFile != null) {
+            storeFile = file(keystoreFile)
+            storePassword = keystorePassword
+            keyAlias = this@android.keyAlias
+            keyPassword = this@android.keyPassword
+        }
+    }
+}
+
     buildTypes {
         release {
-            isMinifyEnabled = true
-            proguardFiles(getDefaultProguardFile("proguard-android-optimize.txt"), "proguard-rules.pro")
-        }
+    signingConfig = signingConfigs.getByName("release")
+    isMinifyEnabled = true
+    proguardFiles(
+        getDefaultProguardFile("proguard-android-optimize.txt"),
+        "proguard-rules.pro"
+    )
+}
         debug {
             isMinifyEnabled = false
         }
