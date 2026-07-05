@@ -12,11 +12,12 @@ class AiRouterRunner @Inject constructor(
     ): AgentAnswer {
 
         return AgentAnswer(
-            provider = AgentProvider.LOCAL,
-            answer = "",
-            success = false,
-            score = 0
-        )
+    provider = AgentProvider.LOCAL,
+    model = "AiRouter",
+    answer = "",
+    score = 0,
+    success = false
+)
 
     }
 }
