@@ -44,8 +44,8 @@ val keyPassword = System.getenv("KEY_PASSWORD")
         if (keystoreFile != null) {
             storeFile = file(keystoreFile)
             storePassword = keystorePassword
-            keyAlias = this@android.keyAlias
-            keyPassword = this@android.keyPassword
+            keyAlias = System.getenv("KEY_ALIAS")
+            keyPassword = System.getenv("KEY_PASSWORD")
         }
     }
 }
