@@ -44,53 +44,65 @@ class DeveloperEngine @Inject constructor(
 
                 when (step) {
 
-                    DeveloperWorkflow.ANALYZE_PROJECT -> {
-                        toolRegistry.find("analyze_project")
-                            ?.execute(emptyMap())
-                    }
+    DeveloperWorkflow.ANALYZE_PROJECT -> {
+        toolRegistry.find("analyze_project")
+            ?.execute(emptyMap())
+    }
 
-                    DeveloperWorkflow.CREATE_PLAN -> {
-                        toolRegistry.find("create_dev_plan")
-                            ?.execute(
-                                mapOf(
-                                    "task" to task.description
-                                )
-                            )
-                    }
+    DeveloperWorkflow.CREATE_PLAN -> {
+        toolRegistry.find("create_dev_plan")
+            ?.execute(
+                mapOf(
+                    "task" to task.description
+                )
+            )
+    }
 
-                    DeveloperWorkflow.SEARCH_CODE -> {
-                        toolRegistry.find("code_search")
-                            ?.execute(
-                                mapOf(
-                                    "query" to task.description
-                                )
-                            )
-                    }
+    DeveloperWorkflow.SEARCH_CODE -> {
+        toolRegistry.find("code_search")
+            ?.execute(
+                mapOf(
+                    "query" to task.description
+                )
+            )
+    }
 
-                    DeveloperWorkflow.READ_FILE -> {
-                        // Будет реализовано позже
-                    }
+    DeveloperWorkflow.READ_FILE -> {
+        // будет реализовано позже
+    }
 
-                    DeveloperWorkflow.MODIFY_FILE -> {
-                        // Будет реализовано позже
-                    }
+    DeveloperWorkflow.MODIFY_FILE -> {
+        // будет реализовано позже
+    }
 
-                    DeveloperWorkflow.BUILD -> {
-                        // Будет реализовано позже
-                    }
+    DeveloperWorkflow.BUILD -> {
+        // будет реализовано позже
+    }
 
-                    DeveloperWorkflow.ANALYZE_LOG -> {
-                        // Будет реализовано позже
-                    }
+    DeveloperWorkflow.ANALYZE_LOG -> {
+        // будет реализовано позже
+    }
 
-                    DeveloperWorkflow.FIX_ERRORS -> {
-                        // Будет реализовано позже
-                    }
+    DeveloperWorkflow.FIX_ERRORS -> {
+        // будет реализовано позже
+    }
 
-                    DeveloperWorkflow.TEST -> {
-                        // Будет реализовано позже
-                    }
-                }
+    DeveloperWorkflow.TEST -> {
+        // будет реализовано позже
+    }
+
+    DeveloperWorkflow.COMMIT -> {
+        // будет реализовано позже
+    }
+
+    DeveloperWorkflow.PUSH -> {
+        // будет реализовано позже
+    }
+
+    DeveloperWorkflow.FINISHED -> {
+        // завершение workflow
+    }
+}
             }
 
             retry++
