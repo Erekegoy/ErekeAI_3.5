@@ -11,8 +11,8 @@ android {
 
 val keystoreFile = System.getenv("KEYSTORE_FILE")
 val keystorePassword = System.getenv("KEYSTORE_PASSWORD")
-val keyAlias = System.getenv("KEY_ALIAS")
-val keyPassword = System.getenv("KEY_PASSWORD")
+val releaseKeyAlias = System.getenv("KEY_ALIAS")
+val releaseKeyPassword = System.getenv("KEY_PASSWORD")
 
     namespace = "com.erekeai.app"
     compileSdk = 34
@@ -44,8 +44,8 @@ val keyPassword = System.getenv("KEY_PASSWORD")
         if (keystoreFile != null) {
             storeFile = file(keystoreFile)
             storePassword = keystorePassword
-            keyAlias = signingKeyAlias
-            keyPassword = signingKeyPassword
+            keyAlias = releaseKeyAlias
+            keyPassword = releaseKeyPassword
         }
     }
 }
