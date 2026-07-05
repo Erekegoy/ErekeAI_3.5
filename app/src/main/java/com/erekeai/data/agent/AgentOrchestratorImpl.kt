@@ -46,17 +46,19 @@ class AgentOrchestratorImpl @Inject constructor(
             )
 
             val rawResponse = StringBuilder()
-            aiProvider.streamReply(syntheticHistory).collect { chunk -> rawResponse.append(chunk) }
 
-            val parsed = ReActParser.parse(rawResponse.toString())
+aiProvider.streamReply(syntheticHistory).collect { chunk ->
+    android.util.Log.d("ErekeAI", "CHUNK = $chunk")
+    rawResponse.append(chunk)
+}
 
-            parsed.thought?.takeIf { it.isNotBlank() }?.let { emit(AgentEvent.Thinking(it)) }
+android.util.Log.d("ErekeAI", "RAW = ${rawResponse}")
 
-            val action = parsed.action
-            if (parsed.finalAnswer != null) {
-                emit(AgentEvent.FinalAnswer(parsed.finalAnswer))
-                return@flow
-            }
+val parsed = ReActParser.parse(rawResponse.toString())
+
+parsed.thought?.takeIf { it.isNotBlank() }?.let {
+    emit(AgentEvent.Thinking(it))
+}
 
             if (action != null) {
                 emit(AgentEvent.ToolCall(action.toolName, action.args))
