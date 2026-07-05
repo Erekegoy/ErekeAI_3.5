@@ -59,6 +59,13 @@ val parsed = ReActParser.parse(rawResponse.toString())
 parsed.thought?.takeIf { it.isNotBlank() }?.let {
     emit(AgentEvent.Thinking(it))
 }
+        
+            val action = parsed.action
+
+if (parsed.finalAnswer != null) {
+    emit(AgentEvent.FinalAnswer(parsed.finalAnswer))
+    return@flow
+}
 
             if (action != null) {
                 emit(AgentEvent.ToolCall(action.toolName, action.args))
