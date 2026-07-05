@@ -51,10 +51,10 @@ jobs:
 
       - name: Verify release keystore
         run: |
-    keytool -list -v \
-      -keystore release.jks \
-      -storepass "${{ secrets.KEYSTORE_PASSWORD }}" \
-      -alias "${{ secrets.KEY_ALIAS }}"
+          keytool -list -v \
+            -keystore release.jks \
+            -storepass "${{ secrets.KEYSTORE_PASSWORD }}" \
+            -alias "${{ secrets.KEY_ALIAS }}"
 
       - name: Build Release APK
         run: ./gradlew :app:assembleRelease --stacktrace --no-daemon
