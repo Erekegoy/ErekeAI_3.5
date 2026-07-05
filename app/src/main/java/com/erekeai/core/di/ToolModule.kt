@@ -201,6 +201,18 @@ abstract class RouterModule {
 
 @Module
 @InstallIn(SingletonComponent::class)
+abstract class DeveloperEngineModule {
+
+    @Binds
+    @Singleton
+    abstract fun bindDeveloperEngine(
+        impl: com.erekeai.data.developer.DeveloperEngine
+    ): com.erekeai.domain.developer.DeveloperEngine
+
+}
+
+@Module
+@InstallIn(SingletonComponent::class)
 abstract class SchedulerModule {
     @Binds
     @Singleton

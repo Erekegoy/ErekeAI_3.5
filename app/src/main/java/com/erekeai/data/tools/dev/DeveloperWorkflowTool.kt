@@ -9,6 +9,9 @@ import javax.inject.Singleton
 import com.erekeai.executor.RetryingFixExecutor
 import com.erekeai.executor.FixOutcome
 
+import com.erekeai.domain.developer.DeveloperEngine
+import com.erekeai.data.developer.DeveloperTask
+
 @Singleton
 class DeveloperWorkflowTool @Inject constructor(
     private val analyzeProjectTool: AnalyzeProjectTool,
@@ -19,6 +22,7 @@ class DeveloperWorkflowTool @Inject constructor(
     private val buildApkAgentTool: BuildApkAgentTool,
     private val gitOpsTool: GitOpsTool,
     private val retryingFixExecutor: RetryingFixExecutor
+    private val developerEngine: DeveloperEngine
 ) : Tool {
 
     override val definition = ToolDefinition(
@@ -40,6 +44,43 @@ class DeveloperWorkflowTool @Inject constructor(
     )
 
         when (args["action"]) {
+        
+        "developer_mode" -> {
+
+    val state =
+        developerEngine.run(
+
+            DeveloperTask(
+
+                title = task,
+
+                description = task,
+
+                autoBuild = true,
+
+                autoFix = true,
+
+                autoCommit =
+                    args["commit"] == "true",
+
+                autoPush =
+                    args["push"] == "true"
+
+            )
+
+        )
+
+    return ToolResult(
+
+        state.success,
+
+        "Developer Mode завершён.\n" +
+        "Mode=${state.mode}\n" +
+        "Step=${state.currentStep}"
+
+    )
+
+}
 
     "fix_build" -> {
         val filePath = args["file"] ?: return ToolResult(false, "Не указан file")
