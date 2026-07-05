@@ -50,7 +50,7 @@ jobs:
           echo "KEY_PASSWORD=${{ secrets.KEY_PASSWORD }}" >> $GITHUB_ENV
 
       - name: Verify release keystore
-  run: |
+        run: |
     keytool -list -v \
       -keystore release.jks \
       -storepass "${{ secrets.KEYSTORE_PASSWORD }}" \
