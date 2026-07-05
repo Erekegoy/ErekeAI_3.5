@@ -36,7 +36,7 @@ android {
             }
         }
         aarMetadata {
-            minCompileSdk = 35
+            minCompileSdk = 34
         }
     }
     externalNativeBuild {
