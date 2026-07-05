@@ -36,26 +36,57 @@ class DeveloperEngine @Inject constructor(
             DeveloperWorkflow.FINISHED
         )
 
-        workflow.forEachIndexed { index, step ->
+        var retry = 0
 
-            state = state.copy(
-                currentStep = index + 1,
-                mode = when (step) {
-                    DeveloperWorkflow.ANALYZE_PROJECT -> DeveloperMode.ANALYZE
-                    DeveloperWorkflow.CREATE_PLAN -> DeveloperMode.PLAN
-                    else -> DeveloperMode.EDIT
-                }
-            )
+        while (retry < task.maxRetries) {
 
-            // Пока только фиксируем прохождение этапов.
-            // Реальные вызовы инструментов подключим позже
-            // через DeveloperWorkflowTool, чтобы не создавать
-            // циклическую зависимость Hilt.
+            workflow.forEachIndexed { index, step ->
+
+                state = state.copy(
+                    currentStep = index + 1,
+                    mode = when (step) {
+                        DeveloperWorkflow.ANALYZE_PROJECT -> DeveloperMode.ANALYZE
+                        DeveloperWorkflow.CREATE_PLAN -> DeveloperMode.PLAN
+                        DeveloperWorkflow.BUILD -> DeveloperMode.BUILD
+                        DeveloperWorkflow.TEST -> DeveloperMode.TEST
+                        DeveloperWorkflow.FIX_ERRORS -> DeveloperMode.FIX
+                        DeveloperWorkflow.COMMIT -> DeveloperMode.COMMIT
+                        DeveloperWorkflow.PUSH -> DeveloperMode.PUSH
+                        DeveloperWorkflow.FINISHED -> DeveloperMode.DONE
+                        else -> DeveloperMode.EDIT
+                    }
+                )
+
+                // Пока инструменты не вызываем.
+                // Их будет запускать DeveloperWorkflowTool,
+                // чтобы не создавать циклическую зависимость Hilt.
+            }
+
+            retry++
+
+            // Пока один проход.
+            // Следующим этапом заменим на анализ результата Build.
+            break
         }
 
         return state.copy(
             mode = DeveloperMode.DONE,
             success = true
         )
+    }
+
+    override suspend fun next(
+        result: WorkflowResult
+    ): Boolean {
+
+        if (result.success) {
+            return false
+        }
+
+        if (result.retry) {
+            return true
+        }
+
+        return false
     }
 }
