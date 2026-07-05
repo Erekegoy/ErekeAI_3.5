@@ -21,9 +21,9 @@ class DeveloperWorkflowTool @Inject constructor(
     private val analyzeLogTool: AnalyzeLogTool,
     private val buildApkAgentTool: BuildApkAgentTool,
     private val gitOpsTool: GitOpsTool,
-    private val retryingFixExecutor: RetryingFixExecutor
+    private val retryingFixExecutor: RetryingFixExecutor,
     private val developerEngine: DeveloperEngine
-) : Tool {
+{
 
     override val definition = ToolDefinition(
         name = "developer_workflow",
