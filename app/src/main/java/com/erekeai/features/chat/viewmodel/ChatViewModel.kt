@@ -19,7 +19,7 @@ data class ChatUiState(
     val messages: List<ChatMessage> = emptyList(),
     val input: String = "",
     val isSending: Boolean = false,
-    val selectedProvider: AiProviderType = AiProviderType.GEMINI,
+    val selectedProvider: AiProviderType = AiProviderType.OFFLINE,
     /** Режим агента: модель может рассуждать и вызывать инструменты (веб-поиск, файлы, калькулятор). */
     val agentModeEnabled: Boolean = false,
     /** Текущее "рассуждение" агента, показываемое как временный индикатор, пока не сохранён финальный ответ. */
