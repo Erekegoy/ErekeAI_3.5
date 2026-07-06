@@ -1,6 +1,7 @@
 package com.erekeai.llm
 
 import android.content.Context
+import android.util.Log
 import com.arm.aichat.AiChat
 import com.arm.aichat.InferenceEngine
 import dagger.hilt.android.qualifiers.ApplicationContext
@@ -16,6 +17,10 @@ class LlamaManager @Inject constructor(
     private val context: Context
 ) {
 
+    companion object {
+        private const val TAG = "ErekeAI"
+    }
+
     private val engine: InferenceEngine =
         AiChat.getInferenceEngine(context)
 
@@ -23,35 +28,63 @@ class LlamaManager @Inject constructor(
 
     suspend fun load() = withContext(Dispatchers.IO) {
 
-        if (loaded) return@withContext
+        if (loaded) {
+            Log.i(TAG, "Model already loaded.")
+            return@withContext
+        }
 
-        val modelPath = ModelInstaller.install(context)
+        try {
 
-        engine.loadModel(modelPath)
+            Log.i(TAG, "Installing model...")
 
-        engine.setSystemPrompt(
-            """
-            You are ErekeAI.
+            val modelPath = ModelInstaller.install(context)
 
-            You are an offline AI assistant.
+            Log.i(TAG, "Model path: $modelPath")
 
-            Always answer in the user's language.
+            Log.i(TAG, "Loading Qwen3...")
 
-            Think carefully before answering.
+            engine.loadModel(modelPath)
 
-            Keep answers concise unless more detail is requested.
+            Log.i(TAG, "Model loaded successfully.")
 
-            You work completely offline.
+            Log.i(TAG, "Loading system prompt...")
 
-            If internet access is required, reply exactly:
+            engine.setSystemPrompt(
+                """
+                You are ErekeAI.
 
-            [INTERNET_REQUIRED]
+                You are an offline AI assistant.
 
-            Do not invent information.
-            """.trimIndent()
-        )
+                Always answer in the user's language.
 
-        loaded = true
+                Think carefully before answering.
+
+                Keep answers concise unless more detail is requested.
+
+                You work completely offline.
+
+                If internet access is required, reply exactly:
+
+                [INTERNET_REQUIRED]
+
+                Do not invent information.
+                """.trimIndent()
+            )
+
+            Log.i(TAG, "System prompt loaded.")
+
+            loaded = true
+
+            Log.i(TAG, "Offline AI is ready.")
+
+        } catch (e: Exception) {
+
+            Log.e(TAG, "Failed to load local model.", e)
+
+            loaded = false
+
+            throw e
+        }
     }
 
     fun isLoaded(): Boolean = loaded
@@ -61,6 +94,7 @@ class LlamaManager @Inject constructor(
     }
 
     fun unload() {
+        Log.i(TAG, "Unloading model...")
         engine.cleanUp()
         loaded = false
     }
