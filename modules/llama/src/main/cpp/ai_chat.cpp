@@ -58,17 +58,33 @@ Java_com_arm_aichat_internal_InferenceEngineImpl_init(JNIEnv *env, jobject /*unu
 
 extern "C"
 JNIEXPORT jint JNICALL
-Java_com_arm_aichat_internal_InferenceEngineImpl_load(JNIEnv *env, jobject, jstring jmodel_path) {
+Java_com_arm_aichat_internal_InferenceEngineImpl_load(
+        JNIEnv *env,
+        jobject,
+        jstring jmodel_path) {
+
     llama_model_params model_params = llama_model_default_params();
 
-    const auto *model_path = env->GetStringUTFChars(jmodel_path, 0);
-    LOGd("%s: Loading model from: \n%s\n", __func__, model_path);
+    const char *model_path = env->GetStringUTFChars(jmodel_path, nullptr);
+
+    LOGd("%s: Loading model from:\n%s", __func__, model_path);
 
     auto *model = llama_model_load_from_file(model_path, model_params);
-    env->ReleaseStringUTFChars(jmodel_path, model_path);
+
     if (!model) {
+        LOGe("======================================");
+        LOGe("FAILED TO LOAD MODEL");
+        LOGe("Path: %s", model_path);
+        LOGe("======================================");
+
+        env->ReleaseStringUTFChars(jmodel_path, model_path);
         return 1;
     }
+
+    LOGi("Model loaded successfully.");
+
+    env->ReleaseStringUTFChars(jmodel_path, model_path);
+
     g_model = model;
     return 0;
 }
