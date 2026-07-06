@@ -43,10 +43,21 @@ class AiRouterImpl @Inject constructor() : AiRouter {
                 ?.let { return RoutingDecision(it, "Длинная/сложная задача — приоритет глубины и контекста") }
         }
 
-        val fallback = pick(availableProviders, listOf(AiProviderType.GEMINI, AiProviderType.OPENAI, AiProviderType.GROQ, AiProviderType.OLLAMA))
-            ?: availableProviders.firstOrNull() ?: AiProviderType.GEMINI
-        return RoutingDecision(fallback, "Дефолтный выбор по приоритету доступных провайдеров")
-    }
+        val fallback = pick(
+    availableProviders,
+    listOf(
+        AiProviderType.OFFLINE,
+        AiProviderType.GEMINI,
+        AiProviderType.OPENAI,
+        AiProviderType.GROQ,
+        AiProviderType.OLLAMA
+    )
+) ?: availableProviders.firstOrNull() ?: AiProviderType.OFFLINE
+
+return RoutingDecision(
+    fallback,
+    "По умолчанию используется локальная модель"
+)
 
     private fun pick(available: List<AiProviderType>, priority: List<AiProviderType>): AiProviderType? =
         priority.firstOrNull { it in available }

@@ -30,8 +30,10 @@ class SettingsDataStore @Inject constructor(
     }
 
     val selectedProvider: Flow<AiProviderType> = context.dataStore.data.map { prefs ->
-        val id = prefs[Keys.SELECTED_PROVIDER] ?: AiProviderType.GEMINI.id
-        AiProviderType.entries.firstOrNull { it.id == id } ?: AiProviderType.GEMINI
+        val id = prefs[Keys.SELECTED_PROVIDER] ?: AiProviderType.OFFLINE.id
+
+        AiProviderType.entries.firstOrNull { it.id == id }
+    ?: AiProviderType.OFFLINE
     }
 
     suspend fun setSelectedProvider(type: AiProviderType) {
