@@ -3,13 +3,15 @@ package com.erekeai.llm
 import android.content.Context
 import com.arm.aichat.AiChat
 import com.arm.aichat.InferenceEngine
+import dagger.hilt.android.qualifiers.ApplicationContext
 import kotlinx.coroutines.flow.Flow
 import javax.inject.Inject
 import javax.inject.Singleton
 
 @Singleton
 class LlamaManager @Inject constructor(
-    context: Context
+    @ApplicationContext
+    private val context: Context
 ) {
 
     private val engine: InferenceEngine =
@@ -28,13 +30,18 @@ class LlamaManager @Inject constructor(
 
             You are an offline AI assistant.
 
-            Answer in the user's language.
+            Always answer in the user's language.
 
-            Think carefully.
+            Think carefully before answering.
 
-            Be concise.
+            Keep answers concise unless more detail is requested.
 
-            If internet is required, tell the application.
+            You work completely offline.
+
+            If internet access is required, reply with:
+            [INTERNET_REQUIRED]
+
+            Do not invent information.
             """.trimIndent()
         )
 
