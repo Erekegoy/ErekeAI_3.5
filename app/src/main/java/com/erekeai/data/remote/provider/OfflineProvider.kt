@@ -1,25 +1,39 @@
 package com.erekeai.data.remote.provider
 
+import android.content.Context
 import com.erekeai.domain.model.AiProviderType
 import com.erekeai.domain.model.ChatMessage
 import com.erekeai.domain.repository.AiProvider
+import com.erekeai.llm.LlamaManager
+import dagger.hilt.android.qualifiers.ApplicationContext
+import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.flow
 import javax.inject.Inject
 import javax.inject.Singleton
 
-/**
- * Заглушка офлайн-провайдера. В будущем здесь будет интеграция локальной
- * on-device модели (например, через MediaPipe LLM Inference / GGUF).
- * Пока — простой отладочный ответ без обращения к сети.
- */
 @Singleton
-class OfflineProvider @Inject constructor() : AiProvider {
+class OfflineProvider @Inject constructor(
+    @ApplicationContext
+    private val context: Context,
+    private val llamaManager: LlamaManager
+) : AiProvider {
 
     override val type = AiProviderType.OFFLINE
 
-    override fun isConfigured(): Boolean = false // помечаем как "в разработке"
+    override fun isConfigured(): Boolean = true
 
-    override fun streamReply(history: List<ChatMessage>) = flow {
-        emit("Offline AI пока в разработке. Выберите другого провайдера в настройках.")
+    override fun streamReply(history: List<ChatMessage>): Flow<String> = flow {
+
+        val modelPath = "${context.filesDir}/models/Qwen3.gguf"
+
+        if (!llamaManager.isLoaded()) {
+            llamaManager.load(modelPath)
+        }
+
+        val prompt = history.lastOrNull()?.text ?: ""
+
+        llamaManager.generate(prompt).collect {
+            emit(it)
+        }
     }
 }
