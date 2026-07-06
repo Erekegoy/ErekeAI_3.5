@@ -58,6 +58,7 @@ return RoutingDecision(
     fallback,
     "По умолчанию используется локальная модель"
 )
+}
 
     private fun pick(available: List<AiProviderType>, priority: List<AiProviderType>): AiProviderType? =
         priority.firstOrNull { it in available }
