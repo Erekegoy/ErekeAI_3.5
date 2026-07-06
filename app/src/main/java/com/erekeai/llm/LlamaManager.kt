@@ -4,7 +4,9 @@ import android.content.Context
 import com.arm.aichat.AiChat
 import com.arm.aichat.InferenceEngine
 import dagger.hilt.android.qualifiers.ApplicationContext
+import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.flow.Flow
+import kotlinx.coroutines.withContext
 import javax.inject.Inject
 import javax.inject.Singleton
 
@@ -19,8 +21,11 @@ class LlamaManager @Inject constructor(
 
     private var loaded = false
 
-    suspend fun load(modelPath: String) {
-        if (loaded) return
+    suspend fun load() = withContext(Dispatchers.IO) {
+
+        if (loaded) return@withContext
+
+        val modelPath = ModelInstaller.install(context)
 
         engine.loadModel(modelPath)
 
@@ -38,7 +43,8 @@ class LlamaManager @Inject constructor(
 
             You work completely offline.
 
-            If internet access is required, reply with:
+            If internet access is required, reply exactly:
+
             [INTERNET_REQUIRED]
 
             Do not invent information.
