@@ -24,16 +24,14 @@ class OfflineProvider @Inject constructor(
 
     override fun streamReply(history: List<ChatMessage>): Flow<String> = flow {
 
-        val modelPath = "${context.filesDir}/models/Qwen3.gguf"
-
         if (!llamaManager.isLoaded()) {
-            llamaManager.load(modelPath)
+            llamaManager.load()
         }
 
-        val prompt = history.lastOrNull()?.text ?: ""
+        val prompt = history.lastOrNull()?.text.orEmpty()
 
-        llamaManager.generate(prompt).collect {
-            emit(it)
+        llamaManager.generate(prompt).collect { token ->
+            emit(token)
         }
     }
 }
