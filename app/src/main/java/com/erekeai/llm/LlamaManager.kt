@@ -77,13 +77,14 @@ class LlamaManager @Inject constructor(
 
             Log.i(TAG, "Offline AI is ready.")
 
-        } catch (e: Exception) {
+        } 
+            catch (e: Exception) {
 
             Log.e(TAG, "Failed to load local model.", e)
 
             loaded = false
 
-            throw e
+            throw RuntimeException(e.stackTraceToString())
         }
     }
 
