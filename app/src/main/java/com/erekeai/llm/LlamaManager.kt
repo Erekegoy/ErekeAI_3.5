@@ -28,6 +28,8 @@ class LlamaManager @Inject constructor(
 
     suspend fun load() = withContext(Dispatchers.IO) {
 
+    Log.e("EREKE_DEBUG", "LOAD() START")
+
         if (loaded) {
             Log.i(TAG, "Model already loaded.")
             return@withContext
@@ -39,17 +41,23 @@ class LlamaManager @Inject constructor(
 
             val modelPath = ModelInstaller.install(context)
 
+            Log.e("EREKE_DEBUG", "MODEL INSTALLED")
+
+            Log.e("EREKE_DEBUG", modelPath)
+
             Log.i(TAG, "Model path: $modelPath")
 
             Log.i(TAG, "Loading Qwen3...")
 
             engine.loadModel(modelPath)
 
+            Log.e("EREKE_DEBUG", "LOADMODEL OK")
+
             Log.i(TAG, "Model loaded successfully.")
 
             Log.i(TAG, "Loading system prompt...")
 
-            engine.setSystemPrompt(
+            engine.setSystemPrompt(            
                 """
                 You are ErekeAI.
 
@@ -71,9 +79,13 @@ class LlamaManager @Inject constructor(
                 """.trimIndent()
             )
 
+            Log.e("EREKE_DEBUG", "SYSTEM PROMPT OK")
+
             Log.i(TAG, "System prompt loaded.")
 
             loaded = true
+
+            Log.e("EREKE_DEBUG", "READY")
 
             Log.i(TAG, "Offline AI is ready.")
 
@@ -84,7 +96,8 @@ class LlamaManager @Inject constructor(
 
             loaded = false
 
-            throw RuntimeException(e.stackTraceToString())
+            Log.e("EREKE_DEBUG", e.stackTraceToString())
+            throw e
         }
     }
 
