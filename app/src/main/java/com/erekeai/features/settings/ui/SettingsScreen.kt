@@ -321,9 +321,35 @@ private fun ProviderRow(
                 )
             } else if (provider == AiProviderType.OLLAMA) {
                 Text("Настраивается ниже, в разделе 🦙 Ollama Manager", style = MaterialTheme.typography.bodySmall)
-            } else {
-                Text("Локальная модель — в разработке", style = MaterialTheme.typography.bodySmall)
+            }     Text("Локальная модель — в разработке", style = MaterialTheme.typography.bodySmall)
+}
+else {
+
+    Column {
+
+        Text(
+            "Локальная модель",
+            style = MaterialTheme.typography.bodySmall
+        )
+
+        Spacer(modifier = Modifier.height(8.dp))
+
+        Button(
+            onClick = {
+                // TODO: открыть выбор GGUF
             }
+        ) {
+            Text("➕ Добавить модель")
+        }
+
+        Spacer(modifier = Modifier.height(8.dp))
+
+        Text(
+            "После добавления модель можно сделать активной.",
+            style = MaterialTheme.typography.bodySmall
+        )
+    }
+}
         }
     }
 }

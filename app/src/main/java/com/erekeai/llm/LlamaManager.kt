@@ -39,7 +39,11 @@ class LlamaManager @Inject constructor(
 
             Log.i(TAG, "Installing model...")
 
-            val modelPath = ModelInstaller.install(context)
+            val modelPath =
+    ModelManager.getActiveModelPath(context)
+        ?: throw IllegalStateException(
+            "Нет выбранной модели. Добавьте GGUF-модель в настройках."
+        )
 
             Log.e("EREKE_DEBUG", "MODEL INSTALLED")
 

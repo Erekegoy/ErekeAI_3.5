@@ -14,6 +14,10 @@ import kotlinx.coroutines.flow.combine
 import kotlinx.coroutines.launch
 import javax.inject.Inject
 
+
+import com.erekeai.llm.ModelManager
+import com.erekeai.llm.ModelPicker
+
 data class SettingsUiState(
     val selectedProvider: AiProviderType = AiProviderType.GEMINI,
     val apiKeys: Map<AiProviderType, String> = emptyMap(),

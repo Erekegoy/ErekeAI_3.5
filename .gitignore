@@ -22,4 +22,4 @@ local.properties
 *.keystore
 full.log
 *.log
-app/src/main/assets/models/*.gguf
+
