@@ -1,10 +1,17 @@
 package com.erekeai.features.settings.ui
 
+import android.net.Uri
+import androidx.activity.compose.rememberLauncherForActivityResult
+import androidx.activity.result.contract.ActivityResultContracts
 import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.lazy.items
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.ArrowBack
+import androidx.compose.material.icons.filled.Check
+import androidx.compose.material.icons.filled.Close
+import androidx.compose.material.icons.filled.Delete
+import androidx.compose.material.icons.filled.Edit
 import androidx.compose.material3.*
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.collectAsState
@@ -12,10 +19,12 @@ import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
 import androidx.compose.runtime.setValue
+import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.unit.dp
 import androidx.hilt.navigation.compose.hiltViewModel
 import com.erekeai.domain.model.AiProviderType
+import com.erekeai.domain.model.ModelInfo
 import com.erekeai.features.settings.viewmodel.SettingsViewModel
 
 @OptIn(ExperimentalMaterial3Api::class)
@@ -54,7 +63,12 @@ fun SettingsScreen(
                     selected = provider == state.selectedProvider,
                     apiKey = state.apiKeys[provider].orEmpty(),
                     onSelect = { viewModel.selectProvider(provider) },
-                    onKeyChange = { viewModel.saveApiKey(provider, it) }
+                    onKeyChange = { viewModel.saveApiKey(provider, it) },
+                    models = state.models,
+                    onImportModel = viewModel::importModel,
+                    onSetActiveModel = viewModel::setActiveModel,
+                    onDeleteModel = viewModel::deleteModel,
+                    onRenameModel = viewModel::renameModel
                 )
             }
             item {
@@ -295,7 +309,12 @@ private fun ProviderRow(
     selected: Boolean,
     apiKey: String,
     onSelect: () -> Unit,
-    onKeyChange: (String) -> Unit
+    onKeyChange: (String) -> Unit,
+    models: List<ModelInfo> = emptyList(),
+    onImportModel: (Uri) -> Unit = {},
+    onSetActiveModel: (String) -> Unit = {},
+    onDeleteModel: (String) -> Unit = {},
+    onRenameModel: (String, String) -> Unit = { _, _ -> }
 ) {
     var localKey by remember(provider) { mutableStateOf(apiKey) }
 
@@ -327,11 +346,35 @@ private fun ProviderRow(
     )
 
 } else {
+                LocalModelsSection(
+                    models = models,
+                    onImportModel = onImportModel,
+                    onSetActiveModel = onSetActiveModel,
+                    onDeleteModel = onDeleteModel,
+                    onRenameModel = onRenameModel
+                )
+            }
+        }
+    }
+}
+
+@Composable
+private fun LocalModelsSection(
+    models: List<ModelInfo>,
+    onImportModel: (Uri) -> Unit,
+    onSetActiveModel: (String) -> Unit,
+    onDeleteModel: (String) -> Unit,
+    onRenameModel: (String, String) -> Unit
+) {
+    val pickModelLauncher = rememberLauncherForActivityResult(
+        contract = ActivityResultContracts.OpenDocument()
+    ) { uri: Uri? ->
+        uri?.let { onImportModel(it) }
+    }
 
     Column {
-
         Text(
-            "Локальная модель",
+            "Локальная модель (GGUF)",
             style = MaterialTheme.typography.bodySmall
         )
 
@@ -339,7 +382,7 @@ private fun ProviderRow(
 
         Button(
             onClick = {
-                // TODO: открыть выбор GGUF
+                pickModelLauncher.launch(arrayOf("application/octet-stream", "*/*"))
             }
         ) {
             Text("➕ Добавить модель")
@@ -347,12 +390,103 @@ private fun ProviderRow(
 
         Spacer(modifier = Modifier.height(8.dp))
 
-        Text(
-            "После добавления модель можно сделать активной.",
-            style = MaterialTheme.typography.bodySmall
-        )
+        if (models.isEmpty()) {
+            Text(
+                "Модели ещё не добавлены. Нажмите «Добавить модель», чтобы выбрать .gguf файл.",
+                style = MaterialTheme.typography.bodySmall
+            )
+        } else {
+            Text(
+                "Выберите активную модель:",
+                style = MaterialTheme.typography.bodySmall
+            )
+            Spacer(modifier = Modifier.height(4.dp))
+            Column(verticalArrangement = Arrangement.spacedBy(4.dp)) {
+                models.forEach { model ->
+                    ModelRow(
+                        model = model,
+                        onSetActive = { onSetActiveModel(model.name) },
+                        onDelete = { onDeleteModel(model.name) },
+                        onRename = { newName -> onRenameModel(model.name, newName) }
+                    )
+                }
+            }
+        }
     }
 }
+
+@Composable
+private fun ModelRow(
+    model: ModelInfo,
+    onSetActive: () -> Unit,
+    onDelete: () -> Unit,
+    onRename: (String) -> Unit
+) {
+    var isRenaming by remember(model.name) { mutableStateOf(false) }
+    var renameText by remember(model.name) { mutableStateOf(model.name) }
+
+    Card(modifier = Modifier.fillMaxWidth()) {
+        Column(modifier = Modifier.padding(8.dp)) {
+            if (isRenaming) {
+                Row(
+                    modifier = Modifier.fillMaxWidth(),
+                    verticalAlignment = Alignment.CenterVertically
+                ) {
+                    OutlinedTextField(
+                        value = renameText,
+                        onValueChange = { renameText = it },
+                        singleLine = true,
+                        modifier = Modifier.weight(1f)
+                    )
+                    IconButton(onClick = {
+                        if (renameText.isNotBlank()) {
+                            onRename(renameText)
+                        }
+                        isRenaming = false
+                    }) {
+                        Icon(Icons.Default.Check, contentDescription = "Сохранить имя")
+                    }
+                    IconButton(onClick = {
+                        renameText = model.name
+                        isRenaming = false
+                    }) {
+                        Icon(Icons.Default.Close, contentDescription = "Отмена")
+                    }
+                }
+            } else {
+                Row(
+                    modifier = Modifier.fillMaxWidth(),
+                    verticalAlignment = Alignment.CenterVertically,
+                    horizontalArrangement = Arrangement.SpaceBetween
+                ) {
+                    Row(verticalAlignment = Alignment.CenterVertically, modifier = Modifier.weight(1f)) {
+                        RadioButton(selected = model.active, onClick = onSetActive)
+                        Column {
+                            Text(model.name, style = MaterialTheme.typography.titleSmall)
+                            Text(
+                                formatModelSize(model.size),
+                                style = MaterialTheme.typography.bodySmall
+                            )
+                        }
+                    }
+                    IconButton(onClick = { isRenaming = true }) {
+                        Icon(Icons.Default.Edit, contentDescription = "Переименовать")
+                    }
+                    IconButton(onClick = onDelete) {
+                        Icon(Icons.Default.Delete, contentDescription = "Удалить")
+                    }
+                }
+            }
+        }
+    }
 }
-}
+
+private fun formatModelSize(bytes: Long): String {
+    val gb = bytes / (1024.0 * 1024.0 * 1024.0)
+    return if (gb >= 1.0) {
+        "%.2f ГБ".format(gb)
+    } else {
+        val mb = bytes / (1024.0 * 1024.0)
+        "%.0f МБ".format(mb)
+    }
 }
