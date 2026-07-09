@@ -320,10 +320,13 @@ private fun ProviderRow(
                     modifier = Modifier.fillMaxWidth()
                 )
             } else if (provider == AiProviderType.OLLAMA) {
-                Text("Настраивается ниже, в разделе 🦙 Ollama Manager", style = MaterialTheme.typography.bodySmall)
-            }     Text("Локальная модель — в разработке", style = MaterialTheme.typography.bodySmall)
-}
-else {
+
+    Text(
+        "Настраивается ниже, в разделе 🦙 Ollama Manager",
+        style = MaterialTheme.typography.bodySmall
+    )
+
+} else {
 
     Column {
 
@@ -350,6 +353,6 @@ else {
         )
     }
 }
-        }
-    }
+}
+}
 }
