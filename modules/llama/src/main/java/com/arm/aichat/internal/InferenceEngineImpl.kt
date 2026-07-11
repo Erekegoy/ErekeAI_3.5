@@ -164,12 +164,9 @@ internal class InferenceEngineImpl private constructor(
                 Log.i(TAG, "Loading model... \n$pathToModel")
                 _readyForSystemPrompt = false
                 _state.value = InferenceEngine.State.LoadingModel
-                val result = load(pathToModel)
-
-                Log.e(TAG, "llama load() returned = $result")
-
-                if (result != 0) {
-                  throw RuntimeException("llama load failed: code=$result")
+                load(pathToModel).let {
+                    // TODO-han.yin: find a better way to pass other error codes
+                    if (it != 0) throw UnsupportedArchitectureException()
                 }
                 prepare().let {
                     if (it != 0) throw IOException("Failed to prepare resources")

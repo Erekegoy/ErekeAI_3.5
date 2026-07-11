@@ -1,16 +1,16 @@
 plugins {
-    id("com.android.library")
-    id("org.jetbrains.kotlin.android")
+    alias(libs.plugins.android.library)
+    alias(libs.plugins.jetbrains.kotlin.android)
 }
 
 android {
     namespace = "com.arm.aichat"
-    compileSdk = 34
+    compileSdk = 36
 
-  //  ndkVersion = "29.0.13113456"
+    ndkVersion = "29.0.13113456"
 
     defaultConfig {
-        minSdk = 26
+        minSdk = 33
 
         testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
         consumerProguardFiles("consumer-rules.pro")
@@ -33,11 +33,10 @@ android {
                 arguments += "-DGGML_BACKEND_DL=ON"
                 arguments += "-DGGML_CPU_ALL_VARIANTS=ON"
                 arguments += "-DGGML_LLAMAFILE=OFF"
-                arguments += "-DGGML_CPU_KLEIDIAI=OFF"
             }
         }
         aarMetadata {
-            minCompileSdk = 34
+            minCompileSdk = 35
         }
     }
     externalNativeBuild {
@@ -72,9 +71,9 @@ android {
 }
 
 dependencies {
-    implementation("androidx.core:core-ktx:1.13.1")
-    implementation("androidx.datastore:datastore-preferences:1.1.1")
+    implementation(libs.androidx.core.ktx)
+    implementation(libs.androidx.datastore.preferences)
 
-    testImplementation("junit:junit:4.13.2")
-    androidTestImplementation("androidx.test.ext:junit:1.2.1")
+    testImplementation(libs.junit)
+    androidTestImplementation(libs.androidx.junit)
 }
