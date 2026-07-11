@@ -7,8 +7,7 @@ android {
     namespace = "com.arm.aichat"
     compileSdk = 36
 
-    ndkVersion = "29.0.13113456"
-
+    
     defaultConfig {
         minSdk = 33
 
