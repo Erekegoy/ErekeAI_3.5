@@ -1,5 +1,7 @@
 package com.erekeai.features.settings.viewmodel
 
+import android.content.Context
+import android.net.Uri
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.erekeai.core.security.SecureKeyStore
@@ -8,15 +10,18 @@ import com.erekeai.domain.mcp.McpServerConfig
 import com.erekeai.domain.mcp.McpServerStore
 import com.erekeai.domain.model.AiProviderType
 import dagger.hilt.android.lifecycle.HiltViewModel
+import dagger.hilt.android.qualifiers.ApplicationContext
+import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.StateFlow
 import kotlinx.coroutines.flow.combine
 import kotlinx.coroutines.launch
+import kotlinx.coroutines.withContext
 import javax.inject.Inject
 
 
+import com.erekeai.llm.ModelInfo
 import com.erekeai.llm.ModelManager
-import com.erekeai.llm.ModelPicker
 
 data class SettingsUiState(
     val selectedProvider: AiProviderType = AiProviderType.GEMINI,
@@ -29,11 +34,14 @@ data class SettingsUiState(
     val ollamaModel: String = "llama3.2",
     val cloudSyncUrl: String = "",
     val cloudSyncToken: String = "",
-    val mcpServers: List<McpServerConfig> = emptyList()
+    val mcpServers: List<McpServerConfig> = emptyList(),
+    val models: List<ModelInfo> = emptyList(),
+    val selectedModel: String? = null
 )
 
 @HiltViewModel
 class SettingsViewModel @Inject constructor(
+    @ApplicationContext private val context: Context,
     private val settingsDataStore: SettingsDataStore,
     private val keyStore: SecureKeyStore,
     private val mcpServerStore: McpServerStore
@@ -65,6 +73,7 @@ class SettingsViewModel @Inject constructor(
         viewModelScope.launch {
             _uiState.value = _uiState.value.copy(mcpServers = mcpServerStore.getServers())
         }
+        refreshModels()
     }
 
     fun selectProvider(type: AiProviderType) {
@@ -114,6 +123,49 @@ class SettingsViewModel @Inject constructor(
         viewModelScope.launch {
             mcpServerStore.deleteServer(id)
             _uiState.value = _uiState.value.copy(mcpServers = mcpServerStore.getServers())
+        }
+    }
+
+    /** Обновляет список локальных GGUF-моделей и текущую активную модель. */
+    fun refreshModels() {
+        viewModelScope.launch {
+            val models = withContext(Dispatchers.IO) { ModelManager.getModels(context) }
+            _uiState.value = _uiState.value.copy(
+                models = models,
+                selectedModel = models.firstOrNull { it.selected }?.name
+            )
+        }
+    }
+
+    /** Импортирует .gguf файл, выбранный через ActivityResultContracts.OpenDocument(). */
+    fun importModel(uri: Uri) {
+        viewModelScope.launch {
+            withContext(Dispatchers.IO) { ModelManager.importModel(context, uri) }
+            refreshModels()
+        }
+    }
+
+    /** Удаляет модель по пути к файлу. */
+    fun deleteModel(path: String) {
+        viewModelScope.launch {
+            withContext(Dispatchers.IO) { ModelManager.deleteModel(context, path) }
+            refreshModels()
+        }
+    }
+
+    /** Переименовывает модель по пути к файлу. */
+    fun renameModel(path: String, newName: String) {
+        viewModelScope.launch {
+            withContext(Dispatchers.IO) { ModelManager.renameModel(context, path, newName) }
+            refreshModels()
+        }
+    }
+
+    /** Делает модель по указанному пути активной (используется LlamaManager при загрузке). */
+    fun setActiveModel(path: String) {
+        viewModelScope.launch {
+            withContext(Dispatchers.IO) { ModelManager.setActiveModel(context, path) }
+            refreshModels()
         }
     }
 

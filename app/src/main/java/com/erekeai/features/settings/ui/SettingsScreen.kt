@@ -12,6 +12,8 @@ import androidx.compose.material.icons.filled.Check
 import androidx.compose.material.icons.filled.Close
 import androidx.compose.material.icons.filled.Delete
 import androidx.compose.material.icons.filled.Edit
+import androidx.compose.material.icons.filled.MoreVert
+import androidx.compose.material.icons.filled.Star
 import androidx.compose.material3.*
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.collectAsState
@@ -21,10 +23,11 @@ import androidx.compose.runtime.remember
 import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
 import androidx.hilt.navigation.compose.hiltViewModel
 import com.erekeai.domain.model.AiProviderType
-import com.erekeai.domain.model.ModelInfo
+import com.erekeai.llm.ModelInfo
 import com.erekeai.features.settings.viewmodel.SettingsViewModel
 
 @OptIn(ExperimentalMaterial3Api::class)
@@ -396,21 +399,31 @@ private fun LocalModelsSection(
                 style = MaterialTheme.typography.bodySmall
             )
         } else {
-            Text(
-                "Выберите активную модель:",
-                style = MaterialTheme.typography.bodySmall
-            )
-            Spacer(modifier = Modifier.height(4.dp))
             Column(verticalArrangement = Arrangement.spacedBy(4.dp)) {
                 models.forEach { model ->
                     ModelRow(
                         model = model,
-                        onSetActive = { onSetActiveModel(model.name) },
-                        onDelete = { onDeleteModel(model.name) },
-                        onRename = { newName -> onRenameModel(model.name, newName) }
+                        onSetActive = { onSetActiveModel(model.path) },
+                        onDelete = { onDeleteModel(model.path) },
+                        onRename = { newName -> onRenameModel(model.path, newName) }
                     )
                 }
             }
+
+            Spacer(modifier = Modifier.height(8.dp))
+            HorizontalDivider()
+            Spacer(modifier = Modifier.height(8.dp))
+
+            val active = models.firstOrNull { it.selected }
+            Text(
+                "Добавлено моделей: ${models.size}",
+                style = MaterialTheme.typography.bodySmall
+            )
+            Text(
+                "Активная: ${active?.name ?: "не выбрана"}",
+                style = MaterialTheme.typography.bodySmall,
+                fontWeight = FontWeight.Bold
+            )
         }
     }
 }
@@ -422,8 +435,9 @@ private fun ModelRow(
     onDelete: () -> Unit,
     onRename: (String) -> Unit
 ) {
-    var isRenaming by remember(model.name) { mutableStateOf(false) }
-    var renameText by remember(model.name) { mutableStateOf(model.name) }
+    var isRenaming by remember(model.path) { mutableStateOf(false) }
+    var renameText by remember(model.path) { mutableStateOf(model.name) }
+    var menuExpanded by remember(model.path) { mutableStateOf(false) }
 
     Card(modifier = Modifier.fillMaxWidth()) {
         Column(modifier = Modifier.padding(8.dp)) {
@@ -460,20 +474,50 @@ private fun ModelRow(
                     horizontalArrangement = Arrangement.SpaceBetween
                 ) {
                     Row(verticalAlignment = Alignment.CenterVertically, modifier = Modifier.weight(1f)) {
-                        RadioButton(selected = model.active, onClick = onSetActive)
+                        Icon(
+                            imageVector = Icons.Default.Star,
+                            contentDescription = if (model.selected) "Активная модель" else null,
+                            tint = if (model.selected) MaterialTheme.colorScheme.primary
+                                   else MaterialTheme.colorScheme.outlineVariant,
+                            modifier = Modifier.padding(end = 8.dp)
+                        )
                         Column {
                             Text(model.name, style = MaterialTheme.typography.titleSmall)
                             Text(
-                                formatModelSize(model.size),
+                                if (model.selected) "⭐ Активная" else formatModelSize(model.size),
                                 style = MaterialTheme.typography.bodySmall
                             )
                         }
                     }
-                    IconButton(onClick = { isRenaming = true }) {
-                        Icon(Icons.Default.Edit, contentDescription = "Переименовать")
-                    }
-                    IconButton(onClick = onDelete) {
-                        Icon(Icons.Default.Delete, contentDescription = "Удалить")
+
+                    Box {
+                        IconButton(onClick = { menuExpanded = true }) {
+                            Icon(Icons.Default.MoreVert, contentDescription = "Действия с моделью")
+                        }
+                        DropdownMenu(expanded = menuExpanded, onDismissRequest = { menuExpanded = false }) {
+                            DropdownMenuItem(
+                                text = { Text(if (model.selected) "⭐ Активная" else "⭐ Сделать активной") },
+                                enabled = !model.selected,
+                                onClick = {
+                                    menuExpanded = false
+                                    onSetActive()
+                                }
+                            )
+                            DropdownMenuItem(
+                                text = { Text("✏️ Переименовать") },
+                                onClick = {
+                                    menuExpanded = false
+                                    isRenaming = true
+                                }
+                            )
+                            DropdownMenuItem(
+                                text = { Text("🗑 Удалить") },
+                                onClick = {
+                                    menuExpanded = false
+                                    onDelete()
+                                }
+                            )
+                        }
                     }
                 }
             }
