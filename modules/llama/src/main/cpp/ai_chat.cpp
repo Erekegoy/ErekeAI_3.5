@@ -65,11 +65,27 @@ Java_com_arm_aichat_internal_InferenceEngineImpl_load(
 
     llama_model_params model_params = llama_model_default_params();
 
-    const char *model_path = env->GetStringUTFChars(jmodel_path, nullptr);
+model_params.use_mmap = true;
+model_params.use_mlock = false;
 
-    LOGd("%s: Loading model from:\n%s", __func__, model_path);
+const char *model_path = env->GetStringUTFChars(jmodel_path, nullptr);
 
-    auto *model = llama_model_load_from_file(model_path, model_params);
+LOGe("========== EREKE LOAD ==========");
+LOGe("MODEL PATH: %s", model_path);
+
+FILE *f = fopen(model_path, "rb");
+if (!f) {
+    LOGe("FILE OPEN FAILED");
+} else {
+    fseek(f, 0, SEEK_END);
+    long long size = ftell(f);
+    fclose(f);
+    LOGe("FILE SIZE = %lld", size);
+}
+
+LOGd("%s: Loading model from:\n%s", __func__, model_path);
+
+auto *model = llama_model_load_from_file(model_path, model_params);
 
     if (!model) {
         LOGe("======================================");
