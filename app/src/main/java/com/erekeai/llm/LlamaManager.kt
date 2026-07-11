@@ -45,15 +45,20 @@ class LlamaManager @Inject constructor(
             "Нет выбранной модели. Добавьте GGUF-модель в настройках."
         )
 
-            Log.e("EREKE_DEBUG", "MODEL INSTALLED")
+val modelFile = java.io.File(modelPath)
 
-            Log.e("EREKE_DEBUG", modelPath)
+Log.e("EREKE_MODEL", "PATH=$modelPath")
+Log.e("EREKE_MODEL", "EXISTS=${modelFile.exists()}")
+Log.e("EREKE_MODEL", "READ=${modelFile.canRead()}")
+Log.e("EREKE_MODEL", "SIZE=${modelFile.length()}")
 
-            Log.i(TAG, "Model path: $modelPath")
+Log.e("EREKE_DEBUG", "MODEL INSTALLED")
+Log.e("EREKE_DEBUG", modelPath)
 
-            Log.i(TAG, "Loading Qwen3...")
+Log.i(TAG, "Model path: $modelPath")
+Log.i(TAG, "Loading model...")
 
-            engine.loadModel(modelPath)
+engine.loadModel(modelPath)
 
             Log.e("EREKE_DEBUG", "LOADMODEL OK")
 
