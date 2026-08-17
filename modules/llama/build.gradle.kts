@@ -23,6 +23,8 @@ android {
                 arguments += "-DCMAKE_MESSAGE_LOG_LEVEL=DEBUG"
                 arguments += "-DCMAKE_VERBOSE_MAKEFILE=ON"
 
+                arguments += "-DANDROID_PLATFORM=android-30"
+
                 arguments += "-DBUILD_SHARED_LIBS=ON"
                 arguments += "-DLLAMA_BUILD_APP=OFF"
                 arguments += "-DLLAMA_BUILD_COMMON=ON"
